@@ -19,8 +19,6 @@ namespace BasicFacebookFeatures
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FormMain());
-            Console.Write("Test");
-            Console.Write("Test1");
         }
     }
 }
