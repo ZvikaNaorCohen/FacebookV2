@@ -14,6 +14,8 @@ namespace BasicFacebookFeatures
     public partial class FormAppSettings : Form
     {
         private const string k_AppId = "1225204811548586";
+        private LoginResult m_LoginResult;
+
         public FormAppSettings()
         {
             InitializeComponent();
@@ -24,15 +26,25 @@ namespace BasicFacebookFeatures
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
 
-            FacebookWrapper.LoginResult loginResult = FacebookService.Login(k_AppId,
-                // requested permissions:
-                "email", "public_profile");
+            m_LoginResult = FacebookService.Login(k_AppId, "email", "public_profile", "user_photos");
 
-            if(loginResult.LoggedInUser != null)
+            //if(loginResult.LoggedInUser != null)
+            //{
+            //    buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
+            //    FormMain test = new FormMain();
+            //    test.ShowDialog();
+            //}
+
+            if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
-                buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
-                FormMain test = new FormMain();
+                User loggedInUser = m_LoginResult.LoggedInUser;
+                FormMain test = new FormMain(loggedInUser);
                 test.ShowDialog();
+            }
+
+            else
+            {
+                MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
             }
 
         }

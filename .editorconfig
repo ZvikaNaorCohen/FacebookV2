@@ -2,3 +2,15 @@
 
 # SA1200: Using directives should be placed correctly
 dotnet_diagnostic.SA1200.severity = none
+
+# SA1101: Prefix local calls with this
+dotnet_diagnostic.SA1101.severity = none
+
+# SA1300: Element should begin with upper-case letter
+dotnet_diagnostic.SA1300.severity = none
+
+# SA1303: Const field names should begin with upper-case letter
+dotnet_diagnostic.SA1303.severity = none
+
+# SA1310: Field names should not contain underscore
+dotnet_diagnostic.SA1310.severity = none
