@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
@@ -14,9 +16,13 @@ namespace BasicFacebookFeatures
     {
         private const string k_AppId = "1225204811548586";
 
-        public FormMain()
+        private User m_LoggedInUser;
+
+        public FormMain(User i_LoggedInUser)
         {
+            m_LoggedInUser = i_LoggedInUser;
             InitializeComponent();
+            fetchUserInfo();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -27,6 +33,20 @@ namespace BasicFacebookFeatures
         {
             // FacebookService.LogoutWithUI();
             // buttonLogin.Text = "Login";
+        }
+
+        private void fetchUserInfo()
+        {
+            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
+            makeProfilePictureCircle();
+        }
+
+        private void makeProfilePictureCircle()
+        {
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(0, 0, pictureBoxProfile.Width, pictureBoxProfile.Height);
+            Region rg = new Region(gp);
+            pictureBoxProfile.Region = rg;
         }
     }
 }

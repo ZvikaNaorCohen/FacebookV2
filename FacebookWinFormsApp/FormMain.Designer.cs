@@ -29,7 +29,7 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
-            this.profilePictureBox = new System.Windows.Forms.PictureBox();
+            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.coverPhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.listBoxNotifications = new System.Windows.Forms.ListBox();
             this.listBoxUserInfo = new System.Windows.Forms.ListBox();
@@ -38,18 +38,18 @@ namespace BasicFacebookFeatures
             this.buttonGetGroups = new System.Windows.Forms.Button();
             this.buttonGetAlbums = new System.Windows.Forms.Button();
             this.buttonLikedPages = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // profilePictureBox
+            // pictureBoxProfile
             // 
-            this.profilePictureBox.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.profilePictureBox.Location = new System.Drawing.Point(77, 181);
-            this.profilePictureBox.Name = "profilePictureBox";
-            this.profilePictureBox.Size = new System.Drawing.Size(145, 118);
-            this.profilePictureBox.TabIndex = 0;
-            this.profilePictureBox.TabStop = false;
+            this.pictureBoxProfile.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.pictureBoxProfile.Location = new System.Drawing.Point(77, 181);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(145, 118);
+            this.pictureBoxProfile.TabIndex = 0;
+            this.pictureBoxProfile.TabStop = false;
             // 
             // coverPhotoPictureBox
             // 
@@ -136,14 +136,14 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.listBoxUserInfo);
             this.Controls.Add(this.listBoxNotifications);
-            this.Controls.Add(this.profilePictureBox);
+            this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.coverPhotoPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
             this.Load += new System.EventHandler(this.FormMain_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -151,7 +151,7 @@ namespace BasicFacebookFeatures
 
         #endregion
 
-        private System.Windows.Forms.PictureBox profilePictureBox;
+        private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.PictureBox coverPhotoPictureBox;
         private System.Windows.Forms.ListBox listBoxNotifications;
         private System.Windows.Forms.ListBox listBoxUserInfo;
