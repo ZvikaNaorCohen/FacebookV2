@@ -26,15 +26,7 @@ namespace BasicFacebookFeatures
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
 
-            m_LoginResult = FacebookService.Login(k_AppId, "email", "public_profile", "user_photos");
-
-            //if(loginResult.LoggedInUser != null)
-            //{
-            //    buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
-            //    FormMain test = new FormMain();
-            //    test.ShowDialog();
-            //}
-
+            m_LoginResult = FacebookService.Login(k_AppId, "email", "public_profile", "user_photos", "user_friends", "user_posts");
             if (!string.IsNullOrEmpty(m_LoginResult.AccessToken))
             {
                 User loggedInUser = m_LoginResult.LoggedInUser;
@@ -44,7 +36,7 @@ namespace BasicFacebookFeatures
 
             else
             {
-                MessageBox.Show(m_LoginResult.ErrorMessage, "Login Failed");
+                MessageBox.Show("Login failed. Please try again.", "Login Failed");
             }
 
         }
@@ -52,7 +44,7 @@ namespace BasicFacebookFeatures
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FacebookService.LogoutWithUI();
-            this.buttonLogin.Text = "Login";
+            buttonLogin.Text = "Login";
         }
     }
 }

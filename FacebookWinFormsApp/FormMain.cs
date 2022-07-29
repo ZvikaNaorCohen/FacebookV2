@@ -40,8 +40,10 @@ namespace BasicFacebookFeatures
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
             labelFullName.Text = m_LoggedInUser.Name;
             labelFullName.BackColor = coverPhotoPictureBox.BackColor;
-            // coverPhotoPictureBox.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             makeProfilePictureCircle();
+
+            updateFriendsList();
+            updateNewsFeed();
         }
 
         private void makeProfilePictureCircle()
@@ -50,6 +52,49 @@ namespace BasicFacebookFeatures
             gp.AddEllipse(0, 0, pictureBoxProfile.Width, pictureBoxProfile.Height);
             Region rg = new Region(gp);
             pictureBoxProfile.Region = rg;
+        }
+
+        private void updateFriendsList()
+        {
+            // Can't get friends list from facebook. Need to random some users.
+
+            // listBoxFriends.Items.Clear();
+            // foreach (User friend in m_LoggedInUser.Friends)
+            // {
+            //    listBoxFriends.Items.Add(friend);
+            // }
+
+            // if (m_LoggedInUser.Friends.Count == 0)
+            // {
+            //    MessageBox.Show("No friends were found. ", "No Friends Error");
+            // }
+        }
+
+        private void updateNewsFeed()
+        {
+            listBoxNewsFeed.Items.Clear();
+
+            foreach(Post post in m_LoggedInUser.Posts)
+            {
+                if(post.Message != null)
+                {
+                    listBoxNewsFeed.Items.Add(post.Message);
+                }
+                else if(post.Caption != null)
+                {
+                    listBoxNewsFeed.Items.Add(post.Caption);
+                }
+                else
+                {
+                    listBoxNewsFeed.Items.Add(string.Format("[{0}]", post.Type));
+                }
+            }
+
+            if(listBoxNewsFeed.Items.Count == 0)
+            {
+                MessageBox.Show("No Posts to retrieve :(");
+            }
+
         }
     }
 }
