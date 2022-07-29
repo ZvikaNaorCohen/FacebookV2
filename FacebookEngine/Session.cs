@@ -20,5 +20,10 @@ namespace FacebookEngine
             m_LastLoginTime = DateTime.Now;
             m_CurrentlyLoggedInUser = i_UserLogin.LoggedInUser;
         }
+
+        public void Terminate()
+        {
+            m_CurrentlyLoggedInUser = null;
+        }
     }
 }

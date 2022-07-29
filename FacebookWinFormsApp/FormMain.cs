@@ -14,6 +14,7 @@ namespace BasicFacebookFeatures
     public partial class FormMain : Form
     {
         private const string k_AppId = "1225204811548586";
+
         public FormMain()
         {
             InitializeComponent();
