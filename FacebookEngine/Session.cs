@@ -1,10 +1,24 @@
 ﻿using System;
+using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookEngine
 {
     public class Session
     {
-        private FacebookWrapper.ObjectModel.User m_CurrentlyLoggedInUser;
+        private User m_CurrentlyLoggedInUser;
         private DateTime m_LastLoginTime;
+
+        public Session()
+        {
+            m_CurrentlyLoggedInUser = null;
+            m_LastLoginTime = DateTime.MinValue;
+        }
+
+        public void Initialize(LoginResult i_UserLogin)
+        {
+            m_LastLoginTime = DateTime.Now;
+            m_CurrentlyLoggedInUser = i_UserLogin.LoggedInUser;
+        }
     }
 }
