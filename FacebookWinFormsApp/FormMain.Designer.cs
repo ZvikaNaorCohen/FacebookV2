@@ -38,6 +38,7 @@ namespace BasicFacebookFeatures
             this.buttonGetGroups = new System.Windows.Forms.Button();
             this.buttonGetAlbums = new System.Windows.Forms.Button();
             this.buttonLikedPages = new System.Windows.Forms.Button();
+            this.labelFullName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -124,11 +125,22 @@ namespace BasicFacebookFeatures
             this.buttonLikedPages.Text = "Show Liked Pages";
             this.buttonLikedPages.UseVisualStyleBackColor = true;
             // 
+            // labelFullName
+            // 
+            this.labelFullName.BackColor = System.Drawing.Color.Transparent;
+            this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelFullName.Location = new System.Drawing.Point(241, 245);
+            this.labelFullName.Name = "labelFullName";
+            this.labelFullName.Size = new System.Drawing.Size(330, 54);
+            this.labelFullName.TabIndex = 9;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1440, 800);
+            this.Controls.Add(this.labelFullName);
             this.Controls.Add(this.buttonLikedPages);
             this.Controls.Add(this.buttonGetAlbums);
             this.Controls.Add(this.buttonGetGroups);
@@ -160,5 +172,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button buttonGetGroups;
         private System.Windows.Forms.Button buttonGetAlbums;
         private System.Windows.Forms.Button buttonLikedPages;
+        private System.Windows.Forms.Label labelFullName;
     }
 }

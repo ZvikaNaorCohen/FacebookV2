@@ -38,6 +38,9 @@ namespace BasicFacebookFeatures
         private void fetchUserInfo()
         {
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
+            labelFullName.Text = m_LoggedInUser.Name;
+            labelFullName.BackColor = coverPhotoPictureBox.BackColor;
+            // coverPhotoPictureBox.LoadAsync(m_LoggedInUser.Cover.SourceURL);
             makeProfilePictureCircle();
         }
 
