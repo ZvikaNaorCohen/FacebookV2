@@ -13,6 +13,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private const string k_AppId = "1225204811548586";
         public FormMain()
         {
             InitializeComponent();
@@ -25,7 +26,7 @@ namespace BasicFacebookFeatures
 
             FacebookWrapper.LoginResult loginResult = FacebookService.Login(
                     /// (This is Desig Patter's App ID. replace it with your own)
-                    "1225204811548586", 
+                    k_AppId,
                     /// requested permissions:
 					"email",
                     "public_profile"
@@ -37,8 +38,8 @@ namespace BasicFacebookFeatures
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-			FacebookService.LogoutWithUI();
-			buttonLogin.Text = "Login";
-		}
+            FacebookService.LogoutWithUI();
+            buttonLogin.Text = "Login";
+        }
 	}
 }
