@@ -5,42 +5,48 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using FacebookWrapper.ObjectModel;
 using FacebookWrapper;
+using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
         private const string k_AppId = "1225204811548586";
+        
+        private User m_LoggedInUser;
 
-        public FormMain()
+        public FormMain(User i_LoggedInUser)
         {
+            m_LoggedInUser = i_LoggedInUser;
             InitializeComponent();
-            FacebookWrapper.FacebookService.s_CollectionLimit = 100;
+            fetchUserInfo();
         }
 
-        private void buttonLogin_Click(object sender, EventArgs e)
+        private void FormMain_Load(object sender, EventArgs e)
         {
-            Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
-
-            FacebookWrapper.LoginResult loginResult = FacebookService.Login(
-                    /// (This is Desig Patter's App ID. replace it with your own)
-                    k_AppId,
-                    /// requested permissions:
-					"email",
-                    "public_profile"
-                    /// add any relevant permissions
-                    );
-
-            buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
         }
 
-        private void buttonLogout_Click(object sender, EventArgs e)
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FacebookService.LogoutWithUI();
-            buttonLogin.Text = "Login";
+            // FacebookService.LogoutWithUI();
+            // buttonLogin.Text = "Login";
         }
-	}
+
+        private void fetchUserInfo()
+        {
+            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
+            makeProfilePictureCircle();
+        }
+
+        private void makeProfilePictureCircle()
+        {
+            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            gp.AddEllipse(0, 0, pictureBoxProfile.Width, pictureBoxProfile.Height);
+            Region rg = new Region(gp);
+            pictureBoxProfile.Region = rg;
+        }
+    }
 }
