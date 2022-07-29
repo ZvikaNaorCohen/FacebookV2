@@ -13,6 +13,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FormAppSettings : Form
     {
+        private const string k_AppId = "1225204811548586";
         public FormAppSettings()
         {
             InitializeComponent();
@@ -23,22 +24,23 @@ namespace BasicFacebookFeatures
         {
             Clipboard.SetText("design.patterns20cc"); /// the current password for Desig Patter
 
-            FacebookWrapper.LoginResult loginResult = FacebookService.Login(
-                    /// (This is Desig Patter's App ID. replace it with your own)
-                    "1225204811548586", 
-                    /// requested permissions:
-					"email",
-                    "public_profile"
-                    /// add any relevant permissions
-                    );
+            FacebookWrapper.LoginResult loginResult = FacebookService.Login(k_AppId,
+                // requested permissions:
+                "email", "public_profile");
 
-            buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
+            if(loginResult.LoggedInUser != null)
+            {
+                buttonLogin.Text = $"Logged in as {loginResult.LoggedInUser.Name}";
+                FormMain test = new FormMain();
+                test.ShowDialog();
+            }
+
         }
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-			FacebookService.LogoutWithUI();
-			buttonLogin.Text = "Login";
-		}
-	}
+            FacebookService.LogoutWithUI();
+            this.buttonLogin.Text = "Login";
+        }
+    }
 }
