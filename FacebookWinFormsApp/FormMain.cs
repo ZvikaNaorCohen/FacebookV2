@@ -15,7 +15,6 @@ namespace BasicFacebookFeatures
     public partial class FormMain : Form
     {
         private const string k_AppId = "1225204811548586";
-        
         private User m_LoggedInUser;
 
         public FormMain(User i_LoggedInUser)

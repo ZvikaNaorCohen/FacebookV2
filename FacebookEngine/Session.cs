@@ -7,6 +7,7 @@ namespace FacebookEngine
     public class Session
     {
         private User m_CurrentlyLoggedInUser;
+        private UserData m_UserData;
         private DateTime m_LastLoginTime;
 
         public Session()
