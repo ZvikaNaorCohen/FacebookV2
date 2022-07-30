@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookEngine
@@ -60,6 +61,26 @@ namespace FacebookEngine
 
                 return friendList;
             }
+        }
+
+        public List<Group> GetSortedGroupsList(eSortBy i_SortBy)
+        {
+            List<Group> sortedGroupList;
+
+            switch(i_SortBy)
+            {
+                case eSortBy.Name:
+                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Name).ToList();
+                    break;
+                case eSortBy.Count:
+                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Members).ToList();
+                    break;
+                default:
+                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Name).ToList();
+                    break;
+            }
+
+            return sortedGroupList;
         }
 
         private void generateDummyFriendsList(uint i_FriendCount)

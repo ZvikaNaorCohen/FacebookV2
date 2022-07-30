@@ -41,6 +41,7 @@
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.1.118\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="eSortBy.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="UserInformation.cs" />
