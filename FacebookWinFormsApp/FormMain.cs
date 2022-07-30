@@ -15,20 +15,24 @@ namespace BasicFacebookFeatures
     public partial class FormMain : Form
     {
         private const string k_AppId = "1225204811548586";
-        
-        private User m_LoggedInUser;
 
-        public FormMain(User i_LoggedInUser)
+        private User m_LoggedInUser;
+        private LoginResult m_LoginResult;
+        private AppSettings m_AppSettings;
+
+        public FormMain(User i_LoggedInUser, LoginResult i_LoginResult)
         {
+            m_LoginResult = i_LoginResult;
             m_LoggedInUser = i_LoggedInUser;
             InitializeComponent();
+           //  m_AppSettings = AppSettings.LoadFromFile();
             fetchUserInfo();
         }
 
         private void FormMain_Load(object sender, EventArgs e)
         {
         }
-
+        
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // FacebookService.LogoutWithUI();
