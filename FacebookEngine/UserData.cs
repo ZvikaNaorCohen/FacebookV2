@@ -11,7 +11,7 @@ namespace FacebookEngine
         private UserInformation m_UserInfo;
         private Image m_UserCoverPhoto;
         private Image m_UserProfilePicture;
-        private FriendList m_UserFriendsList;
+        private FacebookObjectCollection<User> m_UserFriendsList;
         private FacebookObjectCollection<Group> m_UserJoinedGroupsList;
         private FacebookObjectCollection<Album> m_UserAlbumsList;
 
@@ -19,6 +19,8 @@ namespace FacebookEngine
         {
             m_UserInfo = new UserInformation(i_FacebookUser);
             m_UserProfilePicture = i_FacebookUser.ImageSmall;
+            m_UserCoverPhoto = new Bitmap("dummycoverphoto.bmp");
+            m_UserFriendsList = new FacebookObjectCollection<User>();
             m_UserJoinedGroupsList = i_FacebookUser.Groups;
             m_UserAlbumsList = i_FacebookUser.Albums;
             generateDummyFriendsList(k_DummyFriendsCount);
@@ -54,7 +56,7 @@ namespace FacebookEngine
             {
                 List<User> friendList = new List<User>();
 
-                foreach (User friend in m_UserFriendsList.Members)
+                foreach (User friend in m_UserFriendsList)
                 {
                     friendList.Add(friend);
                 }
@@ -69,11 +71,11 @@ namespace FacebookEngine
 
             switch(i_SortBy)
             {
-                case eSortBy.Name:
-                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Name).ToList();
+                case eSortBy.Members:
+                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Members.Count).ToList();
                     break;
-                case eSortBy.Count:
-                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Members).ToList();
+                case eSortBy.LastUpdated:
+                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.UpdateTime).ToList();
                     break;
                 default:
                     sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Name).ToList();
@@ -81,6 +83,26 @@ namespace FacebookEngine
             }
 
             return sortedGroupList;
+        }
+
+        public List<Album> GetSortedAlbumsList(eSortBy i_SortBy)
+        {
+            List<Album> sortedAlbumList;
+
+            switch(i_SortBy)
+            {
+                case eSortBy.Count:
+                    sortedAlbumList = m_UserAlbumsList.OrderBy(i_Album => i_Album.Count).ToList();
+                    break;
+                case eSortBy.LastUpdated:
+                    sortedAlbumList = m_UserAlbumsList.OrderBy(i_Album => i_Album.UpdateTime).ToList();
+                    break;
+                default:
+                    sortedAlbumList = m_UserAlbumsList.OrderBy(i_Album => i_Album.Name).ToList();
+                    break;
+            }
+
+            return sortedAlbumList;
         }
 
         private void generateDummyFriendsList(uint i_FriendCount)
@@ -91,7 +113,7 @@ namespace FacebookEngine
                 {
                     Name = $"Friend #{i}",
                 };
-                m_UserFriendsList.Members.Add(newFriend);
+                m_UserFriendsList.Add(newFriend);
             }
         }
     }

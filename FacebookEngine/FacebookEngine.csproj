@@ -56,5 +56,8 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="dummycoverphoto.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
