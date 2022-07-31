@@ -2,6 +2,7 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Xml.Serialization;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -13,20 +14,25 @@ namespace FacebookEngine
         private const string k_SessionFileName = "fbsession.bin";
         private User m_CurrentlyLoggedInUser;
         private DateTime m_LastLoginTime;
-        private string m_AccessToken;
+        // private string m_AccessToken;
         private UserData m_UserData;
+
+        public string AccessToken { get; set; }
+
+        public bool RememberMe { get; set; }
 
         public Session()
         {
             m_CurrentlyLoggedInUser = null;
             m_UserData = null;
-            m_AccessToken = string.Empty;
+            AccessToken = string.Empty;
             m_LastLoginTime = DateTime.MinValue;
+            RememberMe = false;
         }
 
         public static Session LoadFromFile()
         {
-            using(Stream fileStream = new FileStream(k_SessionFileName, FileMode.Truncate))
+            using (Stream fileStream = new FileStream(k_SessionFileName, FileMode.Truncate))
             {
                 IFormatter binaryFormatter = new BinaryFormatter();
                 return binaryFormatter.Deserialize(fileStream) as Session;
@@ -37,7 +43,7 @@ namespace FacebookEngine
         {
             m_LastLoginTime = DateTime.Now;
             m_CurrentlyLoggedInUser = i_UserLogin.LoggedInUser;
-            m_AccessToken = i_UserLogin.AccessToken;
+            AccessToken = i_UserLogin.AccessToken;
             fetchUserData();
         }
 

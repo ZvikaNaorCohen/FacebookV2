@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using FacebookEngine;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -17,7 +18,7 @@ namespace BasicFacebookFeatures
         private const string k_AppId = "1225204811548586";
         private User m_LoggedInUser;
         private LoginResult m_LoginResult;
-        private AppSettings m_AppSettings;
+        private Session m_AppSettings;
 
         public FormMain(User i_LoggedInUser, LoginResult i_LoginResult)
         {
@@ -40,12 +41,13 @@ namespace BasicFacebookFeatures
 
         private void fetchUserInfo()
         {
+            UserData userData = new UserData(m_LoggedInUser);
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
             labelFullName.Text = m_LoggedInUser.Name;
-            labelFullName.BackColor = coverPhotoPictureBox.BackColor;
-            makeProfilePictureCircle();
+            labelFullName.BackColor = Color.Empty;
 
-            updateFriendsList();
+            makeProfilePictureCircle();
+            // updateFriendsList();
             updateNewsFeed();
         }
 
@@ -97,7 +99,38 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No Posts to retrieve :(");
             }
+        }
 
+        private void buttonGetGroups_Clicked(object sender, EventArgs e)
+        {
+            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+
+            groupsForm.FetchInfo(typeof(Group));
+            groupsForm.ShowDialog();
+        }
+
+        private void buttonGetPages_Clicked(object sender, EventArgs e)
+        {
+            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+
+            groupsForm.FetchInfo(typeof(Page));
+            groupsForm.ShowDialog();
+        }
+
+        private void buttonGetEvents_Clicked(object sender, EventArgs e)
+        {
+            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+
+            groupsForm.FetchInfo(typeof(Event));
+            groupsForm.ShowDialog();
+        }
+
+        private void buttonGetAlbums_Clicked(object sender, EventArgs e)
+        {
+            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+
+            groupsForm.FetchInfo(typeof(Album));
+            groupsForm.ShowDialog();
         }
     }
 }
