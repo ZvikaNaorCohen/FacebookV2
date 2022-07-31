@@ -49,6 +49,7 @@ namespace BasicFacebookFeatures
             makeProfilePictureCircle();
             // updateFriendsList();
             updateNewsFeed();
+            updateUserInfo();
         }
 
         private void makeProfilePictureCircle()
@@ -99,6 +100,17 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No Posts to retrieve :(");
             }
+        }
+
+        private void updateUserInfo()
+        {
+            listBoxUserInfo.Items.Clear();
+            listBoxUserInfo.Items.Add("Gender: " + m_LoggedInUser.Gender);
+            listBoxUserInfo.Items.Add("Birth Date: " + m_LoggedInUser.Birthday);
+            listBoxUserInfo.Items.Add("From: " + m_LoggedInUser.Hometown);
+            listBoxUserInfo.Items.Add("Relationship Status: " + m_LoggedInUser.RelationshipStatus);
+            listBoxUserInfo.Items.Add("Email: " + m_LoggedInUser.Email);
+            listBoxUserInfo.Items.Add("Interested in: " + m_LoggedInUser.InterestedIn);
         }
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)

@@ -32,11 +32,27 @@ namespace BasicFacebookFeatures
             {
                 case "Group":
                     {
-                        foreach(Group group in m_LoggedInUser.Groups)
+                        foreach (Group group in m_LoggedInUser.Groups)
                         {
                             listBoxName.Items.Add(group);
-                        }
+                            if(!string.IsNullOrEmpty(group.Description))
+                            {
+                                listBoxLastPost.Items.Add(group.Description);
+                            }
+                            else
+                            {
+                                listBoxLastPost.Items.Add("  ");
+                            }
 
+                            if(group.Owner != null)
+                            {
+                                listBoxLastPostAuthor.Items.Add(group.Owner.Name);
+                            }
+                            else
+                            {
+                                listBoxLastPostAuthor.Items.Add("  ");
+                            }
+                        }
                         break;
                     }
                 case "Album":
@@ -58,6 +74,12 @@ namespace BasicFacebookFeatures
                         //    listBoxLastPostAuthor.Items.Add(page.WallPosts[0].Name);
                         //    listBoxLastPostDate.Items.Add(page.WallPosts[0].UpdateTime.GetValueOrDefault());
                         //}
+
+                        foreach(Page page in m_LoggedInUser.LikedPages)
+                        {
+                            listBoxName.Items.Add(page);
+                            listBoxLastPost.Items.Add(page.Description);
+                        }
 
                         break;
                     }
