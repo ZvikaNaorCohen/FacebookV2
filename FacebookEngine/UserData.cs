@@ -8,6 +8,7 @@ namespace FacebookEngine
     public class UserData
     {
         private const uint k_DummyFriendsCount = 5u;
+        private const string k_DummyCoverPhoto = "dummycoverphoto.bmp";
         private UserInformation m_UserInfo;
         private Image m_UserCoverPhoto;
         private Image m_UserProfilePicture;
@@ -19,7 +20,7 @@ namespace FacebookEngine
         {
             m_UserInfo = new UserInformation(i_FacebookUser);
             m_UserProfilePicture = i_FacebookUser.ImageSmall;
-            m_UserCoverPhoto = new Bitmap("dummycoverphoto.bmp");
+            m_UserCoverPhoto = new Bitmap(k_DummyCoverPhoto);
             m_UserFriendsList = new FacebookObjectCollection<User>();
             m_UserJoinedGroupsList = i_FacebookUser.Groups;
             m_UserAlbumsList = i_FacebookUser.Albums;
@@ -109,10 +110,7 @@ namespace FacebookEngine
         {
             for(uint i = 0u; i < i_FriendCount; ++i)
             {
-                User newFriend = new User
-                {
-                    Name = $"Friend #{i}",
-                };
+                User newFriend = new User { Name = $"Friend #{i + 1}", };
                 m_UserFriendsList.Add(newFriend);
             }
         }

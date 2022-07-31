@@ -2,7 +2,6 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -11,21 +10,23 @@ namespace FacebookEngine
     [Serializable]
     public class Session
     {
+        private const string k_SessionFileName = "fbsession.bin";
         private User m_CurrentlyLoggedInUser;
-        private UserData m_UserData;
         private DateTime m_LastLoginTime;
         private string m_AccessToken;
+        private UserData m_UserData;
 
         public Session()
         {
             m_CurrentlyLoggedInUser = null;
+            m_UserData = null;
             m_AccessToken = string.Empty;
             m_LastLoginTime = DateTime.MinValue;
         }
 
         public static Session LoadFromFile()
         {
-            using (Stream fileStream = new FileStream("fbsession.bin", FileMode.Truncate))
+            using(Stream fileStream = new FileStream(k_SessionFileName, FileMode.Truncate))
             {
                 IFormatter binaryFormatter = new BinaryFormatter();
                 return binaryFormatter.Deserialize(fileStream) as Session;
@@ -37,16 +38,22 @@ namespace FacebookEngine
             m_LastLoginTime = DateTime.Now;
             m_CurrentlyLoggedInUser = i_UserLogin.LoggedInUser;
             m_AccessToken = i_UserLogin.AccessToken;
+            fetchUserData();
         }
 
-        public void Terminate()
+        public void Terminate(bool i_RememberUser)
         {
             m_CurrentlyLoggedInUser = null;
+            m_UserData = null;
+            if(i_RememberUser)
+            {
+                SaveToFile();
+            }
         }
 
         public void SaveToFile()
         {
-            using(Stream fileStream = new FileStream("fbsession.bin", FileMode.Truncate))
+            using(Stream fileStream = new FileStream(k_SessionFileName, FileMode.Truncate))
             {
                 IFormatter binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(fileStream, this);
