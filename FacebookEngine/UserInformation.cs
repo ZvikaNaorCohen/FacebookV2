@@ -11,10 +11,10 @@ namespace FacebookEngine
             Birthday = i_FacebookUser.Birthday;
         }
 
-        public string Name { get; private set; }
+        public string Name { get; }
 
-        public string Email { get; private set; }
+        public string Email { get; }
 
-        public string Birthday { get; private set; }
+        public string Birthday { get; }
     }
 }

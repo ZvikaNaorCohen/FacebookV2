@@ -16,6 +16,10 @@ csharp_style_expression_bodied_indexers = true:silent
 csharp_style_expression_bodied_accessors = true:silent
 csharp_style_expression_bodied_lambdas = true:silent
 csharp_style_expression_bodied_local_functions = false:silent
+dotnet_diagnostic.SA1600.severity = silent
+dotnet_diagnostic.SA1633.severity = silent
+dotnet_diagnostic.SA1308.severity = silent
+dotnet_diagnostic.SA1000.severity = silent
 
 # SA1000: Keywords should be spaced correctly
 dotnet_diagnostic.SA1000.severity = none
