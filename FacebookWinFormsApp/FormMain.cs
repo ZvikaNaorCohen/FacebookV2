@@ -62,21 +62,21 @@ namespace BasicFacebookFeatures
             pictureBoxProfile.Region = rg;
         }
 
-        private void updateFriendsList()
-        {
-            // Can't get friends list from facebook. Need to random some users.
+        //private void updateFriendsList()
+        //{
+        //    // Can't get friends list from facebook. Need to random some users.
 
-            // listBoxFriends.Items.Clear();
-            // foreach (User friend in m_LoggedInUser.Friends)
-            // {
-            //    listBoxFriends.Items.Add(friend);
-            // }
+        //    // listBoxFriends.Items.Clear();
+        //    // foreach (User friend in m_LoggedInUser.Friends)
+        //    // {
+        //    //    listBoxFriends.Items.Add(friend);
+        //    // }
 
-            // if (m_LoggedInUser.Friends.Count == 0)
-            // {
-            //    MessageBox.Show("No friends were found. ", "No Friends Error");
-            // }
-        }
+        //    // if (m_LoggedInUser.Friends.Count == 0)
+        //    // {
+        //    //    MessageBox.Show("No friends were found. ", "No Friends Error");
+        //    // }
+        //}
 
         private void updateFriendsDummyList()
         {
@@ -95,31 +95,27 @@ namespace BasicFacebookFeatures
         private void updateNewsFeed()
         {
             listBoxNewsFeed.Items.Clear();
+            Dictionary<PostsDummy, DateTime> postsDictionary = new Dictionary<PostsDummy, DateTime>();
             foreach(FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
                 for(int i = 0; i < friend.AllUserDummyPosts.Count && i < 4; i++)
                 {
-                    StringBuilder stringToAdd = new StringBuilder();
-                    stringToAdd.Append(friend.Name);
-                    stringToAdd.Append(": ");
-                    stringToAdd.Append(friend.AllUserDummyPosts[i].Message);
-                    stringToAdd.Append(". Date: ");
-                    stringToAdd.Append(friend.AllUserDummyPosts[i].DatePosted);
-
-                    listBoxNewsFeed.Items.Add(stringToAdd);
+                    postsDictionary.Add(friend.AllUserDummyPosts[i], friend.AllUserDummyPosts[i].DatePosted);
                 }
-                //if(post.Message != null)
-                //{
-                //    listBoxNewsFeed.Items.Add(post.Message);
-                //}
-                //else if(post.Caption != null)
-                //{
-                //    listBoxNewsFeed.Items.Add(post.Caption);
-                //}
-                //else
-                //{
-                //    listBoxNewsFeed.Items.Add(string.Format("[{0}]", post.Type));
-                //}
+            }
+
+            // Sort by dates
+            var sortedPostsDictionary = from entry in postsDictionary orderby entry.Value descending select entry;
+
+            foreach (KeyValuePair<PostsDummy, DateTime> entry in sortedPostsDictionary)
+            {
+                StringBuilder stringToAdd = new StringBuilder();
+                stringToAdd.Append(entry.Key.Author.Name);
+                stringToAdd.Append(": ");
+                stringToAdd.Append(entry.Key.Message);
+                stringToAdd.Append(". Date: ");
+                stringToAdd.Append(entry.Value);
+                listBoxNewsFeed.Items.Add(stringToAdd);
             }
 
             if(listBoxNewsFeed.Items.Count == 0)

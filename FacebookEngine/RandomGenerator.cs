@@ -9,6 +9,7 @@ namespace FacebookEngine
     public class RandomGenerator
     {
         private static Random m_Random = new Random(DateTime.Now.Second);
+
         public static string GetRandomFromType(string i_Type)
         {
             string answer = null;
@@ -19,15 +20,16 @@ namespace FacebookEngine
                         answer = generateRandomName();
                         break;
                     }
+
                 case "Post":
                     {
                         answer = generateRandomPost();
                         break;
                     }
             }
+
             return answer;
         }
-
 
         private static string generateRandomName()
         {
@@ -35,7 +37,6 @@ namespace FacebookEngine
                                                             "Luke", "Julian", "Hudson", "Grayson", "Matthew", "Ezra", "Gabriel", "Carter", "Isaac" };
             List<string> listOfLastNames = new List<string> { "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez",
                                                                 "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas" };
-            // Random rnd = new Random(3);
             return listOfFirstNames[m_Random.Next(0, listOfFirstNames.Count)] + " " + listOfLastNames[m_Random.Next(0,listOfLastNames.Count)];
         }
 
@@ -55,7 +56,7 @@ namespace FacebookEngine
                                                "daily", "damage", "dance", "economy", "edge", "edition", "female", "fence", "few", "garage", "garden", "garlic",
                                                "gas", "gate", "gather", "gaze", "gear", "ideal", "identification", "identify", "knock", "know", "knowledge", "lab",
                                                "label", "labor", "laboratory", "lack", "lady", "mayor", "me", "meal", "mean", "meaning", "meanwhile", "measure" };
-            string randomPost = "";
+            string randomPost = string.Empty;
             int numberOfWords = m_Random.Next(1, 15);
             for(int i = 0; i < numberOfWords; i++)
             {

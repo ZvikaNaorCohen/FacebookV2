@@ -29,7 +29,7 @@ namespace FacebookEngine
             Name = i_Name;
             Birthdate = i_Birthdate;
             Gender = i_Gender;
-            AllUserDummyPosts = PostsDummy.GenerateDummyPosts();
+            AllUserDummyPosts = PostsDummy.GenerateDummyPosts(this);
             LastPost = AllUserDummyPosts[AllUserDummyPosts.Count - 1].Message;
             LastPostDate = AllUserDummyPosts[AllUserDummyPosts.Count - 1].DatePosted;
         }

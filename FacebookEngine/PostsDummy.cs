@@ -9,14 +9,17 @@ namespace FacebookEngine
 {
     public class PostsDummy
     {
+        public FriendsDummy Author { get; }
+
         public string Message { get; }
 
         public DateTime DatePosted { get; }
 
-        public PostsDummy()
+        public PostsDummy(FriendsDummy i_Author)
         {
             Message = RandomGenerator.GetRandomFromType("Post");
             DatePosted = RandomGenerator.GenerateRandomDateTime();
+            Author = i_Author;
         }
 
         public PostsDummy(string i_Message, DateTime i_DatePosted)
@@ -25,14 +28,14 @@ namespace FacebookEngine
             DatePosted = i_DatePosted;
         }
 
-        public static List<PostsDummy> GenerateDummyPosts()
+        public static List<PostsDummy> GenerateDummyPosts(FriendsDummy i_Author)
         {
             List<PostsDummy> postsDummy = new List<PostsDummy>();
             Random random = new Random(DateTime.Now.Second);
             int numberOfElements = random.Next(1, 10);
             for(int i = 0; i < numberOfElements; i++)
             {
-                postsDummy.Add(new PostsDummy());
+                postsDummy.Add(new PostsDummy(i_Author));
             }
 
             return postsDummy;
