@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using FacebookWrapper.ObjectModel;
@@ -18,6 +19,8 @@ namespace FacebookEngine
         private FacebookObjectCollection<Page> m_UserPagesList;
         private FacebookObjectCollection<Event> m_UserEventsList;
 
+        private List<FriendsDummy> m_UserDummyFriendsList = new List<FriendsDummy>();
+
         public UserData(User i_FacebookUser)
         {
             m_UserInfo = new UserInformation(i_FacebookUser);
@@ -29,6 +32,14 @@ namespace FacebookEngine
             m_UserPagesList = i_FacebookUser.LikedPages;
             m_UserEventsList = i_FacebookUser.Events;
             generateDummyFriendsList(k_DummyFriendsCount);
+        }
+
+        public List<FriendsDummy> UserDummyFriendsList
+        {
+            get
+            {
+                return m_UserDummyFriendsList;
+            }
         }
 
         public UserInformation UserInformation
@@ -149,10 +160,19 @@ namespace FacebookEngine
 
         private void generateDummyFriendsList(uint i_FriendCount)
         {
-            for(uint i = 0u; i < i_FriendCount; ++i)
+            Random rnd = new Random(5);
+            for (uint i = 0u; i < i_FriendCount; ++i)
             {
                 // User newFriend = new User { Name = $"Friend #{i + 1}" };
                 // m_UserFriendsList.Add(newFriend);
+                
+                int randomMonth = rnd.Next(1, 11);
+                int randomDay = rnd.Next(1, 28);
+                int randomYear = rnd.Next(1990, 2020);
+
+                DateTime dateTime = new DateTime(randomYear, randomMonth, randomDay);
+
+                m_UserDummyFriendsList.Add(new FriendsDummy("Bdika", dateTime, User.eGender.male));
 
             }
         }

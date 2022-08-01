@@ -78,7 +78,7 @@ namespace BasicFacebookFeatures
                         foreach(Page page in m_LoggedInUser.LikedPages)
                         {
                             listBoxName.Items.Add(page);
-                            listBoxLastPost.Items.Add(page.Description);
+                            // listBoxLastPost.Items.Add(page.Description);
                         }
 
                         break;
@@ -88,9 +88,23 @@ namespace BasicFacebookFeatures
                         foreach(Event userEvent in userData.GetSortedEventsList(eSortBy.Count))
                         {
                             listBoxName.Items.Add(userEvent.Name);
-                            listBoxLastPost.Items.Add(userEvent.WallPosts[0].Description);
-                            listBoxLastPostAuthor.Items.Add(userEvent.WallPosts[0].Name);
-                            listBoxLastPostDate.Items.Add(userEvent.UpdateTime);
+                            //listBoxLastPost.Items.Add(userEvent.WallPosts[0].Description);
+                            //listBoxLastPostAuthor.Items.Add(userEvent.WallPosts[0].Name);
+                            //listBoxLastPostDate.Items.Add(userEvent.UpdateTime);
+                        }
+
+                        break;
+                    }
+                case "FriendsDummy":
+                    {
+                        foreach (FriendsDummy friend in userData.UserDummyFriendsList)
+                        {
+                            listBoxName.Items.Add(friend.Name);
+                            listBoxLastPostAuthor.Items.Add(friend.Birthdate.Day + " / " + friend.Birthdate.Month);
+
+                            //listBoxLastPost.Items.Add(userEvent.WallPosts[0].Description);
+                            //listBoxLastPostAuthor.Items.Add(userEvent.WallPosts[0].Name);
+                            //listBoxLastPostDate.Items.Add(userEvent.UpdateTime);
                         }
 
                         break;

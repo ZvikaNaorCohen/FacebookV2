@@ -19,11 +19,13 @@ namespace BasicFacebookFeatures
         private User m_LoggedInUser;
         private LoginResult m_LoginResult;
         private Session m_AppSettings;
+        private UserData m_UserData;
 
         public FormMain(User i_LoggedInUser, LoginResult i_LoginResult)
         {
             m_LoginResult = i_LoginResult;
             m_LoggedInUser = i_LoggedInUser;
+            m_UserData = new UserData(m_LoggedInUser);
             InitializeComponent();
            //  m_AppSettings = AppSettings.LoadFromFile();
             fetchUserInfo();
@@ -41,13 +43,13 @@ namespace BasicFacebookFeatures
 
         private void fetchUserInfo()
         {
-            UserData userData = new UserData(m_LoggedInUser);
+            // UserData userData = new UserData(m_LoggedInUser);
             pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
             labelFullName.Text = m_LoggedInUser.Name;
             labelFullName.BackColor = Color.Empty;
 
             makeProfilePictureCircle();
-            // updateFriendsList();
+            updateFriendsDummyList();
             updateNewsFeed();
             updateUserInfo();
         }
@@ -74,6 +76,20 @@ namespace BasicFacebookFeatures
             // {
             //    MessageBox.Show("No friends were found. ", "No Friends Error");
             // }
+        }
+
+        private void updateFriendsDummyList()
+        {
+            listBoxFriends.Items.Clear();
+            foreach (FriendsDummy friend in m_UserData.UserDummyFriendsList)
+            {
+                listBoxFriends.Items.Add(friend.Name);
+            }
+
+            if (m_UserData.UserDummyFriendsList.Count == 0)
+            {
+                MessageBox.Show("No friends were found. ", "No Friends Error");
+            }
         }
 
         private void updateNewsFeed()
@@ -119,6 +135,14 @@ namespace BasicFacebookFeatures
 
             groupsForm.FetchInfo(typeof(Group));
             groupsForm.ShowDialog();
+        }
+
+        private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
+        {
+            FormMoreInfo closestBirthdaysForm = new FormMoreInfo(m_LoggedInUser);
+
+            closestBirthdaysForm.FetchInfo(typeof(FriendsDummy));
+            closestBirthdaysForm.ShowDialog();
         }
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
