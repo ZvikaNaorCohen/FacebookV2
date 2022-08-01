@@ -15,9 +15,8 @@ namespace FacebookEngine
 
         public PostsDummy()
         {
-            Message =
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-            DatePosted = new DateTime(2022, 5, 11);
+            Message = RandomGenerator.GetRandomFromType("Post");
+            DatePosted = RandomGenerator.GenerateRandomDateTime();
         }
 
         public PostsDummy(string i_Message, DateTime i_DatePosted)
@@ -29,7 +28,7 @@ namespace FacebookEngine
         public static List<PostsDummy> GenerateDummyPosts()
         {
             List<PostsDummy> postsDummy = new List<PostsDummy>();
-            var random = new Random();
+            Random random = new Random(DateTime.Now.Second);
             int numberOfElements = random.Next(1, 10);
             for(int i = 0; i < numberOfElements; i++)
             {

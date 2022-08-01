@@ -95,21 +95,31 @@ namespace BasicFacebookFeatures
         private void updateNewsFeed()
         {
             listBoxNewsFeed.Items.Clear();
-
-            foreach(Post post in m_LoggedInUser.Posts)
+            foreach(FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
-                if(post.Message != null)
+                for(int i = 0; i < friend.AllUserDummyPosts.Count && i < 4; i++)
                 {
-                    listBoxNewsFeed.Items.Add(post.Message);
+                    StringBuilder stringToAdd = new StringBuilder();
+                    stringToAdd.Append(friend.Name);
+                    stringToAdd.Append(": ");
+                    stringToAdd.Append(friend.AllUserDummyPosts[i].Message);
+                    stringToAdd.Append(". Date: ");
+                    stringToAdd.Append(friend.AllUserDummyPosts[i].DatePosted);
+
+                    listBoxNewsFeed.Items.Add(stringToAdd);
                 }
-                else if(post.Caption != null)
-                {
-                    listBoxNewsFeed.Items.Add(post.Caption);
-                }
-                else
-                {
-                    listBoxNewsFeed.Items.Add(string.Format("[{0}]", post.Type));
-                }
+                //if(post.Message != null)
+                //{
+                //    listBoxNewsFeed.Items.Add(post.Message);
+                //}
+                //else if(post.Caption != null)
+                //{
+                //    listBoxNewsFeed.Items.Add(post.Caption);
+                //}
+                //else
+                //{
+                //    listBoxNewsFeed.Items.Add(string.Format("[{0}]", post.Type));
+                //}
             }
 
             if(listBoxNewsFeed.Items.Count == 0)

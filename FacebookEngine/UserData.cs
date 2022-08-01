@@ -8,7 +8,7 @@ namespace FacebookEngine
 {
     public class UserData
     {
-        private const uint k_DummyFriendsCount = 5u;
+        private const uint k_DummyFriendsCount = 20u;
         private const string k_DummyCoverPhoto = "dummycoverphoto.bmp";
         private UserInformation m_UserInfo;
         private Image m_UserCoverPhoto;
@@ -165,15 +165,7 @@ namespace FacebookEngine
             {
                 // User newFriend = new User { Name = $"Friend #{i + 1}" };
                 // m_UserFriendsList.Add(newFriend);
-                
-                int randomMonth = rnd.Next(1, 11);
-                int randomDay = rnd.Next(1, 28);
-                int randomYear = rnd.Next(1990, 2020);
-
-                DateTime dateTime = new DateTime(randomYear, randomMonth, randomDay);
-
-                m_UserDummyFriendsList.Add(new FriendsDummy("Bdika", dateTime, User.eGender.male));
-
+                m_UserDummyFriendsList.Add(new FriendsDummy(RandomGenerator.GetRandomFromType("Name"), RandomGenerator.GenerateRandomDateTime(), User.eGender.male));
             }
         }
     }
