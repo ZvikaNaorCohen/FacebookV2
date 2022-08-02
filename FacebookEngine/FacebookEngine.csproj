@@ -46,6 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="eSortBy.cs" />
+    <Compile Include="FriendsDummy.cs" />
+    <Compile Include="PostsDummy.cs" />
+    <Compile Include="RandomGenerator.cs" />
     <Compile Include="Session.cs" />
     <Compile Include="UserData.cs" />
     <Compile Include="UserInformation.cs" />
