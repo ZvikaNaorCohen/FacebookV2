@@ -31,7 +31,6 @@ namespace BasicFacebookFeatures
         {
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.coverPhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.listBoxNotifications = new System.Windows.Forms.ListBox();
             this.listBoxUserInfo = new System.Windows.Forms.ListBox();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
@@ -67,17 +66,6 @@ namespace BasicFacebookFeatures
             this.coverPhotoPictureBox.Size = new System.Drawing.Size(996, 210);
             this.coverPhotoPictureBox.TabIndex = 1;
             this.coverPhotoPictureBox.TabStop = false;
-            // 
-            // listBoxNotifications
-            // 
-            this.listBoxNotifications.FormattingEnabled = true;
-            this.listBoxNotifications.ItemHeight = 16;
-            this.listBoxNotifications.Location = new System.Drawing.Point(856, 27);
-            this.listBoxNotifications.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxNotifications.Name = "listBoxNotifications";
-            this.listBoxNotifications.Size = new System.Drawing.Size(164, 196);
-            this.listBoxNotifications.TabIndex = 2;
-            this.listBoxNotifications.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // listBoxUserInfo
             // 
@@ -199,7 +187,6 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.listBoxNewsFeed);
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.listBoxUserInfo);
-            this.Controls.Add(this.listBoxNotifications);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.coverPhotoPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -218,7 +205,6 @@ namespace BasicFacebookFeatures
 
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.PictureBox coverPhotoPictureBox;
-        private System.Windows.Forms.ListBox listBoxNotifications;
         private System.Windows.Forms.ListBox listBoxUserInfo;
         private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.ListBox listBoxNewsFeed;

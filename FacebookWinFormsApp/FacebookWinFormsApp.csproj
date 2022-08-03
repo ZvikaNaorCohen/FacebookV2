@@ -90,11 +90,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FormAppSettings.cs">
+    <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormAppSettings.Designer.cs">
-      <DependentUpon>FormAppSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMoreInfo.cs">
       <SubType>Form</SubType>
@@ -110,8 +107,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FormAppSettings.resx">
-      <DependentUpon>FormAppSettings.cs</DependentUpon>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMoreInfo.resx">
       <DependentUpon>FormMoreInfo.cs</DependentUpon>

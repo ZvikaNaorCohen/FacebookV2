@@ -2,7 +2,6 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Serialization;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -14,12 +13,25 @@ namespace FacebookEngine
         private const string k_SessionFileName = "fbsession.bin";
         private User m_CurrentlyLoggedInUser;
         private DateTime m_LastLoginTime;
-        // private string m_AccessToken;
         private UserData m_UserData;
 
         public string AccessToken { get; set; }
 
-        public bool RememberMe { get; set; }
+        public string UserName
+        {
+            get
+            {
+                return m_CurrentlyLoggedInUser.UserName;
+            }
+        }
+
+        public UserData UserData
+        {
+            get
+            {
+                return m_UserData;
+            }
+        }
 
         public Session()
         {
@@ -27,7 +39,6 @@ namespace FacebookEngine
             m_UserData = null;
             AccessToken = string.Empty;
             m_LastLoginTime = DateTime.MinValue;
-            RememberMe = false;
         }
 
         public static Session LoadFromFile()
@@ -37,6 +48,16 @@ namespace FacebookEngine
                 IFormatter binaryFormatter = new BinaryFormatter();
                 return binaryFormatter.Deserialize(fileStream) as Session;
             }
+        }
+
+        public static bool IsSessionSaved()
+        {
+            return File.Exists(k_SessionFileName);
+        }
+
+        public bool IsLoggedIn()
+        {
+            return m_CurrentlyLoggedInUser != null;
         }
 
         public void Initialize(LoginResult i_UserLogin)
@@ -64,6 +85,11 @@ namespace FacebookEngine
                 IFormatter binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(fileStream, this);
             }
+        }
+
+        public void DeleteSavedLogin()
+        {
+            File.Delete(k_SessionFileName);
         }
 
         private void fetchUserData()

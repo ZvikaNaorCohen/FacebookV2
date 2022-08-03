@@ -18,13 +18,12 @@ namespace FacebookEngine
         private FacebookObjectCollection<Album> m_UserAlbumsList;
         private FacebookObjectCollection<Page> m_UserPagesList;
         private FacebookObjectCollection<Event> m_UserEventsList;
-
         private List<FriendsDummy> m_UserDummyFriendsList = new List<FriendsDummy>();
 
         public UserData(User i_FacebookUser)
         {
             m_UserInfo = new UserInformation(i_FacebookUser);
-            m_UserProfilePicture = i_FacebookUser.ImageSmall;
+            m_UserProfilePicture = i_FacebookUser.ImageNormal;
             // UserCoverPhoto = new Bitmap(k_DummyCoverPhoto);
             m_UserFriendsList = new FacebookObjectCollection<User>();
             m_UserJoinedGroupsList = i_FacebookUser.Groups;
