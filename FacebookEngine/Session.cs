@@ -15,13 +15,13 @@ namespace FacebookEngine
         private DateTime m_LastLoginTime;
         private UserData m_UserData;
 
-        public string AccessToken { get; set; }
+        public string AccessToken { get; private set; }
 
         public string UserName
         {
             get
             {
-                return m_CurrentlyLoggedInUser.UserName;
+                return m_CurrentlyLoggedInUser.Name;
             }
         }
 
@@ -41,18 +41,17 @@ namespace FacebookEngine
             m_LastLoginTime = DateTime.MinValue;
         }
 
-        public static Session LoadFromFile()
-        {
-            using (Stream fileStream = new FileStream(k_SessionFileName, FileMode.Open))
-            {
-                IFormatter binaryFormatter = new BinaryFormatter();
-                return binaryFormatter.Deserialize(fileStream) as Session;
-            }
-        }
-
         public static bool IsSessionSaved()
         {
             return File.Exists(k_SessionFileName);
+        }
+
+        public void LoadFromFile()
+        {
+            using(BinaryReader binaryReader = new BinaryReader(File.Open(k_SessionFileName, FileMode.Open)))
+            {
+                Initialize(FacebookService.Connect(binaryReader.ReadString()));
+            }
         }
 
         public bool IsLoggedIn()
@@ -80,10 +79,9 @@ namespace FacebookEngine
 
         public void SaveToFile()
         {
-            using(Stream fileStream = new FileStream(k_SessionFileName, FileMode.Create))
+            using(BinaryWriter binaryWriter = new BinaryWriter(File.Open(k_SessionFileName, FileMode.Create)))
             {
-                IFormatter binaryFormatter = new BinaryFormatter();
-                binaryFormatter.Serialize(fileStream, this);
+                binaryWriter.Write(AccessToken);
             }
         }
 

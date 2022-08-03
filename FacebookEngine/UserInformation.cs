@@ -1,7 +1,9 @@
-﻿using FacebookWrapper.ObjectModel;
+﻿using System;
+using FacebookWrapper.ObjectModel;
 
 namespace FacebookEngine
 {
+    [Serializable]
     public class UserInformation
     {
         public UserInformation(User i_FacebookUser)

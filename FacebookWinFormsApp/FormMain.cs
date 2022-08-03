@@ -20,6 +20,11 @@ namespace BasicFacebookFeatures
             m_LoginSession = i_LoginSession;
             m_UserData = m_LoginSession.UserData;
             InitializeComponent();
+            if(Session.IsSessionSaved())
+            {
+                checkBoxKeepLoggedIn.Checked = true;
+            }
+
             fetchUserInfo();
         }
 
@@ -174,6 +179,18 @@ namespace BasicFacebookFeatures
 
             groupsForm.FetchInfo(typeof(Album));
             groupsForm.ShowDialog();
+        }
+
+        private void checkBoxKeepLoggedIn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxKeepLoggedIn.Checked)
+            {
+               m_LoginSession.SaveToFile();
+            }
+            else
+            {
+                m_LoginSession.DeleteSavedLogin();
+            }
         }
     }
 }

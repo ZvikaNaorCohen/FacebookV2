@@ -102,7 +102,9 @@ namespace BasicFacebookFeatures
             else
             {
                 FormMain formMain = new FormMain(m_CurrentSession);
+                Hide();
                 formMain.ShowDialog();
+                Show();
             }
         }
 
@@ -110,7 +112,8 @@ namespace BasicFacebookFeatures
         {
             if (Session.IsSessionSaved())
             {
-                m_CurrentSession = Session.LoadFromFile();
+                m_CurrentSession.LoadFromFile();
+                checkBoxSaveLogin.Checked = true;
                 checkLoginStatus();
             }
         }
@@ -120,6 +123,8 @@ namespace BasicFacebookFeatures
             if (m_CurrentSession.IsLoggedIn())
             {
                 buttonLogin.Text = $@"{k_RememberLoginText} {m_CurrentSession.UserName}";
+                buttonLogout.Enabled = true;
+                checkBoxSaveLogin.Enabled = true;
             }
         }
 
@@ -133,6 +138,8 @@ namespace BasicFacebookFeatures
             FacebookService.LogoutWithUI();
             buttonLogin.Text = "Login";
             checkBoxSaveLogin.Checked = false;
+            buttonLogout.Enabled = false;
+            checkBoxSaveLogin.Enabled = false;
         }
 
         private void checkBoxSaveLogin_CheckedChanged(object sender, EventArgs e)

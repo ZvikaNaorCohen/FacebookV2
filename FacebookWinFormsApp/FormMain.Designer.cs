@@ -149,6 +149,7 @@ namespace BasicFacebookFeatures
             this.checkBoxKeepLoggedIn.TabIndex = 10;
             this.checkBoxKeepLoggedIn.Text = "Keep Me Logged In";
             this.checkBoxKeepLoggedIn.UseVisualStyleBackColor = true;
+            this.checkBoxKeepLoggedIn.CheckedChanged += new System.EventHandler(this.checkBoxKeepLoggedIn_CheckedChanged);
             // 
             // buttonShowEvents
             // 
