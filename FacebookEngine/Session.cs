@@ -43,7 +43,7 @@ namespace FacebookEngine
 
         public static Session LoadFromFile()
         {
-            using (Stream fileStream = new FileStream(k_SessionFileName, FileMode.Truncate))
+            using (Stream fileStream = new FileStream(k_SessionFileName, FileMode.Open))
             {
                 IFormatter binaryFormatter = new BinaryFormatter();
                 return binaryFormatter.Deserialize(fileStream) as Session;
@@ -80,7 +80,7 @@ namespace FacebookEngine
 
         public void SaveToFile()
         {
-            using(Stream fileStream = new FileStream(k_SessionFileName, FileMode.Truncate))
+            using(Stream fileStream = new FileStream(k_SessionFileName, FileMode.Create))
             {
                 IFormatter binaryFormatter = new BinaryFormatter();
                 binaryFormatter.Serialize(fileStream, this);
