@@ -11,6 +11,7 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMain : Form
     {
+        private const int k_MaxPostCount = 4;
         private Session m_LoginSession;
         private UserData m_UserData;
 
@@ -83,7 +84,7 @@ namespace BasicFacebookFeatures
             Dictionary<PostsDummy, DateTime> postsDictionary = new Dictionary<PostsDummy, DateTime>();
             foreach(FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
-                for(int i = 0; i < friend.AllUserDummyPosts.Count && i < 4; i++)
+                for(int i = 0; i < friend.AllUserDummyPosts.Count && i < k_MaxPostCount; i++)
                 {
                     postsDictionary.Add(friend.AllUserDummyPosts[i], friend.AllUserDummyPosts[i].DatePosted);
                 }
