@@ -35,11 +35,6 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-            // ??
-        }
-
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);

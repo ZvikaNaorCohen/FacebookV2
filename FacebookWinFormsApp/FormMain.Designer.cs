@@ -39,7 +39,6 @@ namespace BasicFacebookFeatures
             this.buttonLikedPages = new System.Windows.Forms.Button();
             this.labelFullName = new System.Windows.Forms.Label();
             this.checkBoxKeepLoggedIn = new System.Windows.Forms.CheckBox();
-            this.buttonShowEvents = new System.Windows.Forms.Button();
             this.buttonShowBirthdays = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
@@ -132,13 +131,14 @@ namespace BasicFacebookFeatures
             // 
             // labelFullName
             // 
-            this.labelFullName.BackColor = System.Drawing.Color.Transparent;
+            this.labelFullName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(33)))), ((int)(((byte)(122)))));
             this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.labelFullName.ForeColor = System.Drawing.Color.Black;
             this.labelFullName.Location = new System.Drawing.Point(189, 185);
             this.labelFullName.Name = "labelFullName";
             this.labelFullName.Size = new System.Drawing.Size(293, 35);
             this.labelFullName.TabIndex = 9;
+            this.labelFullName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // checkBoxKeepLoggedIn
             // 
@@ -150,17 +150,6 @@ namespace BasicFacebookFeatures
             this.checkBoxKeepLoggedIn.Text = "Keep Me Logged In";
             this.checkBoxKeepLoggedIn.UseVisualStyleBackColor = true;
             this.checkBoxKeepLoggedIn.CheckedChanged += new System.EventHandler(this.checkBoxKeepLoggedIn_CheckedChanged);
-            // 
-            // buttonShowEvents
-            // 
-            this.buttonShowEvents.Location = new System.Drawing.Point(722, 499);
-            this.buttonShowEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonShowEvents.Name = "buttonShowEvents";
-            this.buttonShowEvents.Size = new System.Drawing.Size(142, 64);
-            this.buttonShowEvents.TabIndex = 11;
-            this.buttonShowEvents.Text = "Show Events";
-            this.buttonShowEvents.UseVisualStyleBackColor = true;
-            this.buttonShowEvents.Click += new System.EventHandler(this.buttonGetEvents_Clicked);
             // 
             // buttonShowBirthdays
             // 
@@ -179,7 +168,6 @@ namespace BasicFacebookFeatures
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 614);
             this.Controls.Add(this.buttonShowBirthdays);
-            this.Controls.Add(this.buttonShowEvents);
             this.Controls.Add(this.checkBoxKeepLoggedIn);
             this.Controls.Add(this.labelFullName);
             this.Controls.Add(this.buttonLikedPages);
@@ -195,7 +183,6 @@ namespace BasicFacebookFeatures
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
-            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -214,7 +201,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button buttonLikedPages;
         private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.CheckBox checkBoxKeepLoggedIn;
-        private System.Windows.Forms.Button buttonShowEvents;
         private System.Windows.Forms.Button buttonShowBirthdays;
     }
 }
