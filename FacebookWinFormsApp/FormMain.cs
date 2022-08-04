@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FacebookEngine;
-using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
@@ -28,6 +27,14 @@ namespace BasicFacebookFeatures
             fetchUserInfo();
         }
 
+        public bool RememberMe
+        {
+            get
+            {
+                return checkBoxKeepLoggedIn.Checked;
+            }
+        }
+
         private void FormMain_Load(object sender, EventArgs e)
         {
             // ??
@@ -36,24 +43,17 @@ namespace BasicFacebookFeatures
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
-            m_LoginSession.Terminate(checkBoxKeepLoggedIn.Checked);
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // FacebookService.LogoutWithUI();
-            // buttonLogin.Text = "Login";
+            if(!checkBoxKeepLoggedIn.Checked)
+            {
+                m_LoginSession.Terminate(checkBoxKeepLoggedIn.Checked);
+            }
         }
 
         private void fetchUserInfo()
         {
             pictureBoxProfile.Image = m_UserData.ProfilePicture;
-
-            //pictureBoxProfile.LoadAsync(m_UserData.ProfilePicture);
-
             labelFullName.Text = m_LoginSession.UserName;
             labelFullName.BackColor = Color.Empty;
-
             makeProfilePictureCircle();
             updateFriendsDummyList();
             updateNewsFeed();
@@ -67,22 +67,6 @@ namespace BasicFacebookFeatures
             Region rg = new Region(gp);
             pictureBoxProfile.Region = rg;
         }
-
-        //private void updateFriendsList()
-        //{
-        //    // Can't get friends list from facebook. Need to random some users.
-
-        //    // listBoxFriends.Items.Clear();
-        //    // foreach (User friend in m_LoggedInUser.Friends)
-        //    // {
-        //    //    listBoxFriends.Items.Add(friend);
-        //    // }
-
-        //    // if (m_LoggedInUser.Friends.Count == 0)
-        //    // {
-        //    //    MessageBox.Show("No friends were found. ", "No Friends Error");
-        //    // }
-        //}
 
         private void updateFriendsDummyList()
         {

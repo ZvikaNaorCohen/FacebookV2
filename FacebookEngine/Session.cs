@@ -1,13 +1,10 @@
 ﻿using System;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookEngine
 {
-    [Serializable]
     public class Session
     {
         private const string k_SessionFileName = "fbsession.bin";

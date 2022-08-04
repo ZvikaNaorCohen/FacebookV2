@@ -6,7 +6,6 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookEngine
 {
-    [Serializable]
     public class UserData
     {
         private const uint k_DummyFriendsCount = 8u;

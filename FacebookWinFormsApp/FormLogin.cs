@@ -104,6 +104,7 @@ namespace BasicFacebookFeatures
                 FormMain formMain = new FormMain(m_CurrentSession);
                 Hide();
                 formMain.ShowDialog();
+                checkBoxSaveLogin.Checked = formMain.RememberMe;
                 Show();
             }
         }
