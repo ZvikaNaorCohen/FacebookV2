@@ -155,10 +155,12 @@ namespace BasicFacebookFeatures
 
         private void buttonGetAlbums_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoginSession);
+            FormAlbums albumsForm = new FormAlbums(m_UserData);
 
-            groupsForm.FetchInfo(typeof(Album));
-            groupsForm.ShowDialog();
+            albumsForm.Text = "User albums";
+            albumsForm.AutoSize = true;
+            albumsForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            albumsForm.ShowDialog();
         }
 
         private void checkBoxKeepLoggedIn_CheckedChanged(object sender, EventArgs e)
