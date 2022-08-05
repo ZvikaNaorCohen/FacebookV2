@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 using FacebookEngine;
 using FacebookWrapper.ObjectModel;
@@ -24,10 +25,10 @@ namespace BasicFacebookFeatures
             albumTableLayoutPanel = new TableLayoutPanel();
             albumTableLayoutPanel.Top = 0;
             Controls.Add(albumTableLayoutPanel);
-            showAlbums();
+            showAllAlbums();
         }
 
-        private void showAlbums()
+        private void showAllAlbums()
         {
             albumTableLayoutPanel.ColumnCount =
                 albumTableLayoutPanel.RowCount = m_UserData.GetSortedAlbumsList(eSortBy.Name).Count;
@@ -36,14 +37,35 @@ namespace BasicFacebookFeatures
                 albumTableLayoutPanel.ColumnCount * k_PictureSize);
             foreach (Album album in m_UserData.GetSortedAlbumsList(eSortBy.Name))
             {
-                Button albumButton = new Button();
+                ButtonAlbum albumButton = new ButtonAlbum(album, k_PictureSize);
 
-                albumButton.Margin = new Padding(0);
-                albumButton.Size = new Size(k_PictureSize, k_PictureSize);
-                albumButton.FlatStyle = FlatStyle.Flat;
                 albumButton.Dock = DockStyle.Fill;
                 albumButton.Text = album.Name;
+                albumButton.Click += buttonAlbum_Clicked;
                 albumTableLayoutPanel.Controls.Add(albumButton);
+            }
+        }
+
+        private void showAlbum(Album i_Album)
+        {
+            albumTableLayoutPanel.Controls.Clear();
+            foreach(Photo photo in i_Album.Photos)
+            {
+                PictureBox pictureBox = new PictureBox();
+
+                pictureBox.Margin = new Padding(0);
+                pictureBox.Size = new Size(k_PictureSize, k_PictureSize);
+                pictureBox.Dock = DockStyle.Fill;
+                pictureBox.Image = photo.ImageNormal;
+                albumTableLayoutPanel.Controls.Add(pictureBox);
+            }
+        }
+
+        private void buttonAlbum_Clicked(object sender, EventArgs e)
+        {
+            if(sender is ButtonAlbum selectedAlbum)
+            {
+                showAlbum(selectedAlbum.Album);
             }
         }
     }
