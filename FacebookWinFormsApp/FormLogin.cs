@@ -26,6 +26,8 @@ namespace BasicFacebookFeatures
         internal FormLogin()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             m_CurrentSession = new Session();
             FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
             Icon = Properties.Resources.Lock;
