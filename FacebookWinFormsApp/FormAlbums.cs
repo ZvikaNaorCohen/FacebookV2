@@ -51,13 +51,20 @@ namespace BasicFacebookFeatures
             albumTableLayoutPanel.Controls.Clear();
             foreach(Photo photo in i_Album.Photos)
             {
-                PictureBox pictureBox = new PictureBox();
+                PictureBoxFacebook facebookPicture = new PictureBoxFacebook(photo, k_PictureSize);
 
-                pictureBox.Margin = new Padding(0);
-                pictureBox.Size = new Size(k_PictureSize, k_PictureSize);
-                pictureBox.Dock = DockStyle.Fill;
-                pictureBox.Image = photo.ImageNormal;
-                albumTableLayoutPanel.Controls.Add(pictureBox);
+                facebookPicture.Dock = DockStyle.Fill;
+                facebookPicture.Click += pictureBox_Clicked;
+                albumTableLayoutPanel.Controls.Add(facebookPicture);
+            }
+        }
+
+        private void pictureBox_Clicked(object sender, EventArgs e)
+        {
+            if(sender is PictureBoxFacebook facebookPicture)
+            {
+                FormImage imageDisplay = new FormImage(facebookPicture.Photo);
+                imageDisplay.ShowDialog();
             }
         }
 
