@@ -17,6 +17,7 @@ namespace BasicFacebookFeatures
             m_UserData = i_UserData;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
+            Icon = Properties.Resources.Album;
             InitializeComponent();
         }
 

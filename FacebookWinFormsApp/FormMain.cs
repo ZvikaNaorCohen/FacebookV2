@@ -9,17 +9,18 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormMain : Form
+    internal partial class FormMain : Form
     {
         private const int k_MaxPostCount = 4;
         private Session m_LoginSession;
         private UserData m_UserData;
 
-        public FormMain(Session i_LoginSession)
+        internal FormMain(Session i_LoginSession)
         {
             m_LoginSession = i_LoginSession;
             m_UserData = m_LoginSession.UserData;
             InitializeComponent();
+            Icon = Properties.Resources.Facebook;
             if(Session.IsSessionSaved())
             {
                 checkBoxKeepLoggedIn.Checked = true;
@@ -28,7 +29,7 @@ namespace BasicFacebookFeatures
             fetchUserInfo();
         }
 
-        public bool RememberMe
+        internal bool RememberMe
         {
             get
             {

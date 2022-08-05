@@ -10,6 +10,7 @@ namespace BasicFacebookFeatures
         internal FormImage(Image i_Image)
         {
             InitializeComponent();
+            Icon = Properties.Resources.Picture;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             ClientSize = i_Image.Size;
             pictureBoxUserImage.Image = i_Image;

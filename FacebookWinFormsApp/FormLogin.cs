@@ -23,11 +23,12 @@ namespace BasicFacebookFeatures
         private Button buttonLogout;
         private CheckBox checkBoxSaveLogin;
 
-        public FormLogin()
+        internal FormLogin()
         {
             InitializeComponent();
             m_CurrentSession = new Session();
             FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
+            Icon = Properties.Resources.Lock;
             checkSavedLogin();
         }
 

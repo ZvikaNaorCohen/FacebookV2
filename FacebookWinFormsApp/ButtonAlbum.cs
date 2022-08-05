@@ -16,6 +16,6 @@ namespace BasicFacebookFeatures
             FlatStyle = FlatStyle.Flat;
         }
 
-        public Album Album { get; }
+        internal Album Album { get; }
     }
 }
