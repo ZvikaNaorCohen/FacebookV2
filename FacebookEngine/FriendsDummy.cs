@@ -18,6 +18,8 @@ namespace FacebookEngine
 
         public List<PostsDummy> AllUserDummyPosts { get; }
 
+        public int DaysToBirthday { get; set; }
+
         public FriendsDummy(
             string i_Name,
             DateTime i_Birthdate,

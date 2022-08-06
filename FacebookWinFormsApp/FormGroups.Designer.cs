@@ -29,6 +29,7 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGroups));
             this.labelGroupName = new System.Windows.Forms.Label();
             this.labelDescription = new System.Windows.Forms.Label();
             this.pictureBoxGroup = new System.Windows.Forms.PictureBox();
@@ -93,8 +94,9 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.pictureBoxGroup);
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelGroupName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormGroups";
-            this.Text = "FormGroups";
+            this.Text = "Groups";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGroup)).EndInit();
             this.ResumeLayout(false);
 

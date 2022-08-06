@@ -8,7 +8,7 @@ namespace FacebookEngine
 {
     public class UserData
     {
-        private const uint k_DummyFriendsCount = 8u;
+        private const uint k_DummyFriendsCount = 25u;
         private User m_FacebookUser;
         private UserInformation m_UserInfo;
         private Image m_UserProfilePicture;
