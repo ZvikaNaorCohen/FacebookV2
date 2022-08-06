@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -9,7 +8,6 @@ namespace FacebookEngine
     {
         private const string k_SessionFileName = "fbsession.bin";
         private User m_CurrentlyLoggedInUser;
-        private DateTime m_LastLoginTime;
         private UserData m_UserData;
 
         public string AccessToken { get; private set; }
@@ -35,7 +33,6 @@ namespace FacebookEngine
             m_CurrentlyLoggedInUser = null;
             m_UserData = null;
             AccessToken = string.Empty;
-            m_LastLoginTime = DateTime.MinValue;
         }
 
         public static bool IsSessionSaved()
@@ -58,7 +55,6 @@ namespace FacebookEngine
 
         public void Initialize(LoginResult i_UserLogin)
         {
-            m_LastLoginTime = DateTime.Now;
             m_CurrentlyLoggedInUser = i_UserLogin.LoggedInUser;
             AccessToken = i_UserLogin.AccessToken;
             fetchUserData();

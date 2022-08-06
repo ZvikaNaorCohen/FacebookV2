@@ -32,6 +32,5 @@ namespace FacebookEngine
             LastPost = AllUserDummyPosts[AllUserDummyPosts.Count - 1].Message;
             LastPostDate = AllUserDummyPosts[AllUserDummyPosts.Count - 1].DatePosted;
         }
-
     }
 }

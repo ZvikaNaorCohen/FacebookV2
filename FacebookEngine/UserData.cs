@@ -9,26 +9,23 @@ namespace FacebookEngine
     public class UserData
     {
         private const uint k_DummyFriendsCount = 25u;
-        private User m_FacebookUser;
-        private UserInformation m_UserInfo;
-        private Image m_UserProfilePicture;
-        private FacebookObjectCollection<User> m_UserFriendsList;
-        private FacebookObjectCollection<Group> m_UserJoinedGroupsList;
-        private FacebookObjectCollection<Album> m_UserAlbumsList;
-        private FacebookObjectCollection<Page> m_UserPagesList;
-        private FacebookObjectCollection<Event> m_UserEventsList;
-        private List<FriendsDummy> m_UserDummyFriendsList = new List<FriendsDummy>();
+        private readonly User r_FacebookUser;
+        private readonly UserInformation r_UserInfo;
+        private readonly Image r_UserProfilePicture;
+        private readonly FacebookObjectCollection<Group> r_UserJoinedGroupsList;
+        private readonly FacebookObjectCollection<Album> r_UserAlbumsList;
+        private readonly FacebookObjectCollection<Page> r_UserPagesList;
+        private readonly List<FriendsDummy> r_UserDummyFriendsList;
 
         public UserData(User i_FacebookUser)
         {
-            m_FacebookUser = i_FacebookUser;
-            m_UserInfo = new UserInformation(m_FacebookUser);
-            m_UserProfilePicture = m_FacebookUser.ImageNormal;
-            m_UserFriendsList = new FacebookObjectCollection<User>();
-            m_UserJoinedGroupsList = m_FacebookUser.Groups;
-            m_UserAlbumsList = m_FacebookUser.Albums;
-            m_UserPagesList = m_FacebookUser.LikedPages;
-            m_UserEventsList = m_FacebookUser.Events;
+            r_FacebookUser = i_FacebookUser;
+            r_UserInfo = new UserInformation(r_FacebookUser);
+            r_UserProfilePicture = r_FacebookUser.ImageNormal;
+            r_UserJoinedGroupsList = r_FacebookUser.Groups;
+            r_UserAlbumsList = r_FacebookUser.Albums;
+            r_UserPagesList = r_FacebookUser.LikedPages;
+            r_UserDummyFriendsList = new List<FriendsDummy>();
             generateDummyFriendsList(k_DummyFriendsCount);
         }
 
@@ -36,7 +33,7 @@ namespace FacebookEngine
         {
             get
             {
-                return m_UserDummyFriendsList;
+                return r_UserDummyFriendsList;
             }
         }
 
@@ -44,7 +41,7 @@ namespace FacebookEngine
         {
             get
             {
-                return m_UserInfo;
+                return r_UserInfo;
             }
         }
 
@@ -52,22 +49,7 @@ namespace FacebookEngine
         {
             get
             {
-                return m_UserProfilePicture;
-            }
-        }
-
-        public List<User> FriendList
-        {
-            get
-            {
-                List<User> friendList = new List<User>();
-
-                foreach (User friend in m_UserFriendsList)
-                {
-                    friendList.Add(friend);
-                }
-
-                return friendList;
+                return r_UserProfilePicture;
             }
         }
 
@@ -78,13 +60,13 @@ namespace FacebookEngine
             switch(i_SortBy)
             {
                 case eSortBy.Members:
-                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Members.Count).ToList();
+                    sortedGroupList = r_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Members.Count).ToList();
                     break;
                 case eSortBy.LastUpdated:
-                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.UpdateTime).ToList();
+                    sortedGroupList = r_UserJoinedGroupsList.OrderBy(i_Group => i_Group.UpdateTime).ToList();
                     break;
                 default:
-                    sortedGroupList = m_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Name).ToList();
+                    sortedGroupList = r_UserJoinedGroupsList.OrderBy(i_Group => i_Group.Name).ToList();
                     break;
             }
 
@@ -98,37 +80,17 @@ namespace FacebookEngine
             switch(i_SortBy)
             {
                 case eSortBy.Count:
-                    sortedAlbumList = m_UserAlbumsList.OrderBy(i_Album => i_Album.Count).ToList();
+                    sortedAlbumList = r_UserAlbumsList.OrderBy(i_Album => i_Album.Count).ToList();
                     break;
                 case eSortBy.LastUpdated:
-                    sortedAlbumList = m_UserAlbumsList.OrderBy(i_Album => i_Album.UpdateTime).ToList();
+                    sortedAlbumList = r_UserAlbumsList.OrderBy(i_Album => i_Album.UpdateTime).ToList();
                     break;
                 default:
-                    sortedAlbumList = m_UserAlbumsList.OrderBy(i_Album => i_Album.Name).ToList();
+                    sortedAlbumList = r_UserAlbumsList.OrderBy(i_Album => i_Album.Name).ToList();
                     break;
             }
 
             return sortedAlbumList;
-        }
-
-        public List<Event> GetSortedEventsList(eSortBy i_SortBy)
-        {
-            List<Event> sortedEventList;
-
-            switch (i_SortBy)
-            {
-                case eSortBy.Count:
-                    sortedEventList = m_UserEventsList.OrderBy(i_Event => i_Event.AttendingCount).ToList();
-                    break;
-                case eSortBy.LastUpdated:
-                    sortedEventList = m_UserEventsList.OrderBy(i_Event => i_Event.UpdateTime).ToList();
-                    break;
-                default:
-                    sortedEventList = m_UserEventsList.OrderBy(i_Event => i_Event.Name).ToList();
-                    break;
-            }
-
-            return sortedEventList;
         }
 
         public List<Page> GetSortedPagesList(eSortBy i_SortBy)
@@ -138,10 +100,10 @@ namespace FacebookEngine
             switch (i_SortBy)
             {
                 case eSortBy.Count:
-                    sortedPagesList = m_UserPagesList.OrderBy(i_Page => i_Page.LikesCount).ToList();
+                    sortedPagesList = r_UserPagesList.OrderBy(i_Page => i_Page.LikesCount).ToList();
                     break;
                 default:
-                    sortedPagesList = m_UserPagesList.OrderBy(i_Page => i_Page.Name).ToList();
+                    sortedPagesList = r_UserPagesList.OrderBy(i_Page => i_Page.Name).ToList();
                     break;
             }
 
@@ -150,12 +112,10 @@ namespace FacebookEngine
 
         private void generateDummyFriendsList(uint i_FriendCount)
         {
-            Random rnd = new Random(5);
+            Random random = new Random(DateTime.Now.Second);
             for (uint i = 0u; i < i_FriendCount; ++i)
             {
-                // User newFriend = new User { Name = $"Friend #{i + 1}" };
-                // m_UserFriendsList.Add(newFriend);
-                m_UserDummyFriendsList.Add(new FriendsDummy(RandomGenerator.GetRandomFromType("Name"), RandomGenerator.GenerateRandomDateTime(), User.eGender.male));
+                r_UserDummyFriendsList.Add(new FriendsDummy(RandomGenerator.GetRandomFromType("Name"), RandomGenerator.GenerateRandomDateTime(), User.eGender.male));
             }
         }
     }

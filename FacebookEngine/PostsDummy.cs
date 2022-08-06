@@ -29,7 +29,8 @@ namespace FacebookEngine
             List<PostsDummy> postsDummy = new List<PostsDummy>();
             Random random = new Random(DateTime.Now.Second);
             int numberOfElements = random.Next(1, 10);
-            for(int i = 0; i < numberOfElements; i++)
+
+            for(int i = 0; i < numberOfElements; ++i)
             {
                 postsDummy.Add(new PostsDummy(i_Author));
             }

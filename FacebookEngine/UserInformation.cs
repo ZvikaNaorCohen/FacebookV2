@@ -4,19 +4,19 @@ namespace FacebookEngine
 {
     public class UserInformation
     {
+        private const string k_DummyBirthday = "1/1/2000";
+        private const string k_DummyHometown = ".Net City";
+        private const string k_DummyInterestedIn = "C# .Net";
+
         public UserInformation(User i_FacebookUser)
         {
             Name = i_FacebookUser.Name;
             Email = i_FacebookUser.Email;
-            Birthday = i_FacebookUser.Birthday;
+            Birthday = k_DummyBirthday;
             Gender = i_FacebookUser.Gender.ToString();
-
-            // Hometown = i_FacebookUser.Hometown.ToString();
-            Hometown = "LaLaLand";
+            Hometown = k_DummyHometown;
             RelationshipStatus = i_FacebookUser.RelationshipStatus.ToString();
-
-            // InterestedIn = i_FacebookUser.InterestedIn.ToString();
-            InterestedIn = "C# .Net";
+            InterestedIn = k_DummyInterestedIn;
         }
 
         public string Name { get; }
