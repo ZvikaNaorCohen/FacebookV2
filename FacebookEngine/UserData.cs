@@ -148,11 +148,6 @@ namespace FacebookEngine
             return sortedPagesList;
         }
 
-        public void NewPost()
-        {
-            
-        }
-
         private void generateDummyFriendsList(uint i_FriendCount)
         {
             Random rnd = new Random(5);

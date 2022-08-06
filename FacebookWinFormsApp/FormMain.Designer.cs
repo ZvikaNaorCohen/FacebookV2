@@ -40,7 +40,6 @@ namespace BasicFacebookFeatures
             this.labelFullName = new System.Windows.Forms.Label();
             this.checkBoxKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.buttonShowBirthdays = new System.Windows.Forms.Button();
-            this.buttonPost = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -164,21 +163,11 @@ namespace BasicFacebookFeatures
             this.buttonShowBirthdays.UseVisualStyleBackColor = true;
             this.buttonShowBirthdays.Click += new System.EventHandler(this.buttonClosestBirthdays_Clicked);
             // 
-            // buttonPost
-            // 
-            this.buttonPost.Location = new System.Drawing.Point(548, 239);
-            this.buttonPost.Name = "buttonPost";
-            this.buttonPost.Size = new System.Drawing.Size(101, 35);
-            this.buttonPost.TabIndex = 13;
-            this.buttonPost.Text = "Post...";
-            this.buttonPost.UseVisualStyleBackColor = true;
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 691);
-            this.Controls.Add(this.buttonPost);
             this.Controls.Add(this.buttonShowBirthdays);
             this.Controls.Add(this.checkBoxKeepLoggedIn);
             this.Controls.Add(this.labelFullName);
@@ -214,6 +203,5 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.CheckBox checkBoxKeepLoggedIn;
         private System.Windows.Forms.Button buttonShowBirthdays;
-        private System.Windows.Forms.Button buttonPost;
     }
 }
