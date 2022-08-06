@@ -9,6 +9,7 @@ namespace BasicFacebookFeatures
     internal class FormAlbums : Form
     {
         private const int k_PictureSize = 100;
+        private const int k_MinTableSize = 5;
         private UserData m_UserData;
         private TableLayoutPanel albumTableLayoutPanel;
 
@@ -31,11 +32,7 @@ namespace BasicFacebookFeatures
 
         private void showAllAlbums()
         {
-            albumTableLayoutPanel.ColumnCount =
-                albumTableLayoutPanel.RowCount = m_UserData.GetSortedAlbumsList(eSortBy.Name).Count;
-            albumTableLayoutPanel.Size = new Size(
-                albumTableLayoutPanel.RowCount * k_PictureSize,
-                albumTableLayoutPanel.ColumnCount * k_PictureSize);
+            resizeAlbumTable((int)Math.Sqrt(m_UserData.GetSortedAlbumsList(eSortBy.Name).Count));
             foreach (Album album in m_UserData.GetSortedAlbumsList(eSortBy.Name))
             {
                 ButtonAlbum albumButton = new ButtonAlbum(album, k_PictureSize);
@@ -49,6 +46,7 @@ namespace BasicFacebookFeatures
 
         private void showAlbum(Album i_Album)
         {
+            resizeAlbumTable((int)Math.Sqrt(i_Album.Photos.Count));
             albumTableLayoutPanel.Controls.Clear();
             foreach(Photo photo in i_Album.Photos)
             {
@@ -75,6 +73,14 @@ namespace BasicFacebookFeatures
             {
                 showAlbum(selectedAlbum.Album);
             }
+        }
+
+        private void resizeAlbumTable(int i_RowAndColumnCount)
+        {
+            albumTableLayoutPanel.ColumnCount = albumTableLayoutPanel.RowCount = i_RowAndColumnCount + k_MinTableSize;
+            albumTableLayoutPanel.Size = new Size(
+                albumTableLayoutPanel.RowCount * k_PictureSize,
+                albumTableLayoutPanel.ColumnCount * k_PictureSize);
         }
     }
 }

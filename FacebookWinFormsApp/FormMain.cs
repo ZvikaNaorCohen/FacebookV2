@@ -147,7 +147,7 @@ namespace BasicFacebookFeatures
         {
             FormAlbums albumsForm = new FormAlbums(m_UserData);
 
-            albumsForm.Text = "User albums";
+            albumsForm.Text = "Albums";
             albumsForm.AutoSize = true;
             albumsForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             albumsForm.ShowDialog();
