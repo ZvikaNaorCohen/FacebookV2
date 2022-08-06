@@ -9,6 +9,7 @@ namespace FacebookEngine
     public class UserData
     {
         private const uint k_DummyFriendsCount = 8u;
+        private User m_FacebookUser;
         private UserInformation m_UserInfo;
         private Image m_UserProfilePicture;
         private FacebookObjectCollection<User> m_UserFriendsList;
@@ -20,13 +21,14 @@ namespace FacebookEngine
 
         public UserData(User i_FacebookUser)
         {
-            m_UserInfo = new UserInformation(i_FacebookUser);
-            m_UserProfilePicture = i_FacebookUser.ImageNormal;
+            m_FacebookUser = i_FacebookUser;
+            m_UserInfo = new UserInformation(m_FacebookUser);
+            m_UserProfilePicture = m_FacebookUser.ImageNormal;
             m_UserFriendsList = new FacebookObjectCollection<User>();
-            m_UserJoinedGroupsList = i_FacebookUser.Groups;
-            m_UserAlbumsList = i_FacebookUser.Albums;
-            m_UserPagesList = i_FacebookUser.LikedPages;
-            m_UserEventsList = i_FacebookUser.Events;
+            m_UserJoinedGroupsList = m_FacebookUser.Groups;
+            m_UserAlbumsList = m_FacebookUser.Albums;
+            m_UserPagesList = m_FacebookUser.LikedPages;
+            m_UserEventsList = m_FacebookUser.Events;
             generateDummyFriendsList(k_DummyFriendsCount);
         }
 
@@ -144,6 +146,11 @@ namespace FacebookEngine
             }
 
             return sortedPagesList;
+        }
+
+        public void NewPost()
+        {
+            
         }
 
         private void generateDummyFriendsList(uint i_FriendCount)

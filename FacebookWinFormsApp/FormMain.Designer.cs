@@ -40,6 +40,7 @@ namespace BasicFacebookFeatures
             this.labelFullName = new System.Windows.Forms.Label();
             this.checkBoxKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.buttonShowBirthdays = new System.Windows.Forms.Button();
+            this.buttonPost = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -132,20 +133,21 @@ namespace BasicFacebookFeatures
             // labelFullName
             // 
             this.labelFullName.BackColor = System.Drawing.Color.Transparent;
-            this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelFullName.ForeColor = System.Drawing.Color.Black;
+            this.labelFullName.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.labelFullName.Location = new System.Drawing.Point(163, 239);
             this.labelFullName.Name = "labelFullName";
-            this.labelFullName.Size = new System.Drawing.Size(675, 35);
+            this.labelFullName.Size = new System.Drawing.Size(379, 35);
             this.labelFullName.TabIndex = 9;
             this.labelFullName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // checkBoxKeepLoggedIn
             // 
-            this.checkBoxKeepLoggedIn.Location = new System.Drawing.Point(860, 248);
+            this.checkBoxKeepLoggedIn.Location = new System.Drawing.Point(850, 245);
             this.checkBoxKeepLoggedIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxKeepLoggedIn.Name = "checkBoxKeepLoggedIn";
-            this.checkBoxKeepLoggedIn.Size = new System.Drawing.Size(164, 26);
+            this.checkBoxKeepLoggedIn.Size = new System.Drawing.Size(174, 26);
             this.checkBoxKeepLoggedIn.TabIndex = 10;
             this.checkBoxKeepLoggedIn.Text = "Keep Me Logged In";
             this.checkBoxKeepLoggedIn.UseVisualStyleBackColor = true;
@@ -162,11 +164,21 @@ namespace BasicFacebookFeatures
             this.buttonShowBirthdays.UseVisualStyleBackColor = true;
             this.buttonShowBirthdays.Click += new System.EventHandler(this.buttonClosestBirthdays_Clicked);
             // 
+            // buttonPost
+            // 
+            this.buttonPost.Location = new System.Drawing.Point(548, 239);
+            this.buttonPost.Name = "buttonPost";
+            this.buttonPost.Size = new System.Drawing.Size(101, 35);
+            this.buttonPost.TabIndex = 13;
+            this.buttonPost.Text = "Post...";
+            this.buttonPost.UseVisualStyleBackColor = true;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 691);
+            this.Controls.Add(this.buttonPost);
             this.Controls.Add(this.buttonShowBirthdays);
             this.Controls.Add(this.checkBoxKeepLoggedIn);
             this.Controls.Add(this.labelFullName);
@@ -202,5 +214,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.CheckBox checkBoxKeepLoggedIn;
         private System.Windows.Forms.Button buttonShowBirthdays;
+        private System.Windows.Forms.Button buttonPost;
     }
 }
