@@ -31,7 +31,6 @@ namespace BasicFacebookFeatures
         {
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.coverPhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.listBoxNotifications = new System.Windows.Forms.ListBox();
             this.listBoxUserInfo = new System.Windows.Forms.ListBox();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
@@ -40,7 +39,6 @@ namespace BasicFacebookFeatures
             this.buttonLikedPages = new System.Windows.Forms.Button();
             this.labelFullName = new System.Windows.Forms.Label();
             this.checkBoxKeepLoggedIn = new System.Windows.Forms.CheckBox();
-            this.buttonShowEvents = new System.Windows.Forms.Button();
             this.buttonShowBirthdays = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
@@ -49,7 +47,7 @@ namespace BasicFacebookFeatures
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.pictureBoxProfile.Location = new System.Drawing.Point(44, 126);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(28, 185);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(129, 94);
@@ -68,22 +66,11 @@ namespace BasicFacebookFeatures
             this.coverPhotoPictureBox.TabIndex = 1;
             this.coverPhotoPictureBox.TabStop = false;
             // 
-            // listBoxNotifications
-            // 
-            this.listBoxNotifications.FormattingEnabled = true;
-            this.listBoxNotifications.ItemHeight = 16;
-            this.listBoxNotifications.Location = new System.Drawing.Point(856, 27);
-            this.listBoxNotifications.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxNotifications.Name = "listBoxNotifications";
-            this.listBoxNotifications.Size = new System.Drawing.Size(164, 196);
-            this.listBoxNotifications.TabIndex = 2;
-            this.listBoxNotifications.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
             // listBoxUserInfo
             // 
             this.listBoxUserInfo.FormattingEnabled = true;
             this.listBoxUserInfo.ItemHeight = 16;
-            this.listBoxUserInfo.Location = new System.Drawing.Point(28, 239);
+            this.listBoxUserInfo.Location = new System.Drawing.Point(28, 283);
             this.listBoxUserInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxUserInfo.Name = "listBoxUserInfo";
             this.listBoxUserInfo.Size = new System.Drawing.Size(997, 132);
@@ -93,7 +80,7 @@ namespace BasicFacebookFeatures
             // 
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.ItemHeight = 16;
-            this.listBoxFriends.Location = new System.Drawing.Point(28, 378);
+            this.listBoxFriends.Location = new System.Drawing.Point(28, 438);
             this.listBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(194, 212);
@@ -103,7 +90,7 @@ namespace BasicFacebookFeatures
             // 
             this.listBoxNewsFeed.FormattingEnabled = true;
             this.listBoxNewsFeed.ItemHeight = 16;
-            this.listBoxNewsFeed.Location = new System.Drawing.Point(242, 378);
+            this.listBoxNewsFeed.Location = new System.Drawing.Point(242, 438);
             this.listBoxNewsFeed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxNewsFeed.Name = "listBoxNewsFeed";
             this.listBoxNewsFeed.Size = new System.Drawing.Size(783, 116);
@@ -111,7 +98,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonGetGroups
             // 
-            this.buttonGetGroups.Location = new System.Drawing.Point(242, 499);
+            this.buttonGetGroups.Location = new System.Drawing.Point(403, 586);
             this.buttonGetGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGetGroups.Name = "buttonGetGroups";
             this.buttonGetGroups.Size = new System.Drawing.Size(142, 64);
@@ -122,7 +109,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonGetAlbums
             // 
-            this.buttonGetAlbums.Location = new System.Drawing.Point(402, 499);
+            this.buttonGetAlbums.Location = new System.Drawing.Point(242, 586);
             this.buttonGetAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGetAlbums.Name = "buttonGetAlbums";
             this.buttonGetAlbums.Size = new System.Drawing.Size(142, 64);
@@ -133,7 +120,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonLikedPages
             // 
-            this.buttonLikedPages.Location = new System.Drawing.Point(562, 499);
+            this.buttonLikedPages.Location = new System.Drawing.Point(567, 586);
             this.buttonLikedPages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLikedPages.Name = "buttonLikedPages";
             this.buttonLikedPages.Size = new System.Drawing.Size(142, 64);
@@ -145,37 +132,28 @@ namespace BasicFacebookFeatures
             // labelFullName
             // 
             this.labelFullName.BackColor = System.Drawing.Color.Transparent;
-            this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelFullName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.labelFullName.Location = new System.Drawing.Point(189, 185);
+            this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.labelFullName.ForeColor = System.Drawing.Color.Black;
+            this.labelFullName.Location = new System.Drawing.Point(163, 239);
             this.labelFullName.Name = "labelFullName";
-            this.labelFullName.Size = new System.Drawing.Size(293, 35);
+            this.labelFullName.Size = new System.Drawing.Size(675, 35);
             this.labelFullName.TabIndex = 9;
+            this.labelFullName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // checkBoxKeepLoggedIn
             // 
-            this.checkBoxKeepLoggedIn.Location = new System.Drawing.Point(241, 564);
+            this.checkBoxKeepLoggedIn.Location = new System.Drawing.Point(860, 248);
             this.checkBoxKeepLoggedIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.checkBoxKeepLoggedIn.Name = "checkBoxKeepLoggedIn";
             this.checkBoxKeepLoggedIn.Size = new System.Drawing.Size(164, 26);
             this.checkBoxKeepLoggedIn.TabIndex = 10;
             this.checkBoxKeepLoggedIn.Text = "Keep Me Logged In";
             this.checkBoxKeepLoggedIn.UseVisualStyleBackColor = true;
-            // 
-            // buttonShowEvents
-            // 
-            this.buttonShowEvents.Location = new System.Drawing.Point(722, 499);
-            this.buttonShowEvents.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.buttonShowEvents.Name = "buttonShowEvents";
-            this.buttonShowEvents.Size = new System.Drawing.Size(142, 64);
-            this.buttonShowEvents.TabIndex = 11;
-            this.buttonShowEvents.Text = "Show Events";
-            this.buttonShowEvents.UseVisualStyleBackColor = true;
-            this.buttonShowEvents.Click += new System.EventHandler(this.buttonGetEvents_Clicked);
+            this.checkBoxKeepLoggedIn.CheckedChanged += new System.EventHandler(this.checkBoxKeepLoggedIn_CheckedChanged);
             // 
             // buttonShowBirthdays
             // 
-            this.buttonShowBirthdays.Location = new System.Drawing.Point(882, 498);
+            this.buttonShowBirthdays.Location = new System.Drawing.Point(737, 586);
             this.buttonShowBirthdays.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonShowBirthdays.Name = "buttonShowBirthdays";
             this.buttonShowBirthdays.Size = new System.Drawing.Size(142, 64);
@@ -188,9 +166,8 @@ namespace BasicFacebookFeatures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1054, 614);
+            this.ClientSize = new System.Drawing.Size(1054, 691);
             this.Controls.Add(this.buttonShowBirthdays);
-            this.Controls.Add(this.buttonShowEvents);
             this.Controls.Add(this.checkBoxKeepLoggedIn);
             this.Controls.Add(this.labelFullName);
             this.Controls.Add(this.buttonLikedPages);
@@ -199,7 +176,6 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.listBoxNewsFeed);
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.listBoxUserInfo);
-            this.Controls.Add(this.listBoxNotifications);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.coverPhotoPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -207,7 +183,6 @@ namespace BasicFacebookFeatures
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormMain";
-            this.Load += new System.EventHandler(this.FormMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -218,7 +193,6 @@ namespace BasicFacebookFeatures
 
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.PictureBox coverPhotoPictureBox;
-        private System.Windows.Forms.ListBox listBoxNotifications;
         private System.Windows.Forms.ListBox listBoxUserInfo;
         private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.ListBox listBoxNewsFeed;
@@ -227,7 +201,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Button buttonLikedPages;
         private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.CheckBox checkBoxKeepLoggedIn;
-        private System.Windows.Forms.Button buttonShowEvents;
         private System.Windows.Forms.Button buttonShowBirthdays;
     }
 }

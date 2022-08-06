@@ -9,23 +9,19 @@ namespace FacebookEngine
     public class UserData
     {
         private const uint k_DummyFriendsCount = 8u;
-        private const string k_DummyCoverPhoto = "dummycoverphoto.bmp";
         private UserInformation m_UserInfo;
-        private Image m_UserCoverPhoto;
         private Image m_UserProfilePicture;
         private FacebookObjectCollection<User> m_UserFriendsList;
         private FacebookObjectCollection<Group> m_UserJoinedGroupsList;
         private FacebookObjectCollection<Album> m_UserAlbumsList;
         private FacebookObjectCollection<Page> m_UserPagesList;
         private FacebookObjectCollection<Event> m_UserEventsList;
-
         private List<FriendsDummy> m_UserDummyFriendsList = new List<FriendsDummy>();
 
         public UserData(User i_FacebookUser)
         {
             m_UserInfo = new UserInformation(i_FacebookUser);
-            m_UserProfilePicture = i_FacebookUser.ImageSmall;
-            // UserCoverPhoto = new Bitmap(k_DummyCoverPhoto);
+            m_UserProfilePicture = i_FacebookUser.ImageNormal;
             m_UserFriendsList = new FacebookObjectCollection<User>();
             m_UserJoinedGroupsList = i_FacebookUser.Groups;
             m_UserAlbumsList = i_FacebookUser.Albums;
@@ -47,14 +43,6 @@ namespace FacebookEngine
             get
             {
                 return m_UserInfo;
-            }
-        }
-
-        public Image CoverPhoto
-        {
-            get
-            {
-                return m_UserCoverPhoto;
             }
         }
 

@@ -1,53 +1,56 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookEngine;
-using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormMain : Form
+    internal partial class FormMain : Form
     {
-        private const string k_AppId = "1225204811548586";
-        private User m_LoggedInUser;
-        private LoginResult m_LoginResult;
-        private Session m_AppSettings;
+        private const int k_MaxPostCount = 4;
+        private Session m_LoginSession;
         private UserData m_UserData;
 
-        public FormMain(User i_LoggedInUser, LoginResult i_LoginResult)
+        internal FormMain(Session i_LoginSession)
         {
-            m_LoginResult = i_LoginResult;
-            m_LoggedInUser = i_LoggedInUser;
-            m_UserData = new UserData(m_LoggedInUser);
+            m_LoginSession = i_LoginSession;
+            m_UserData = m_LoginSession.UserData;
             InitializeComponent();
-           //  m_AppSettings = AppSettings.LoadFromFile();
+            Icon = Properties.Resources.Facebook;
+            if(Session.IsSessionSaved())
+            {
+                checkBoxKeepLoggedIn.Checked = true;
+            }
+
             fetchUserInfo();
         }
 
-        private void FormMain_Load(object sender, EventArgs e)
+        internal bool RememberMe
         {
+            get
+            {
+                return checkBoxKeepLoggedIn.Checked;
+            }
         }
-        
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            // FacebookService.LogoutWithUI();
-            // buttonLogin.Text = "Login";
+            base.OnFormClosing(e);
+            if(!checkBoxKeepLoggedIn.Checked)
+            {
+                m_LoginSession.Terminate(checkBoxKeepLoggedIn.Checked);
+            }
         }
 
         private void fetchUserInfo()
         {
-            // UserData userData = new UserData(m_LoggedInUser);
-            pictureBoxProfile.LoadAsync(m_LoggedInUser.PictureNormalURL);
-            labelFullName.Text = m_LoggedInUser.Name;
+            pictureBoxProfile.Image = m_UserData.ProfilePicture;
+            labelFullName.Text = m_LoginSession.UserName;
             labelFullName.BackColor = Color.Empty;
-
             makeProfilePictureCircle();
             updateFriendsDummyList();
             updateNewsFeed();
@@ -61,22 +64,6 @@ namespace BasicFacebookFeatures
             Region rg = new Region(gp);
             pictureBoxProfile.Region = rg;
         }
-
-        //private void updateFriendsList()
-        //{
-        //    // Can't get friends list from facebook. Need to random some users.
-
-        //    // listBoxFriends.Items.Clear();
-        //    // foreach (User friend in m_LoggedInUser.Friends)
-        //    // {
-        //    //    listBoxFriends.Items.Add(friend);
-        //    // }
-
-        //    // if (m_LoggedInUser.Friends.Count == 0)
-        //    // {
-        //    //    MessageBox.Show("No friends were found. ", "No Friends Error");
-        //    // }
-        //}
 
         private void updateFriendsDummyList()
         {
@@ -98,7 +85,7 @@ namespace BasicFacebookFeatures
             Dictionary<PostsDummy, DateTime> postsDictionary = new Dictionary<PostsDummy, DateTime>();
             foreach(FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
-                for(int i = 0; i < friend.AllUserDummyPosts.Count && i < 4; i++)
+                for(int i = 0; i < friend.AllUserDummyPosts.Count && i < k_MaxPostCount; i++)
                 {
                     postsDictionary.Add(friend.AllUserDummyPosts[i], friend.AllUserDummyPosts[i].DatePosted);
                 }
@@ -127,17 +114,17 @@ namespace BasicFacebookFeatures
         private void updateUserInfo()
         {
             listBoxUserInfo.Items.Clear();
-            listBoxUserInfo.Items.Add("Gender: " + m_LoggedInUser.Gender);
-            listBoxUserInfo.Items.Add("Birth Date: " + m_LoggedInUser.Birthday);
-            listBoxUserInfo.Items.Add("From: " + m_LoggedInUser.Hometown);
-            listBoxUserInfo.Items.Add("Relationship Status: " + m_LoggedInUser.RelationshipStatus);
-            listBoxUserInfo.Items.Add("Email: " + m_LoggedInUser.Email);
-            listBoxUserInfo.Items.Add("Interested in: " + m_LoggedInUser.InterestedIn);
+            listBoxUserInfo.Items.Add("Gender: " + m_UserData.UserInformation.Gender);
+            listBoxUserInfo.Items.Add("Birth Date: " + m_UserData.UserInformation.Birthday);
+            listBoxUserInfo.Items.Add("From: " + m_UserData.UserInformation.Hometown);
+            listBoxUserInfo.Items.Add("Relationship Status: " + m_UserData.UserInformation.RelationshipStatus);
+            listBoxUserInfo.Items.Add("Email: " + m_UserData.UserInformation.Email);
+            listBoxUserInfo.Items.Add("Interested in: " + m_UserData.UserInformation.InterestedIn);
         }
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+            FormMoreInfo groupsForm = new FormMoreInfo(m_LoginSession);
 
             groupsForm.FetchInfo(typeof(Group));
             groupsForm.ShowDialog();
@@ -145,7 +132,7 @@ namespace BasicFacebookFeatures
 
         private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo closestBirthdaysForm = new FormMoreInfo(m_LoggedInUser);
+            FormMoreInfo closestBirthdaysForm = new FormMoreInfo(m_LoginSession);
 
             closestBirthdaysForm.FetchInfo(typeof(FriendsDummy));
             closestBirthdaysForm.ShowDialog();
@@ -153,7 +140,7 @@ namespace BasicFacebookFeatures
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+            FormMoreInfo groupsForm = new FormMoreInfo(m_LoginSession);
 
             groupsForm.FetchInfo(typeof(Page));
             groupsForm.ShowDialog();
@@ -161,7 +148,7 @@ namespace BasicFacebookFeatures
 
         private void buttonGetEvents_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+            FormMoreInfo groupsForm = new FormMoreInfo(m_LoginSession);
 
             groupsForm.FetchInfo(typeof(Event));
             groupsForm.ShowDialog();
@@ -169,10 +156,24 @@ namespace BasicFacebookFeatures
 
         private void buttonGetAlbums_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoggedInUser);
+            FormAlbums albumsForm = new FormAlbums(m_UserData);
 
-            groupsForm.FetchInfo(typeof(Album));
-            groupsForm.ShowDialog();
+            albumsForm.Text = "User albums";
+            albumsForm.AutoSize = true;
+            albumsForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            albumsForm.ShowDialog();
+        }
+
+        private void checkBoxKeepLoggedIn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxKeepLoggedIn.Checked)
+            {
+               m_LoginSession.SaveToFile();
+            }
+            else
+            {
+                m_LoginSession.DeleteSavedLogin();
+            }
         }
     }
 }

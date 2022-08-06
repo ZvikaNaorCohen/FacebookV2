@@ -12,11 +12,15 @@ namespace BasicFacebookFeatures
         [STAThread]
         public static void Main()
         {
+            FormLogin facebookLogin;
+
             Clipboard.SetText("design.patterns20cc");
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormAppSettings());
+            facebookLogin = new FormLogin();
+            facebookLogin.Text = "Login to facebook";
+            Application.Run(facebookLogin);
         }
     }
 }

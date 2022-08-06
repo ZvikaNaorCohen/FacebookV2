@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FacebookEngine
 {
-    public class RandomGenerator
+    internal class RandomGenerator
     {
         private static Random m_Random = new Random(DateTime.Now.Second);
 
-        public static string GetRandomFromType(string i_Type)
+        internal static string GetRandomFromType(string i_Type)
         {
             string answer = null;
             switch (i_Type)

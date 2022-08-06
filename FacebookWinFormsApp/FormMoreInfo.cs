@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using FacebookEngine;
 using FacebookWrapper.ObjectModel;
@@ -14,17 +7,17 @@ namespace BasicFacebookFeatures
 {
     public partial class FormMoreInfo : Form
     {
-        public User m_LoggedInUser;
+        private Session m_LoginSession;
 
-        public FormMoreInfo(User i_LoggedInUser)
+        public FormMoreInfo(Session i_LoginSession)
         {
-            m_LoggedInUser = i_LoggedInUser;
+            m_LoginSession = i_LoginSession;
             InitializeComponent();
         }
 
         public void FetchInfo(Type i_Type)
         {
-            UserData userData = new UserData(m_LoggedInUser);
+            UserData userData = m_LoginSession.UserData;
             resetAllListBoxes();
             listBoxName.DisplayMember = "Name";
 
@@ -32,7 +25,7 @@ namespace BasicFacebookFeatures
             {
                 case "Group":
                     {
-                        foreach (Group group in m_LoggedInUser.Groups)
+                        foreach(Group group in userData.GetSortedGroupsList(eSortBy.Name))
                         {
                             listBoxName.Items.Add(group);
                             if(!string.IsNullOrEmpty(group.Description))
@@ -75,7 +68,7 @@ namespace BasicFacebookFeatures
                         //    listBoxLastPostDate.Items.Add(page.WallPosts[0].UpdateTime.GetValueOrDefault());
                         //}
 
-                        foreach(Page page in m_LoggedInUser.LikedPages)
+                        foreach(Page page in userData.GetSortedPagesList(eSortBy.Name))
                         {
                             listBoxName.Items.Add(page);
                             // listBoxLastPost.Items.Add(page.Description);
