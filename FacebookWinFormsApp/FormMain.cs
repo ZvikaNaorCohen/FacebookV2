@@ -124,34 +124,24 @@ namespace BasicFacebookFeatures
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoginSession);
-
-            groupsForm.FetchInfo(typeof(Group));
+            FormGroups groupsForm = new FormGroups(m_LoginSession);
+            groupsForm.FetchInfo();
             groupsForm.ShowDialog();
         }
 
         private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo closestBirthdaysForm = new FormMoreInfo(m_LoginSession);
-
-            closestBirthdaysForm.FetchInfo(typeof(FriendsDummy));
+            FormBirthdays closestBirthdaysForm = new FormBirthdays(m_LoginSession);
+            closestBirthdaysForm.FetchInfo();
             closestBirthdaysForm.ShowDialog();
         }
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
         {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoginSession);
+            //FormLikedPages likedPagesForm = new FormLikedPages(m_LoginSession);
 
-            groupsForm.FetchInfo(typeof(Page));
-            groupsForm.ShowDialog();
-        }
-
-        private void buttonGetEvents_Clicked(object sender, EventArgs e)
-        {
-            FormMoreInfo groupsForm = new FormMoreInfo(m_LoginSession);
-
-            groupsForm.FetchInfo(typeof(Event));
-            groupsForm.ShowDialog();
+            //likedPagesForm.FetchInfo(typeof(Page));
+            //likedPagesForm.ShowDialog();
         }
 
         private void buttonGetAlbums_Clicked(object sender, EventArgs e)

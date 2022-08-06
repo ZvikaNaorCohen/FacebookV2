@@ -96,17 +96,29 @@
     <Compile Include="FormAlbums.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="FormBirthdays.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormBirthdays.Designer.cs">
+      <DependentUpon>FormBirthdays.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormImage.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLikedPages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLikedPages.Designer.cs">
+      <DependentUpon>FormLikedPages.cs</DependentUpon>
     </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMoreInfo.cs">
+    <Compile Include="FormGroups.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormMoreInfo.Designer.cs">
-      <DependentUpon>FormMoreInfo.cs</DependentUpon>
+    <Compile Include="FormGroups.Designer.cs">
+      <DependentUpon>FormGroups.cs</DependentUpon>
     </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
@@ -122,14 +134,17 @@
     <EmbeddedResource Include="FormAlbums.resx">
       <DependentUpon>FormAlbums.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormBirthdays.resx">
+      <DependentUpon>FormBirthdays.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormImage.resx">
       <DependentUpon>FormImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormMoreInfo.resx">
-      <DependentUpon>FormMoreInfo.cs</DependentUpon>
+    <EmbeddedResource Include="FormGroups.resx">
+      <DependentUpon>FormGroups.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
