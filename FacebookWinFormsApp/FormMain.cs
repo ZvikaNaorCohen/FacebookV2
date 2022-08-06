@@ -112,13 +112,13 @@ namespace BasicFacebookFeatures
 
         private void updateUserInfo()
         {
-            listBoxUserInfo.Items.Clear();
-            listBoxUserInfo.Items.Add("Gender: " + m_UserData.UserInformation.Gender);
-            listBoxUserInfo.Items.Add("Birth Date: " + m_UserData.UserInformation.Birthday);
-            listBoxUserInfo.Items.Add("From: " + m_UserData.UserInformation.Hometown);
-            listBoxUserInfo.Items.Add("Relationship Status: " + m_UserData.UserInformation.RelationshipStatus);
-            listBoxUserInfo.Items.Add("Email: " + m_UserData.UserInformation.Email);
-            listBoxUserInfo.Items.Add("Interested in: " + m_UserData.UserInformation.InterestedIn);
+            //listBoxUserInfo.Items.Clear();
+            //listBoxUserInfo.Items.Add("Gender: " + m_UserData.UserInformation.Gender);
+            labelBirthday.Text = m_UserData.UserInformation.Birthday;
+            labelHometown.Text = m_UserData.UserInformation.Hometown;
+            labelRelationship.Text = m_UserData.UserInformation.RelationshipStatus;
+            labelEmail.Text = m_UserData.UserInformation.Email;
+            labelHobbies.Text = m_UserData.UserInformation.InterestedIn;
         }
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)

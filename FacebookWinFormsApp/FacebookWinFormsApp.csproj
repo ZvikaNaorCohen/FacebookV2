@@ -207,6 +207,21 @@
   <ItemGroup>
     <None Include="Resources\plus.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hometown.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Email.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hobbies.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Birthday.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

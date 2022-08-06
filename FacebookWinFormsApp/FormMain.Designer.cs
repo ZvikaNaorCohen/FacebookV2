@@ -31,7 +31,6 @@ namespace BasicFacebookFeatures
         {
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.coverPhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.listBoxUserInfo = new System.Windows.Forms.ListBox();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
             this.buttonGetGroups = new System.Windows.Forms.Button();
@@ -40,6 +39,11 @@ namespace BasicFacebookFeatures
             this.labelFullName = new System.Windows.Forms.Label();
             this.checkBoxKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.buttonShowBirthdays = new System.Windows.Forms.Button();
+            this.labelEmail = new System.Windows.Forms.Label();
+            this.labelHometown = new System.Windows.Forms.Label();
+            this.labelBirthday = new System.Windows.Forms.Label();
+            this.labelRelationship = new System.Windows.Forms.Label();
+            this.labelHobbies = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -66,16 +70,6 @@ namespace BasicFacebookFeatures
             this.coverPhotoPictureBox.TabIndex = 1;
             this.coverPhotoPictureBox.TabStop = false;
             // 
-            // listBoxUserInfo
-            // 
-            this.listBoxUserInfo.FormattingEnabled = true;
-            this.listBoxUserInfo.ItemHeight = 16;
-            this.listBoxUserInfo.Location = new System.Drawing.Point(28, 283);
-            this.listBoxUserInfo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxUserInfo.Name = "listBoxUserInfo";
-            this.listBoxUserInfo.Size = new System.Drawing.Size(997, 132);
-            this.listBoxUserInfo.TabIndex = 3;
-            // 
             // listBoxFriends
             // 
             this.listBoxFriends.FormattingEnabled = true;
@@ -98,7 +92,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonGetGroups
             // 
-            this.buttonGetGroups.Location = new System.Drawing.Point(403, 586);
+            this.buttonGetGroups.Location = new System.Drawing.Point(390, 586);
             this.buttonGetGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGetGroups.Name = "buttonGetGroups";
             this.buttonGetGroups.Size = new System.Drawing.Size(142, 64);
@@ -109,6 +103,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonGetAlbums
             // 
+            this.buttonGetAlbums.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonGetAlbums.Location = new System.Drawing.Point(242, 586);
             this.buttonGetAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGetAlbums.Name = "buttonGetAlbums";
@@ -120,7 +115,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonLikedPages
             // 
-            this.buttonLikedPages.Location = new System.Drawing.Point(567, 586);
+            this.buttonLikedPages.Location = new System.Drawing.Point(538, 586);
             this.buttonLikedPages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLikedPages.Name = "buttonLikedPages";
             this.buttonLikedPages.Size = new System.Drawing.Size(142, 64);
@@ -154,7 +149,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonShowBirthdays
             // 
-            this.buttonShowBirthdays.Location = new System.Drawing.Point(737, 586);
+            this.buttonShowBirthdays.Location = new System.Drawing.Point(686, 586);
             this.buttonShowBirthdays.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonShowBirthdays.Name = "buttonShowBirthdays";
             this.buttonShowBirthdays.Size = new System.Drawing.Size(142, 64);
@@ -163,11 +158,71 @@ namespace BasicFacebookFeatures
             this.buttonShowBirthdays.UseVisualStyleBackColor = true;
             this.buttonShowBirthdays.Click += new System.EventHandler(this.buttonClosestBirthdays_Clicked);
             // 
+            // labelEmail
+            // 
+            this.labelEmail.Image = global::BasicFacebookFeatures.Properties.Resources.Email;
+            this.labelEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelEmail.Location = new System.Drawing.Point(25, 287);
+            this.labelEmail.Name = "labelEmail";
+            this.labelEmail.Size = new System.Drawing.Size(197, 43);
+            this.labelEmail.TabIndex = 13;
+            this.labelEmail.Text = "Email";
+            this.labelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelHometown
+            // 
+            this.labelHometown.Image = global::BasicFacebookFeatures.Properties.Resources.hometown;
+            this.labelHometown.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelHometown.Location = new System.Drawing.Point(495, 294);
+            this.labelHometown.Name = "labelHometown";
+            this.labelHometown.Size = new System.Drawing.Size(197, 29);
+            this.labelHometown.TabIndex = 14;
+            this.labelHometown.Text = "Hometown";
+            this.labelHometown.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelBirthday
+            // 
+            this.labelBirthday.Image = global::BasicFacebookFeatures.Properties.Resources.Birthday;
+            this.labelBirthday.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelBirthday.Location = new System.Drawing.Point(845, 294);
+            this.labelBirthday.Name = "labelBirthday";
+            this.labelBirthday.Size = new System.Drawing.Size(197, 26);
+            this.labelBirthday.TabIndex = 15;
+            this.labelBirthday.Text = "Birthday";
+            this.labelBirthday.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelRelationship
+            // 
+            this.labelRelationship.Image = global::BasicFacebookFeatures.Properties.Resources.heart;
+            this.labelRelationship.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelRelationship.Location = new System.Drawing.Point(25, 338);
+            this.labelRelationship.Name = "labelRelationship";
+            this.labelRelationship.Size = new System.Drawing.Size(197, 31);
+            this.labelRelationship.TabIndex = 16;
+            this.labelRelationship.Text = "Relationship";
+            this.labelRelationship.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelHobbies
+            // 
+            this.labelHobbies.Image = global::BasicFacebookFeatures.Properties.Resources.Hobbies;
+            this.labelHobbies.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelHobbies.Location = new System.Drawing.Point(495, 338);
+            this.labelHobbies.Name = "labelHobbies";
+            this.labelHobbies.Size = new System.Drawing.Size(197, 30);
+            this.labelHobbies.TabIndex = 17;
+            this.labelHobbies.Text = "Hobbies";
+            this.labelHobbies.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 691);
+            this.Controls.Add(this.labelHobbies);
+            this.Controls.Add(this.labelRelationship);
+            this.Controls.Add(this.labelBirthday);
+            this.Controls.Add(this.labelHometown);
+            this.Controls.Add(this.labelEmail);
             this.Controls.Add(this.buttonShowBirthdays);
             this.Controls.Add(this.checkBoxKeepLoggedIn);
             this.Controls.Add(this.labelFullName);
@@ -176,7 +231,6 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.buttonGetGroups);
             this.Controls.Add(this.listBoxNewsFeed);
             this.Controls.Add(this.listBoxFriends);
-            this.Controls.Add(this.listBoxUserInfo);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.coverPhotoPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -194,7 +248,6 @@ namespace BasicFacebookFeatures
 
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.PictureBox coverPhotoPictureBox;
-        private System.Windows.Forms.ListBox listBoxUserInfo;
         private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.ListBox listBoxNewsFeed;
         private System.Windows.Forms.Button buttonGetGroups;
@@ -203,5 +256,10 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelFullName;
         private System.Windows.Forms.CheckBox checkBoxKeepLoggedIn;
         private System.Windows.Forms.Button buttonShowBirthdays;
+        private System.Windows.Forms.Label labelEmail;
+        private System.Windows.Forms.Label labelHometown;
+        private System.Windows.Forms.Label labelBirthday;
+        private System.Windows.Forms.Label labelRelationship;
+        private System.Windows.Forms.Label labelHobbies;
     }
 }
