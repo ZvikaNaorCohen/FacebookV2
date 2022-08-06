@@ -140,6 +140,9 @@
     <EmbeddedResource Include="FormImage.resx">
       <DependentUpon>FormImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLikedPages.resx">
+      <DependentUpon>FormLikedPages.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>

@@ -138,10 +138,10 @@ namespace BasicFacebookFeatures
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
         {
-            //FormLikedPages likedPagesForm = new FormLikedPages(m_LoginSession);
+            FormLikedPages likedPagesForm = new FormLikedPages(m_LoginSession);
 
-            //likedPagesForm.FetchInfo(typeof(Page));
-            //likedPagesForm.ShowDialog();
+            likedPagesForm.FetchInfo();
+            likedPagesForm.ShowDialog();
         }
 
         private void buttonGetAlbums_Clicked(object sender, EventArgs e)

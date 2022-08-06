@@ -32,16 +32,6 @@ namespace BasicFacebookFeatures
                     listBoxDescription.Items.Add("  ");
                 }
             }
-
-            // Friends dummy:
-
-            //{
-            //    foreach (FriendsDummy friend in userData.UserDummyFriendsList)
-            //    {
-            //        listBoxName.Items.Add(friend.Name);
-            //        listBoxLastPostAuthor.Items.Add(friend.Birthdate.Day + " / " + friend.Birthdate.Month);
-            //    }
-            //}
         }
 
         private void resetAllListBoxes()
