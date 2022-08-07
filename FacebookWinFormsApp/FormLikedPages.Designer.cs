@@ -60,6 +60,7 @@ namespace BasicFacebookFeatures
             this.ClientSize = new System.Drawing.Size(643, 426);
             this.Controls.Add(this.pictureBoxPage);
             this.Controls.Add(this.listBoxPageName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormLikedPages";
             this.Text = "Liked Pages";

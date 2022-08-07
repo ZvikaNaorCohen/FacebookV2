@@ -4,7 +4,7 @@ namespace FacebookEngine
 {
     public class UserInformation
     {
-        private const string k_DummyBirthday = "1/1/2000";
+        // private const string k_DummyBirthday = "1/1/2000";
         private const string k_DummyHometown = ".Net City";
         private const string k_DummyInterestedIn = "C# .Net";
 
@@ -12,7 +12,7 @@ namespace FacebookEngine
         {
             Name = i_FacebookUser.Name;
             Email = i_FacebookUser.Email;
-            Birthday = k_DummyBirthday;
+            Birthday = i_FacebookUser.Birthday;
             Gender = i_FacebookUser.Gender.ToString();
             Hometown = k_DummyHometown;
             RelationshipStatus = i_FacebookUser.RelationshipStatus.ToString();

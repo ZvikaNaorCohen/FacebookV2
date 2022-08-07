@@ -53,7 +53,6 @@ namespace BasicFacebookFeatures
                     pictureBoxGroup.Image = group.ImageLarge;
                 }
             }
-
         }
     }
 }

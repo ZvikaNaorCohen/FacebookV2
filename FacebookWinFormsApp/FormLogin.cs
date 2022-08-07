@@ -41,9 +41,8 @@ namespace BasicFacebookFeatures
             this.buttonLogout = new System.Windows.Forms.Button();
             this.checkBoxSaveLogin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
-            // 
+
             // buttonLogin
-            // 
             this.buttonLogin.Location = new System.Drawing.Point(107, 60);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(269, 65);
@@ -51,9 +50,8 @@ namespace BasicFacebookFeatures
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
-            // 
+
             // buttonLogout
-            // 
             this.buttonLogout.Enabled = false;
             this.buttonLogout.Location = new System.Drawing.Point(107, 145);
             this.buttonLogout.Name = "buttonLogout";
@@ -62,9 +60,8 @@ namespace BasicFacebookFeatures
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
-            // 
+
             // checkBoxSaveLogin
-            // 
             this.checkBoxSaveLogin.AutoSize = true;
             this.checkBoxSaveLogin.Enabled = false;
             this.checkBoxSaveLogin.Location = new System.Drawing.Point(176, 250);
@@ -74,9 +71,8 @@ namespace BasicFacebookFeatures
             this.checkBoxSaveLogin.Text = "Remember Me";
             this.checkBoxSaveLogin.UseVisualStyleBackColor = true;
             this.checkBoxSaveLogin.CheckedChanged += new System.EventHandler(this.checkBoxSaveLogin_CheckedChanged);
-            // 
+
             // FormLogin
-            // 
             this.ClientSize = new System.Drawing.Size(482, 327);
             this.Controls.Add(this.checkBoxSaveLogin);
             this.Controls.Add(this.buttonLogout);
@@ -84,7 +80,6 @@ namespace BasicFacebookFeatures
             this.Name = "FormLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         private void login()

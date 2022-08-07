@@ -41,27 +41,27 @@ namespace BasicFacebookFeatures
             // labelGroupName
             // 
             this.labelGroupName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelGroupName.Location = new System.Drawing.Point(66, 8);
+            this.labelGroupName.Location = new System.Drawing.Point(74, 10);
             this.labelGroupName.Name = "labelGroupName";
-            this.labelGroupName.Size = new System.Drawing.Size(73, 29);
+            this.labelGroupName.Size = new System.Drawing.Size(82, 36);
             this.labelGroupName.TabIndex = 2;
             this.labelGroupName.Text = "Name";
             // 
             // labelDescription
             // 
             this.labelDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.labelDescription.Location = new System.Drawing.Point(434, 8);
+            this.labelDescription.Location = new System.Drawing.Point(488, 10);
             this.labelDescription.Name = "labelDescription";
-            this.labelDescription.Size = new System.Drawing.Size(146, 29);
+            this.labelDescription.Size = new System.Drawing.Size(164, 36);
             this.labelDescription.TabIndex = 3;
             this.labelDescription.Text = "Description";
             // 
             // pictureBoxGroup
             // 
-            this.pictureBoxGroup.Location = new System.Drawing.Point(921, 39);
+            this.pictureBoxGroup.Location = new System.Drawing.Point(1036, 49);
             this.pictureBoxGroup.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxGroup.Name = "pictureBoxGroup";
-            this.pictureBoxGroup.Size = new System.Drawing.Size(324, 265);
+            this.pictureBoxGroup.Size = new System.Drawing.Size(364, 331);
             this.pictureBoxGroup.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxGroup.TabIndex = 4;
             this.pictureBoxGroup.TabStop = false;
@@ -69,34 +69,35 @@ namespace BasicFacebookFeatures
             // listBoxName
             // 
             this.listBoxName.FormattingEnabled = true;
-            this.listBoxName.ItemHeight = 16;
-            this.listBoxName.Location = new System.Drawing.Point(11, 39);
+            this.listBoxName.ItemHeight = 20;
+            this.listBoxName.Location = new System.Drawing.Point(12, 49);
             this.listBoxName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxName.Name = "listBoxName";
-            this.listBoxName.Size = new System.Drawing.Size(216, 292);
+            this.listBoxName.Size = new System.Drawing.Size(242, 364);
             this.listBoxName.TabIndex = 0;
             this.listBoxName.Click += new System.EventHandler(this.listBoxName_Clicked);
             // 
             // listBoxDescription
             // 
             this.listBoxDescription.FormattingEnabled = true;
-            this.listBoxDescription.ItemHeight = 16;
-            this.listBoxDescription.Location = new System.Drawing.Point(244, 39);
+            this.listBoxDescription.ItemHeight = 20;
+            this.listBoxDescription.Location = new System.Drawing.Point(274, 49);
             this.listBoxDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxDescription.Name = "listBoxDescription";
-            this.listBoxDescription.Size = new System.Drawing.Size(660, 292);
+            this.listBoxDescription.Size = new System.Drawing.Size(742, 364);
             this.listBoxDescription.TabIndex = 1;
             // 
             // FormGroups
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1256, 339);
+            this.ClientSize = new System.Drawing.Size(1413, 424);
             this.Controls.Add(this.listBoxDescription);
             this.Controls.Add(this.listBoxName);
             this.Controls.Add(this.pictureBoxGroup);
             this.Controls.Add(this.labelDescription);
             this.Controls.Add(this.labelGroupName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormGroups";

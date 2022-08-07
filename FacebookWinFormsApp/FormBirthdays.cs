@@ -54,25 +54,16 @@ namespace BasicFacebookFeatures
 
         private void radioButtonAToZ_Clicked(object sender, EventArgs e)
         {
-            //radioButtonAToZ.Checked = true;
-            //radioButtonDaysToBirthday.Checked = false;
-            //radioButtonAges.Checked = false;
             sortNamesBy((sender as RadioButton).Text);
         }
 
         private void radioButtonAges_Clicked(object sender, EventArgs e)
         {
-            //radioButtonAToZ.Checked = false;
-            //radioButtonDaysToBirthday.Checked = false;
-            //radioButtonAges.Checked = true;
             sortNamesBy((sender as RadioButton).Text);
         }
 
         private void radioButtonDaysToBirthday_Clicked(object sender, EventArgs e)
         {
-            //radioButtonAToZ.Checked = false;
-            //radioButtonDaysToBirthday.Checked = true;
-            //radioButtonAges.Checked = false;
             sortNamesBy((sender as RadioButton).Text);
         }
 

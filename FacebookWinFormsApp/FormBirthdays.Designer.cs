@@ -113,6 +113,7 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.groupBoxSortBy);
             this.Controls.Add(this.labelSortBy);
             this.Controls.Add(this.listBoxName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormBirthdays";
             this.Text = "Birthdays";
