@@ -7,17 +7,18 @@ namespace BasicFacebookFeatures
 {
     public partial class FormGroups : Form
     {
-        private Session m_LoginSession;
+        private readonly Session r_LoginSession;
 
         public FormGroups(Session i_LoginSession)
         {
-            m_LoginSession = i_LoginSession;
+            r_LoginSession = i_LoginSession;
             InitializeComponent();
         }
 
         public void FetchInfo()
         {
-            UserData userData = m_LoginSession.UserData;
+            UserData userData = r_LoginSession.UserData;
+
             resetAllListBoxes();
             listBoxName.DisplayMember = "Name";
             foreach(Group group in userData.GetSortedGroupsList(eSortBy.Name))
@@ -43,7 +44,8 @@ namespace BasicFacebookFeatures
         private void listBoxName_Clicked(object sender, EventArgs e)
         {
             ListBox groupChosen = sender as ListBox;
-            UserData userData = m_LoginSession.UserData;
+            UserData userData = r_LoginSession.UserData;
+
             foreach (Group group in userData.GetSortedGroupsList(eSortBy.Name))
             {
                 if(groupChosen.SelectedItem.ToString() == group.Name)

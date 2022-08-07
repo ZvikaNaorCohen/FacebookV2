@@ -20,6 +20,8 @@ namespace FacebookEngine
 
         public int DaysToBirthday { get; set; }
 
+        public bool Muted { get; set; }
+
         public FriendsDummy(
             string i_Name,
             DateTime i_Birthdate,
@@ -31,7 +33,7 @@ namespace FacebookEngine
             AllUserDummyPosts = PostsDummy.GenerateDummyPosts(this);
             LastPost = AllUserDummyPosts[AllUserDummyPosts.Count - 1].Message;
             LastPostDate = AllUserDummyPosts[AllUserDummyPosts.Count - 1].DatePosted;
+            Muted = false;
         }
-
     }
 }

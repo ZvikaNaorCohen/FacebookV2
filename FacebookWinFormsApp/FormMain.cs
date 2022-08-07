@@ -10,6 +10,8 @@ namespace BasicFacebookFeatures
 {
     internal partial class FormMain : Form
     {
+        private const int k_FriendsWidth = 165;
+        private const int k_FriendsHeight = 175;
         private const int k_MaxPostCount = 4;
         private Session m_LoginSession;
         private UserData m_UserData;
@@ -18,6 +20,8 @@ namespace BasicFacebookFeatures
         {
             m_LoginSession = i_LoginSession;
             m_UserData = m_LoginSession.UserData;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            MaximizeBox = false;
             InitializeComponent();
             Icon = Properties.Resources.Facebook;
             if(Session.IsSessionSaved())
@@ -66,15 +70,30 @@ namespace BasicFacebookFeatures
 
         private void updateFriendsDummyList()
         {
-            listBoxFriends.Items.Clear();
+            int friendCounter = 0;
+
+            tableLayoutPanelFriends.Size = new Size(k_FriendsWidth, k_FriendsHeight);
+            tableLayoutPanelFriends.AutoScroll = true;
             foreach (FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
-                listBoxFriends.Items.Add(friend.Name);
+                ButtonFriend friendItem = new ButtonFriend(friend);
+                friendItem.Text = friend.Name;
+                friendItem.Click += FriendItem_Click;
+                tableLayoutPanelFriends.Controls.Add(friendItem, 0, friendCounter++);
             }
 
             if (m_UserData.UserDummyFriendsList.Count == 0)
             {
                 MessageBox.Show("No friends were found. ", "No Friends Error");
+            }
+        }
+
+        private void FriendItem_Click(object sender, EventArgs e)
+        {
+            if(sender is ButtonFriend clickedFriend)
+            {
+                clickedFriend.SwitchNewsState();
+                updateNewsFeed();
             }
         }
 
@@ -84,9 +103,12 @@ namespace BasicFacebookFeatures
             Dictionary<PostsDummy, DateTime> postsDictionary = new Dictionary<PostsDummy, DateTime>();
             foreach(FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
-                for(int i = 0; i < friend.AllUserDummyPosts.Count && i < k_MaxPostCount; i++)
+                if(!friend.Muted)
                 {
-                    postsDictionary.Add(friend.AllUserDummyPosts[i], friend.AllUserDummyPosts[i].DatePosted);
+                    for(int i = 0; i < friend.AllUserDummyPosts.Count && i < k_MaxPostCount; i++)
+                    {
+                        postsDictionary.Add(friend.AllUserDummyPosts[i], friend.AllUserDummyPosts[i].DatePosted);
+                    }
                 }
             }
 
@@ -112,13 +134,11 @@ namespace BasicFacebookFeatures
 
         private void updateUserInfo()
         {
-            listBoxUserInfo.Items.Clear();
-            listBoxUserInfo.Items.Add("Gender: " + m_UserData.UserInformation.Gender);
-            listBoxUserInfo.Items.Add("Birth Date: " + m_UserData.UserInformation.Birthday);
-            listBoxUserInfo.Items.Add("From: " + m_UserData.UserInformation.Hometown);
-            listBoxUserInfo.Items.Add("Relationship Status: " + m_UserData.UserInformation.RelationshipStatus);
-            listBoxUserInfo.Items.Add("Email: " + m_UserData.UserInformation.Email);
-            listBoxUserInfo.Items.Add("Interested in: " + m_UserData.UserInformation.InterestedIn);
+            labelBirthday.Text = m_UserData.UserInformation.Birthday;
+            labelHometown.Text = m_UserData.UserInformation.Hometown;
+            labelRelationship.Text = m_UserData.UserInformation.RelationshipStatus;
+            labelEmail.Text = m_UserData.UserInformation.Email;
+            labelHobbies.Text = m_UserData.UserInformation.InterestedIn;
         }
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
@@ -147,7 +167,7 @@ namespace BasicFacebookFeatures
         {
             FormAlbums albumsForm = new FormAlbums(m_UserData);
 
-            albumsForm.Text = "User albums";
+            albumsForm.Text = "Albums";
             albumsForm.AutoSize = true;
             albumsForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             albumsForm.ShowDialog();

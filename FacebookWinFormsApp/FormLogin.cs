@@ -7,10 +7,11 @@ namespace BasicFacebookFeatures
 {
     internal class FormLogin : Form
     {
+        private const int k_FacebookCollectionLimit = 100;
         private const string k_AppId = "1225204811548586";
         private const string k_AppName = "Facebook App";
         private const string k_RememberLoginText = "Continue as";
-        private const int k_FacebookCollectionLimit = 100;
+        private const string k_LoginErrorMessage = "Login failed. Please try again.";
         private readonly string[] r_RequestedPermissions =
             {
                 "email", "public_profile", "user_photos", "user_friends", "user_posts", "user_likes",
@@ -26,11 +27,11 @@ namespace BasicFacebookFeatures
         internal FormLogin()
         {
             InitializeComponent();
+            Icon = Properties.Resources.Lock;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            m_CurrentSession = new Session();
             FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
-            Icon = Properties.Resources.Lock;
+            m_CurrentSession = new Session();
             checkSavedLogin();
         }
 
@@ -99,7 +100,7 @@ namespace BasicFacebookFeatures
                 }
                 else
                 {
-                    MessageBox.Show("Login failed. Please try again.", "Login Failed");
+                    MessageBox.Show(k_LoginErrorMessage, "Login Failed");
                 }
             }
             else
@@ -145,6 +146,7 @@ namespace BasicFacebookFeatures
             checkBoxSaveLogin.Checked = false;
             buttonLogout.Enabled = false;
             checkBoxSaveLogin.Enabled = false;
+            m_CurrentSession.Terminate(false);
         }
 
         private void checkBoxSaveLogin_CheckedChanged(object sender, EventArgs e)
