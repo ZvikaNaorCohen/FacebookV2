@@ -93,6 +93,9 @@
     <Compile Include="ButtonAlbum.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ButtonFriend.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormAlbums.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +230,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\friend.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\block.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\usermessage.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

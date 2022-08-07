@@ -31,7 +31,6 @@ namespace BasicFacebookFeatures
         {
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.coverPhotoPictureBox = new System.Windows.Forms.PictureBox();
-            this.listBoxFriends = new System.Windows.Forms.ListBox();
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
             this.buttonGetGroups = new System.Windows.Forms.Button();
             this.buttonGetAlbums = new System.Windows.Forms.Button();
@@ -46,6 +45,7 @@ namespace BasicFacebookFeatures
             this.labelHobbies = new System.Windows.Forms.Label();
             this.labelFriends = new System.Windows.Forms.Label();
             this.labelNews = new System.Windows.Forms.Label();
+            this.tableLayoutPanelFriends = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -72,16 +72,6 @@ namespace BasicFacebookFeatures
             this.coverPhotoPictureBox.TabIndex = 1;
             this.coverPhotoPictureBox.TabStop = false;
             // 
-            // listBoxFriends
-            // 
-            this.listBoxFriends.FormattingEnabled = true;
-            this.listBoxFriends.ItemHeight = 16;
-            this.listBoxFriends.Location = new System.Drawing.Point(28, 438);
-            this.listBoxFriends.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(194, 212);
-            this.listBoxFriends.TabIndex = 4;
-            // 
             // listBoxNewsFeed
             // 
             this.listBoxNewsFeed.FormattingEnabled = true;
@@ -94,7 +84,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonGetGroups
             // 
-            this.buttonGetGroups.Location = new System.Drawing.Point(390, 586);
+            this.buttonGetGroups.Location = new System.Drawing.Point(400, 586);
             this.buttonGetGroups.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGetGroups.Name = "buttonGetGroups";
             this.buttonGetGroups.Size = new System.Drawing.Size(142, 64);
@@ -106,7 +96,7 @@ namespace BasicFacebookFeatures
             // buttonGetAlbums
             // 
             this.buttonGetAlbums.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buttonGetAlbums.Location = new System.Drawing.Point(242, 586);
+            this.buttonGetAlbums.Location = new System.Drawing.Point(252, 586);
             this.buttonGetAlbums.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonGetAlbums.Name = "buttonGetAlbums";
             this.buttonGetAlbums.Size = new System.Drawing.Size(142, 64);
@@ -117,7 +107,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonLikedPages
             // 
-            this.buttonLikedPages.Location = new System.Drawing.Point(538, 586);
+            this.buttonLikedPages.Location = new System.Drawing.Point(550, 586);
             this.buttonLikedPages.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonLikedPages.Name = "buttonLikedPages";
             this.buttonLikedPages.Size = new System.Drawing.Size(142, 64);
@@ -151,7 +141,7 @@ namespace BasicFacebookFeatures
             // 
             // buttonShowBirthdays
             // 
-            this.buttonShowBirthdays.Location = new System.Drawing.Point(686, 586);
+            this.buttonShowBirthdays.Location = new System.Drawing.Point(698, 586);
             this.buttonShowBirthdays.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonShowBirthdays.Name = "buttonShowBirthdays";
             this.buttonShowBirthdays.Size = new System.Drawing.Size(142, 64);
@@ -237,11 +227,25 @@ namespace BasicFacebookFeatures
             this.labelNews.Text = "News feed";
             this.labelNews.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tableLayoutPanelFriends
+            // 
+            this.tableLayoutPanelFriends.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanelFriends.ColumnCount = 1;
+            this.tableLayoutPanelFriends.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelFriends.Location = new System.Drawing.Point(28, 439);
+            this.tableLayoutPanelFriends.Name = "tableLayoutPanelFriends";
+            this.tableLayoutPanelFriends.RowCount = 2;
+            this.tableLayoutPanelFriends.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelFriends.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanelFriends.Size = new System.Drawing.Size(50, 50);
+            this.tableLayoutPanelFriends.TabIndex = 20;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 691);
+            this.Controls.Add(this.tableLayoutPanelFriends);
             this.Controls.Add(this.labelNews);
             this.Controls.Add(this.labelFriends);
             this.Controls.Add(this.labelHobbies);
@@ -256,7 +260,6 @@ namespace BasicFacebookFeatures
             this.Controls.Add(this.buttonGetAlbums);
             this.Controls.Add(this.buttonGetGroups);
             this.Controls.Add(this.listBoxNewsFeed);
-            this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.pictureBoxProfile);
             this.Controls.Add(this.coverPhotoPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -274,7 +277,6 @@ namespace BasicFacebookFeatures
 
         private System.Windows.Forms.PictureBox pictureBoxProfile;
         private System.Windows.Forms.PictureBox coverPhotoPictureBox;
-        private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.ListBox listBoxNewsFeed;
         private System.Windows.Forms.Button buttonGetGroups;
         private System.Windows.Forms.Button buttonGetAlbums;
@@ -289,5 +291,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelHobbies;
         private System.Windows.Forms.Label labelFriends;
         private System.Windows.Forms.Label labelNews;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelFriends;
     }
 }
