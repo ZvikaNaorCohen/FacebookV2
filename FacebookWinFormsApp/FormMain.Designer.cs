@@ -44,6 +44,8 @@ namespace BasicFacebookFeatures
             this.labelBirthday = new System.Windows.Forms.Label();
             this.labelRelationship = new System.Windows.Forms.Label();
             this.labelHobbies = new System.Windows.Forms.Label();
+            this.labelFriends = new System.Windows.Forms.Label();
+            this.labelNews = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             this.SuspendLayout();
@@ -213,11 +215,35 @@ namespace BasicFacebookFeatures
             this.labelHobbies.Text = "Hobbies";
             this.labelHobbies.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelFriends
+            // 
+            this.labelFriends.Image = global::BasicFacebookFeatures.Properties.Resources.friend;
+            this.labelFriends.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelFriends.Location = new System.Drawing.Point(28, 400);
+            this.labelFriends.Name = "labelFriends";
+            this.labelFriends.Size = new System.Drawing.Size(194, 36);
+            this.labelFriends.TabIndex = 18;
+            this.labelFriends.Text = "Friends";
+            this.labelFriends.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // labelNews
+            // 
+            this.labelNews.Image = global::BasicFacebookFeatures.Properties.Resources.news;
+            this.labelNews.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.labelNews.Location = new System.Drawing.Point(242, 405);
+            this.labelNews.Name = "labelNews";
+            this.labelNews.Size = new System.Drawing.Size(191, 31);
+            this.labelNews.TabIndex = 19;
+            this.labelNews.Text = "News feed";
+            this.labelNews.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1054, 691);
+            this.Controls.Add(this.labelNews);
+            this.Controls.Add(this.labelFriends);
             this.Controls.Add(this.labelHobbies);
             this.Controls.Add(this.labelRelationship);
             this.Controls.Add(this.labelBirthday);
@@ -261,5 +287,7 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelBirthday;
         private System.Windows.Forms.Label labelRelationship;
         private System.Windows.Forms.Label labelHobbies;
+        private System.Windows.Forms.Label labelFriends;
+        private System.Windows.Forms.Label labelNews;
     }
 }

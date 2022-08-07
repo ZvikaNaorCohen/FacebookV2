@@ -222,6 +222,12 @@
   <ItemGroup>
     <None Include="Resources\Birthday.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\news.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\friend.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
