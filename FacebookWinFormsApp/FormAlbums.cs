@@ -10,12 +10,13 @@ namespace BasicFacebookFeatures
     {
         private const int k_PictureSize = 100;
         private const int k_MinTableSize = 5;
-        private UserData m_UserData;
-        private TableLayoutPanel albumTableLayoutPanel;
+        private const int k_AlbumTableTop = 0;
+        private readonly UserData r_UserData;
+        private TableLayoutPanel tableLayoutPanelAlbum;
 
         internal FormAlbums(UserData i_UserData)
         {
-            m_UserData = i_UserData;
+            r_UserData = i_UserData;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Icon = Properties.Resources.Album;
@@ -24,37 +25,37 @@ namespace BasicFacebookFeatures
 
         private void InitializeComponent()
         {
-            albumTableLayoutPanel = new TableLayoutPanel();
-            albumTableLayoutPanel.Top = 0;
-            Controls.Add(albumTableLayoutPanel);
+            tableLayoutPanelAlbum = new TableLayoutPanel();
+            tableLayoutPanelAlbum.Top = k_AlbumTableTop;
+            Controls.Add(tableLayoutPanelAlbum);
             showAllAlbums();
         }
 
         private void showAllAlbums()
         {
-            resizeAlbumTable((int)Math.Sqrt(m_UserData.GetSortedAlbumsList(eSortBy.Name).Count));
-            foreach (Album album in m_UserData.GetSortedAlbumsList(eSortBy.Name))
+            resizeAlbumTable((int)Math.Sqrt(r_UserData.GetSortedAlbumsList(eSortBy.Name).Count));
+            foreach (Album album in r_UserData.GetSortedAlbumsList(eSortBy.Name))
             {
                 ButtonAlbum albumButton = new ButtonAlbum(album, k_PictureSize);
 
                 albumButton.Dock = DockStyle.Fill;
                 albumButton.Text = album.Name;
                 albumButton.Click += buttonAlbum_Clicked;
-                albumTableLayoutPanel.Controls.Add(albumButton);
+                tableLayoutPanelAlbum.Controls.Add(albumButton);
             }
         }
 
         private void showAlbum(Album i_Album)
         {
             resizeAlbumTable((int)Math.Sqrt(i_Album.Photos.Count));
-            albumTableLayoutPanel.Controls.Clear();
+            tableLayoutPanelAlbum.Controls.Clear();
             foreach(Photo photo in i_Album.Photos)
             {
                 PictureBoxFacebook facebookPicture = new PictureBoxFacebook(photo, k_PictureSize);
 
                 facebookPicture.Dock = DockStyle.Fill;
                 facebookPicture.Click += pictureBox_Clicked;
-                albumTableLayoutPanel.Controls.Add(facebookPicture);
+                tableLayoutPanelAlbum.Controls.Add(facebookPicture);
             }
         }
 
@@ -77,10 +78,10 @@ namespace BasicFacebookFeatures
 
         private void resizeAlbumTable(int i_RowAndColumnCount)
         {
-            albumTableLayoutPanel.ColumnCount = albumTableLayoutPanel.RowCount = i_RowAndColumnCount + k_MinTableSize;
-            albumTableLayoutPanel.Size = new Size(
-                albumTableLayoutPanel.RowCount * k_PictureSize,
-                albumTableLayoutPanel.ColumnCount * k_PictureSize);
+            tableLayoutPanelAlbum.ColumnCount = tableLayoutPanelAlbum.RowCount = i_RowAndColumnCount + k_MinTableSize;
+            tableLayoutPanelAlbum.Size = new Size(
+                tableLayoutPanelAlbum.RowCount * k_PictureSize,
+                tableLayoutPanelAlbum.ColumnCount * k_PictureSize);
         }
     }
 }

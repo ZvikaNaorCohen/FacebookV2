@@ -9,7 +9,6 @@ namespace FacebookEngine
     public class UserData
     {
         private const uint k_DummyFriendsCount = 25u;
-        private readonly User r_FacebookUser;
         private readonly UserInformation r_UserInfo;
         private readonly Image r_UserProfilePicture;
         private readonly FacebookObjectCollection<Group> r_UserJoinedGroupsList;
@@ -19,12 +18,11 @@ namespace FacebookEngine
 
         public UserData(User i_FacebookUser)
         {
-            r_FacebookUser = i_FacebookUser;
-            r_UserInfo = new UserInformation(r_FacebookUser);
-            r_UserProfilePicture = r_FacebookUser.ImageNormal;
-            r_UserJoinedGroupsList = r_FacebookUser.Groups;
-            r_UserAlbumsList = r_FacebookUser.Albums;
-            r_UserPagesList = r_FacebookUser.LikedPages;
+            r_UserInfo = new UserInformation(i_FacebookUser);
+            r_UserProfilePicture = i_FacebookUser.ImageNormal;
+            r_UserJoinedGroupsList = i_FacebookUser.Groups;
+            r_UserAlbumsList = i_FacebookUser.Albums;
+            r_UserPagesList = i_FacebookUser.LikedPages;
             r_UserDummyFriendsList = new List<FriendsDummy>();
             generateDummyFriendsList(k_DummyFriendsCount);
         }
