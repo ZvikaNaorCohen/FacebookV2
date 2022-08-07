@@ -11,7 +11,7 @@ namespace FacebookEngine
         {
             Name = i_FacebookUser.Name;
             Email = i_FacebookUser.Email;
-            Birthday = i_FacebookUser.Birthday;
+            Birthday = i_FacebookUser.Birthday == string.Empty ? "01/01/2000" : i_FacebookUser.Birthday;
             Gender = i_FacebookUser.Gender.ToString();
             Hometown = k_DummyHometown;
             RelationshipStatus = i_FacebookUser.RelationshipStatus.ToString();
