@@ -110,7 +110,6 @@ namespace FacebookEngine
 
         private void generateDummyFriendsList(uint i_FriendCount)
         {
-            Random random = new Random(DateTime.Now.Second);
             for (uint i = 0u; i < i_FriendCount; ++i)
             {
                 r_UserDummyFriendsList.Add(new FriendsDummy(RandomGenerator.GetRandomFromType("Name"), RandomGenerator.GenerateRandomDateTime(), User.eGender.male));

@@ -37,7 +37,6 @@ namespace BasicFacebookFeatures
             foreach (Album album in r_UserData.GetSortedAlbumsList(eSortBy.Name))
             {
                 ButtonAlbum albumButton = new ButtonAlbum(album, k_PictureSize);
-
                 albumButton.Dock = DockStyle.Fill;
                 albumButton.Text = album.Name;
                 albumButton.Click += buttonAlbum_Clicked;
@@ -52,7 +51,6 @@ namespace BasicFacebookFeatures
             foreach(Photo photo in i_Album.Photos)
             {
                 PictureBoxFacebook facebookPicture = new PictureBoxFacebook(photo, k_PictureSize);
-
                 facebookPicture.Dock = DockStyle.Fill;
                 facebookPicture.Click += pictureBox_Clicked;
                 m_TableLayoutPanelAlbum.Controls.Add(facebookPicture);

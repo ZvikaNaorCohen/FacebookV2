@@ -13,7 +13,6 @@ namespace BasicFacebookFeatures
         public static void Main()
         {
             FormLogin facebookLogin;
-
             Clipboard.SetText("design.patterns20cc");
             FacebookService.s_UseForamttedToStrings = true;
             Application.EnableVisualStyles();

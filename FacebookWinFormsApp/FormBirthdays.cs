@@ -22,7 +22,6 @@ namespace BasicFacebookFeatures
             listBoxName.Items.Clear();
             foreach(FriendsDummy friend in userData.UserDummyFriendsList)
             {
-                // Calculate days to birthday
                 int daysToBirthday = getDaysUntilBirthday(friend.Birthdate);
                 friend.DaysToBirthday = daysToBirthday;
                 StringBuilder stringToAdd = new StringBuilder();
@@ -70,7 +69,6 @@ namespace BasicFacebookFeatures
         private void sortNamesBy(string i_SortOption)
         {
             UserData userData = r_LoginSession.UserData;
-
             listBoxName.Items.Clear();
             switch (i_SortOption)
             {
@@ -91,11 +89,6 @@ namespace BasicFacebookFeatures
                     {
                         listBoxName.Sorted = false;
                         userData.UserDummyFriendsList.Sort((i_FriendOne, i_FriendTwo) => i_FriendOne.DaysToBirthday.CompareTo(i_FriendTwo.DaysToBirthday));
-                        break;
-                    }
-
-                default:
-                    {
                         break;
                     }
             }

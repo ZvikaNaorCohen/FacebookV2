@@ -5,7 +5,7 @@ namespace BasicFacebookFeatures
 {
     internal class FormImage : Form
     {
-        private PictureBox pictureBoxUserImage;
+        private PictureBox m_PictureBoxUserImage;
 
         internal FormImage(Image i_Image)
         {
@@ -13,30 +13,30 @@ namespace BasicFacebookFeatures
             Icon = Properties.Resources.Picture;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             ClientSize = i_Image.Size;
-            pictureBoxUserImage.Image = i_Image;
+            m_PictureBoxUserImage.Image = i_Image;
         }
 
         private void initializeComponent()
         {
-            this.pictureBoxUserImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)this.pictureBoxUserImage).BeginInit();
+            this.m_PictureBoxUserImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)this.m_PictureBoxUserImage).BeginInit();
             this.SuspendLayout();
 
             // pictureBoxUserImage
-            this.pictureBoxUserImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBoxUserImage.Location = new System.Drawing.Point(0, 0);
-            this.pictureBoxUserImage.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBoxUserImage.Name = "pictureBoxUserImage";
-            this.pictureBoxUserImage.Size = new System.Drawing.Size(282, 253);
-            this.pictureBoxUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxUserImage.TabIndex = 0;
-            this.pictureBoxUserImage.TabStop = false;
+            this.m_PictureBoxUserImage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.m_PictureBoxUserImage.Location = new System.Drawing.Point(0, 0);
+            this.m_PictureBoxUserImage.Margin = new System.Windows.Forms.Padding(0);
+            this.m_PictureBoxUserImage.Name = "pictureBoxUserImage";
+            this.m_PictureBoxUserImage.Size = new System.Drawing.Size(282, 253);
+            this.m_PictureBoxUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.m_PictureBoxUserImage.TabIndex = 0;
+            this.m_PictureBoxUserImage.TabStop = false;
 
             // FormImage
             this.ClientSize = new System.Drawing.Size(282, 253);
-            this.Controls.Add(this.pictureBoxUserImage);
+            this.Controls.Add(this.m_PictureBoxUserImage);
             this.Name = "FormImage";
-            ((System.ComponentModel.ISupportInitialize)this.pictureBoxUserImage).EndInit();
+            ((System.ComponentModel.ISupportInitialize)this.m_PictureBoxUserImage).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }

@@ -4,7 +4,6 @@ namespace FacebookEngine
 {
     public class UserInformation
     {
-        // private const string k_DummyBirthday = "1/1/2000";
         private const string k_DummyHometown = ".Net City";
         private const string k_DummyInterestedIn = "C# .Net";
 
