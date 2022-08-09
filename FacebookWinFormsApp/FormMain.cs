@@ -112,12 +112,12 @@ namespace BasicFacebookFeatures
                 }
             }
 
-            // Sort by dates
-            var sortedPostsDictionary = from entry in postsDictionary orderby entry.Value descending select entry;
+            IOrderedEnumerable<KeyValuePair<PostsDummy, DateTime>> sortedPostsDictionary = from entry in postsDictionary orderby entry.Value descending select entry;
 
             foreach (KeyValuePair<PostsDummy, DateTime> entry in sortedPostsDictionary)
             {
                 StringBuilder stringToAdd = new StringBuilder();
+
                 stringToAdd.Append(entry.Key.Author.Name);
                 stringToAdd.Append(": ");
                 stringToAdd.Append(entry.Key.Message);
@@ -144,6 +144,7 @@ namespace BasicFacebookFeatures
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
         {
             FormGroups groupsForm = new FormGroups(m_LoginSession);
+
             groupsForm.FetchInfo();
             groupsForm.ShowDialog();
         }
@@ -151,6 +152,7 @@ namespace BasicFacebookFeatures
         private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
         {
             FormBirthdays closestBirthdaysForm = new FormBirthdays(m_LoginSession);
+
             closestBirthdaysForm.FetchInfo();
             closestBirthdaysForm.ShowDialog();
         }
