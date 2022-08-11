@@ -40,15 +40,6 @@ namespace BasicFacebookFeatures
             }
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-            if(!checkBoxKeepLoggedIn.Checked)
-            {
-                m_LoginSession.Terminate(checkBoxKeepLoggedIn.Checked);
-            }
-        }
-
         private void fetchUserInfo()
         {
             pictureBoxProfile.Image = m_UserData.ProfilePicture;
