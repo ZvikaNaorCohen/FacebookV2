@@ -1,77 +1,77 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Class Name="BasicFacebookFeatures.FormMain">
-    <Position X="14.5" Y="8.5" Width="3.5" />
+    <Position X="19.5" Y="7.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>IIgUAAAAEiBABkCAAgiBQAATBEKTAAAAKQAAgBAoAAA=</HashCode>
       <FileName>FormMain.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.FormLogin">
-    <Position X="11" Y="8.5" Width="3.25" />
+    <Position X="15.5" Y="7.5" Width="3.25" />
     <TypeIdentifier>
       <HashCode>BAAIACAAAAAAEACAAgAACAASAAAEAgEBAAAAABAAECA=</HashCode>
       <FileName>FormLogin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.FormLikedPages">
-    <Position X="18.25" Y="6.75" Width="3.25" />
+    <Position X="24.5" Y="6.75" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAACAAAAAAAFCAAAACAAAAAAKAAAAAAAAAAAA=</HashCode>
       <FileName>FormLikedPages.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.FormImage">
-    <Position X="25.75" Y="10" Width="2.75" />
+    <Position X="34" Y="10" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>FormImage.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.FormGroups">
-    <Position X="18.25" Y="13.75" Width="3.25" />
+    <Position X="24.5" Y="14" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAIAgQAAACAQAAAAARCAgAgCAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>FormGroups.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.FormBirthdays">
-    <Position X="18.25" Y="2" Width="3.25" />
+    <Position X="24.5" Y="2" Width="3.25" />
     <TypeIdentifier>
       <HashCode>IAIBgASAACAAAAAAABCAAAACAACBAAABgAAAAEAAAAg=</HashCode>
       <FileName>FormBirthdays.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.FormAlbums">
-    <Position X="18.25" Y="10" Width="3.25" />
+    <Position X="24.5" Y="10" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AQAgAAAAAAAAAIAACEAAAAECAAAAAAAEgAAAEAAQAAA=</HashCode>
       <FileName>FormAlbums.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.ButtonFriend">
-    <Position X="14.5" Y="5.75" Width="3.5" />
+    <Position X="19.5" Y="4.75" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAAgAAAAAAIAAAAAAAIAAAAAAACAAAAAAA=</HashCode>
       <FileName>ButtonFriend.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.ButtonAlbum">
-    <Position X="21.75" Y="10" Width="1.75" />
+    <Position X="28.75" Y="10" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>ButtonAlbum.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.PictureBoxFacebook">
-    <Position X="23.75" Y="10" Width="1.75" />
+    <Position X="31.25" Y="10" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAACAAAAAICAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>PictureBoxFacebook.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="BasicFacebookFeatures.Program">
-    <Position X="9.25" Y="8.5" Width="1.5" />
+    <Position X="13" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
