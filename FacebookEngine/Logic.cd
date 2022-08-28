@@ -8,42 +8,42 @@
     </TypeIdentifier>
   </Class>
   <Class Name="FacebookEngine.UserData">
-    <Position X="3.5" Y="2.75" Width="4" />
+    <Position X="4.75" Y="2.75" Width="4" />
     <TypeIdentifier>
       <HashCode>EQEAAAAAAAAAIgAAAAAEAAAAAAACABAABAAECAAgQQA=</HashCode>
       <FileName>UserData.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FacebookEngine.UserInformation">
-    <Position X="7.75" Y="0.5" Width="2.25" />
+    <Position X="10.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAABAAAAACAAAACAAAAAAAQAAAAKAAAAABASAAAABAA=</HashCode>
       <FileName>UserInformation.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FacebookEngine.FriendsDummy">
-    <Position X="7.75" Y="4.25" Width="3" />
+    <Position X="9.75" Y="4.25" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACACAAAAAAAQACgAAAAgAAEAAAAAAAAA=</HashCode>
       <FileName>FriendsDummy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FacebookEngine.PostsDummy">
-    <Position X="11" Y="4.25" Width="3.25" />
+    <Position X="13.5" Y="4.25" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAgAAAAAAgAAAAAAAAAAAAYAAAAAA=</HashCode>
       <FileName>PostsDummy.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FacebookEngine.RandomGenerator">
-    <Position X="11.25" Y="6.75" Width="3" />
+    <Position X="13.75" Y="6.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAQIIAAAAAAAAAEAAAAA=</HashCode>
       <FileName>RandomGenerator.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="FacebookEngine.eSortBy">
-    <Position X="3.5" Y="7.25" Width="1.5" />
+    <Position X="4.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>eSortBy.cs</FileName>
