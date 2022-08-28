@@ -10,6 +10,7 @@ namespace BasicFacebookFeatures
         private const int k_FacebookCollectionLimit = 100;
         private const string k_AppId = "1225204811548586";
         private const string k_AppName = "Facebook App";
+        private const string k_LoginText = "Login";
         private const string k_RememberLoginText = "Continue as";
         private const string k_LoginErrorMessage = "Login failed. Please try again.";
         private readonly string[] r_RequestedPermissions =
@@ -137,7 +138,7 @@ namespace BasicFacebookFeatures
         private void buttonLogout_Click(object sender, EventArgs e)
         {
             FacebookService.LogoutWithUI();
-            buttonLogin.Text = @"Login";
+            buttonLogin.Text = k_LoginText;
             checkBoxSaveLogin.Checked = false;
             buttonLogout.Enabled = false;
             checkBoxSaveLogin.Enabled = false;

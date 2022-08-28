@@ -68,7 +68,7 @@ namespace BasicFacebookFeatures
             this.coverPhotoPictureBox.Location = new System.Drawing.Point(28, 18);
             this.coverPhotoPictureBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.coverPhotoPictureBox.Name = "coverPhotoPictureBox";
-            this.coverPhotoPictureBox.Size = new System.Drawing.Size(996, 210);
+            this.coverPhotoPictureBox.Size = new System.Drawing.Size(1014, 210);
             this.coverPhotoPictureBox.TabIndex = 1;
             this.coverPhotoPictureBox.TabStop = false;
             // 
@@ -79,7 +79,7 @@ namespace BasicFacebookFeatures
             this.listBoxNewsFeed.Location = new System.Drawing.Point(242, 438);
             this.listBoxNewsFeed.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxNewsFeed.Name = "listBoxNewsFeed";
-            this.listBoxNewsFeed.Size = new System.Drawing.Size(783, 116);
+            this.listBoxNewsFeed.Size = new System.Drawing.Size(800, 116);
             this.listBoxNewsFeed.TabIndex = 5;
             // 
             // buttonGetGroups
