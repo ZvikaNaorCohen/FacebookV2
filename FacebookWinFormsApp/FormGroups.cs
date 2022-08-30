@@ -13,20 +13,20 @@ namespace BasicFacebookFeatures
         {
             r_LoginSession = i_LoginSession;
             InitializeComponent();
+            this.HandleCreated += new EventHandler(OnHandleCreated);
         }
 
-        public void FetchInfo()
+        private void OnHandleCreated(object sender, EventArgs e)
         {
             UserData userData = r_LoginSession.UserData;
-
             resetAllListBoxes();
-            listBoxName.DisplayMember = "Name";
-            foreach(Group group in userData.GetSortedGroupsList(eSortBy.Name))
+            listBoxName.Invoke(new Action(() => listBoxName.DisplayMember = "Name"));
+            foreach (Group group in userData.GetSortedGroupsList(eSortBy.Name))
             {
-                listBoxName.Items.Add(group);
-                if(!string.IsNullOrEmpty(group.Description))
+                listBoxName.Invoke(new Action(() => listBoxName.Items.Add(group)));
+                if (!string.IsNullOrEmpty(group.Description))
                 {
-                    listBoxDescription.Items.Add(group.Description);
+                    listBoxDescription.Invoke(new Action(() => listBoxDescription.Items.Add(group.Description)));
                 }
                 else
                 {

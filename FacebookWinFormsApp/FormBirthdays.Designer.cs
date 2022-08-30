@@ -36,6 +36,7 @@ namespace BasicFacebookFeatures
             this.radioButtonDaysToBirthday = new System.Windows.Forms.RadioButton();
             this.radioButtonAges = new System.Windows.Forms.RadioButton();
             this.radioButtonAToZ = new System.Windows.Forms.RadioButton();
+            this.buttonPostWish = new System.Windows.Forms.Button();
             this.groupBoxSortBy.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@ namespace BasicFacebookFeatures
             this.listBoxName.Name = "listBoxName";
             this.listBoxName.Size = new System.Drawing.Size(482, 344);
             this.listBoxName.TabIndex = 0;
+            this.listBoxName.Click += new System.EventHandler(this.listBoxName_Click);
             // 
             // labelSortBy
             // 
@@ -105,11 +107,22 @@ namespace BasicFacebookFeatures
             this.radioButtonAToZ.UseVisualStyleBackColor = true;
             this.radioButtonAToZ.Click += new System.EventHandler(this.radioButtonAToZ_Clicked);
             // 
+            // buttonPostWish
+            // 
+            this.buttonPostWish.Enabled = false;
+            this.buttonPostWish.Location = new System.Drawing.Point(293, 381);
+            this.buttonPostWish.Name = "buttonPostWish";
+            this.buttonPostWish.Size = new System.Drawing.Size(201, 97);
+            this.buttonPostWish.TabIndex = 3;
+            this.buttonPostWish.Text = "POST WISH ON FRIEND\'S BIRTHDAY";
+            this.buttonPostWish.UseVisualStyleBackColor = true;
+            // 
             // FormBirthdays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 483);
+            this.Controls.Add(this.buttonPostWish);
             this.Controls.Add(this.groupBoxSortBy);
             this.Controls.Add(this.labelSortBy);
             this.Controls.Add(this.listBoxName);
@@ -132,5 +145,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.RadioButton radioButtonDaysToBirthday;
         private System.Windows.Forms.RadioButton radioButtonAges;
         private System.Windows.Forms.RadioButton radioButtonAToZ;
+        private System.Windows.Forms.Button buttonPostWish;
     }
 }

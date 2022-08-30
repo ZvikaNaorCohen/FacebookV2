@@ -13,12 +13,12 @@ namespace BasicFacebookFeatures
         {
             r_LoginSession = i_LoginSession;
             InitializeComponent();
+            this.HandleCreated += new EventHandler(OnHandleCreated);
         }
 
-        public void FetchInfo()
+        public void OnHandleCreated(object sender, EventArgs e)
         {
             UserData userData = r_LoginSession.UserData;
-
             listBoxName.Items.Clear();
             foreach(FriendsDummy friend in userData.UserDummyFriendsList)
             {
@@ -35,7 +35,8 @@ namespace BasicFacebookFeatures
                 stringToAdd.Append("    ||    ");
                 stringToAdd.Append(daysToBirthday.ToString());
                 stringToAdd.Append(" Days to birthday. ");
-                listBoxName.Items.Add(stringToAdd);
+                listBoxName.Invoke(new Action(() => listBoxName.Items.Add(stringToAdd)));
+                // listBoxName.Items.Add(stringToAdd);
             }
         }
 
@@ -93,7 +94,12 @@ namespace BasicFacebookFeatures
                     }
             }
 
-            FetchInfo();
+            OnHandleCreated(null);
+        }
+
+        private void listBoxName_Click(object sender, EventArgs e)
+        {
+            buttonPostWish.Enabled = true;
         }
     }
 }
