@@ -96,6 +96,7 @@ dotnet_diagnostic.SA1110.severity = silent
 dotnet_diagnostic.SA1124.severity = silent
 dotnet_diagnostic.SA1009.severity = silent
 dotnet_diagnostic.SA1027.severity = silent
+csharp_style_prefer_top_level_statements = true:silent
 
 [*.{cs,vb}]
 #### Naming styles ####
