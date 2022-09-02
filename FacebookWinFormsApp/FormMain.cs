@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Windows.Forms;
 using FacebookEngine;
 
@@ -20,7 +19,7 @@ namespace BasicFacebookFeatures
         internal FormMain()
         {
             InitializeComponent();
-            HandleCreated += new EventHandler(HandleCreated_FetchInfo);
+            HandleCreated += HandleCreated_FetchInfo;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Icon = Properties.Resources.Facebook;
@@ -43,14 +42,12 @@ namespace BasicFacebookFeatures
                 checkBoxKeepLoggedIn.Checked = true;
             }
 
-            pictureBoxProfile.Image = m_UserData.ProfilePicture;
-            labelFullName.Text = m_LoginSession.UserName;
             labelFullName.BackColor = Color.Empty;
             makeProfilePictureCircle();
             updateFriendsDummyList();
             updateNewsFeed();
+            userDataBindingSource.DataSource = m_UserData;
             userInformationBindingSource.DataSource = m_UserData.UserInformation;
-            //updateUserInfo();
         }
 
         private void makeProfilePictureCircle()
@@ -130,15 +127,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No Posts to retrieve :(");
             }
-        }
-
-        private void updateUserInfo()
-        {
-            labelBirthday.Text = m_UserData.UserInformation.Birthday;
-            labelHometown.Text = m_UserData.UserInformation.Hometown;
-            labelRelationship.Text = m_UserData.UserInformation.RelationshipStatus;
-            labelEmail.Text = m_UserData.UserInformation.Email;
-            labelHobbies.Text = m_UserData.UserInformation.InterestedIn;
         }
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)

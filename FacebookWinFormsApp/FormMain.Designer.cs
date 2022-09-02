@@ -37,10 +37,10 @@ namespace BasicFacebookFeatures
             this.buttonGetAlbums = new System.Windows.Forms.Button();
             this.buttonLikedPages = new System.Windows.Forms.Button();
             this.labelFullName = new System.Windows.Forms.Label();
+            this.userInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.checkBoxKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.buttonShowBirthdays = new System.Windows.Forms.Button();
             this.labelEmail = new System.Windows.Forms.Label();
-            this.userInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelHometown = new System.Windows.Forms.Label();
             this.labelBirthday = new System.Windows.Forms.Label();
             this.labelRelationship = new System.Windows.Forms.Label();
@@ -48,14 +48,17 @@ namespace BasicFacebookFeatures
             this.labelFriends = new System.Windows.Forms.Label();
             this.labelNews = new System.Windows.Forms.Label();
             this.tableLayoutPanelFriends = new System.Windows.Forms.TableLayoutPanel();
+            this.userDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.pictureBoxProfile.DataBindings.Add(new System.Windows.Forms.Binding("Image", this.userDataBindingSource, "ProfilePicture", true));
             this.pictureBoxProfile.Location = new System.Drawing.Point(28, 185);
             this.pictureBoxProfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
@@ -122,6 +125,7 @@ namespace BasicFacebookFeatures
             // labelFullName
             // 
             this.labelFullName.BackColor = System.Drawing.Color.Transparent;
+            this.labelFullName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "Name", true));
             this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelFullName.ForeColor = System.Drawing.Color.Black;
             this.labelFullName.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -130,6 +134,10 @@ namespace BasicFacebookFeatures
             this.labelFullName.Size = new System.Drawing.Size(379, 35);
             this.labelFullName.TabIndex = 9;
             this.labelFullName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // userInformationBindingSource
+            // 
+            this.userInformationBindingSource.DataSource = typeof(FacebookEngine.UserInformation);
             // 
             // checkBoxKeepLoggedIn
             // 
@@ -164,10 +172,6 @@ namespace BasicFacebookFeatures
             this.labelEmail.TabIndex = 13;
             this.labelEmail.Text = "Email";
             this.labelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // userInformationBindingSource
-            // 
-            this.userInformationBindingSource.DataSource = typeof(FacebookEngine.UserInformation);
             // 
             // labelHometown
             // 
@@ -252,6 +256,10 @@ namespace BasicFacebookFeatures
             this.tableLayoutPanelFriends.Size = new System.Drawing.Size(50, 50);
             this.tableLayoutPanelFriends.TabIndex = 20;
             // 
+            // userDataBindingSource
+            // 
+            this.userDataBindingSource.DataSource = typeof(FacebookEngine.UserData);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -282,6 +290,7 @@ namespace BasicFacebookFeatures
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userDataBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -306,5 +315,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelNews;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelFriends;
         private System.Windows.Forms.BindingSource userInformationBindingSource;
+        private System.Windows.Forms.BindingSource userDataBindingSource;
     }
 }
