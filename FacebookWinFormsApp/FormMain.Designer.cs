@@ -29,6 +29,7 @@ namespace BasicFacebookFeatures
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.coverPhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
@@ -39,6 +40,7 @@ namespace BasicFacebookFeatures
             this.checkBoxKeepLoggedIn = new System.Windows.Forms.CheckBox();
             this.buttonShowBirthdays = new System.Windows.Forms.Button();
             this.labelEmail = new System.Windows.Forms.Label();
+            this.userInformationBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelHometown = new System.Windows.Forms.Label();
             this.labelBirthday = new System.Windows.Forms.Label();
             this.labelRelationship = new System.Windows.Forms.Label();
@@ -48,6 +50,7 @@ namespace BasicFacebookFeatures
             this.tableLayoutPanelFriends = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxProfile
@@ -152,6 +155,7 @@ namespace BasicFacebookFeatures
             // 
             // labelEmail
             // 
+            this.labelEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "Email", true));
             this.labelEmail.Image = global::BasicFacebookFeatures.Properties.Resources.Email;
             this.labelEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelEmail.Location = new System.Drawing.Point(25, 287);
@@ -161,8 +165,13 @@ namespace BasicFacebookFeatures
             this.labelEmail.Text = "Email";
             this.labelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // userInformationBindingSource
+            // 
+            this.userInformationBindingSource.DataSource = typeof(FacebookEngine.UserInformation);
+            // 
             // labelHometown
             // 
+            this.labelHometown.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "Hometown", true));
             this.labelHometown.Image = global::BasicFacebookFeatures.Properties.Resources.hometown;
             this.labelHometown.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelHometown.Location = new System.Drawing.Point(495, 294);
@@ -174,6 +183,7 @@ namespace BasicFacebookFeatures
             // 
             // labelBirthday
             // 
+            this.labelBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "Birthday", true));
             this.labelBirthday.Image = global::BasicFacebookFeatures.Properties.Resources.Birthday;
             this.labelBirthday.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelBirthday.Location = new System.Drawing.Point(845, 294);
@@ -185,6 +195,7 @@ namespace BasicFacebookFeatures
             // 
             // labelRelationship
             // 
+            this.labelRelationship.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "RelationshipStatus", true));
             this.labelRelationship.Image = global::BasicFacebookFeatures.Properties.Resources.heart;
             this.labelRelationship.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelRelationship.Location = new System.Drawing.Point(25, 338);
@@ -196,6 +207,7 @@ namespace BasicFacebookFeatures
             // 
             // labelHobbies
             // 
+            this.labelHobbies.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "InterestedIn", true));
             this.labelHobbies.Image = global::BasicFacebookFeatures.Properties.Resources.Hobbies;
             this.labelHobbies.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.labelHobbies.Location = new System.Drawing.Point(495, 338);
@@ -269,6 +281,7 @@ namespace BasicFacebookFeatures
             this.Text = "FormMain";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -292,5 +305,6 @@ namespace BasicFacebookFeatures
         private System.Windows.Forms.Label labelFriends;
         private System.Windows.Forms.Label labelNews;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelFriends;
+        private System.Windows.Forms.BindingSource userInformationBindingSource;
     }
 }

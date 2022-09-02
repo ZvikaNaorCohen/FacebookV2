@@ -49,7 +49,8 @@ namespace BasicFacebookFeatures
             makeProfilePictureCircle();
             updateFriendsDummyList();
             updateNewsFeed();
-            updateUserInfo();
+            userInformationBindingSource.DataSource = m_UserData.UserInformation;
+            //updateUserInfo();
         }
 
         private void makeProfilePictureCircle()
