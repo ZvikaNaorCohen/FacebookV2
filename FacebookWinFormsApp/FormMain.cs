@@ -23,13 +23,12 @@ namespace BasicFacebookFeatures
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             InitializeComponent();
+            this.HandleCreated += new EventHandler(HandleCreated_FetchInfo);
             Icon = Properties.Resources.Facebook;
             if(Session.IsSessionSaved())
             {
                 checkBoxKeepLoggedIn.Checked = true;
             }
-
-            fetchUserInfo();
         }
 
         internal bool RememberMe
@@ -62,7 +61,6 @@ namespace BasicFacebookFeatures
         private void updateFriendsDummyList()
         {
             int friendCounter = 0;
-
             tableLayoutPanelFriends.Size = new Size(k_FriendsWidth, k_FriendsHeight);
             tableLayoutPanelFriends.AutoScroll = true;
             foreach (FriendsDummy friend in m_UserData.UserDummyFriendsList)
@@ -88,6 +86,11 @@ namespace BasicFacebookFeatures
             }
         }
 
+        private void HandleCreated_FetchInfo(object sender, EventArgs e)
+        {
+            fetchUserInfo();
+        }
+
         private void updateNewsFeed()
         {
             listBoxNewsFeed.Items.Clear();
@@ -107,7 +110,10 @@ namespace BasicFacebookFeatures
 
             foreach (KeyValuePair<PostsDummy, DateTime> entry in sortedPostsDictionary)
             {
+                // Old code:
                 StringBuilder stringToAdd = new StringBuilder();
+
+                // New code with DP [Write DP Name]:
 
                 stringToAdd.Append(entry.Key.Author.Name);
                 stringToAdd.Append(": ");
@@ -135,24 +141,18 @@ namespace BasicFacebookFeatures
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
         {
             FormGroups groupsForm = new FormGroups(m_LoginSession);
-
-            groupsForm.FetchInfo();
             groupsForm.ShowDialog();
         }
 
         private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
         {
             FormBirthdays closestBirthdaysForm = new FormBirthdays(m_LoginSession);
-
-            closestBirthdaysForm.FetchInfo();
             closestBirthdaysForm.ShowDialog();
         }
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
         {
             FormLikedPages likedPagesForm = new FormLikedPages(m_LoginSession);
-
-            likedPagesForm.FetchInfo();
             likedPagesForm.ShowDialog();
         }
 

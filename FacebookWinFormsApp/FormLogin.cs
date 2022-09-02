@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using FacebookEngine;
 using FacebookWrapper;
@@ -87,11 +88,14 @@ namespace BasicFacebookFeatures
         {
             if(!m_CurrentSession.IsLoggedIn())
             {
-                LoginResult loginResult = FacebookService.Login(k_AppId, r_RequestedPermissions);
+                LoginResultAdapter loginResultAdapter = new LoginResultAdapter(k_AppId, r_RequestedPermissions);
+                new Thread(() => loginResultAdapter.FacebookLogin()).Start();
 
-                if(!string.IsNullOrEmpty(loginResult.AccessToken))
+                // LoginResult loginResult = FacebookService.Login(k_AppId, r_RequestedPermissions);
+
+                if(!string.IsNullOrEmpty(loginResultAdapter.AccessToken))
                 {
-                    m_CurrentSession.Initialize(loginResult);
+                    m_CurrentSession.Initialize(loginResultAdapter.LoginResult);
                     checkLoginStatus();
                 }
                 else

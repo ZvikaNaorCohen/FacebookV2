@@ -13,16 +13,18 @@ namespace BasicFacebookFeatures
         {
             r_LoginSession = i_LoginSession;
             InitializeComponent();
+            this.HandleCreated += new EventHandler(OnHandleCreated);
         }
 
-        public void FetchInfo()
+        public void OnHandleCreated(object sender, EventArgs e)
         {
             UserData userData = r_LoginSession.UserData;
 
-            listBoxPageName.DisplayMember = "Name";
+            listBoxPageName.Invoke(new Action(() => listBoxPageName.DisplayMember = "Name"));
             foreach (Page page in userData.GetSortedPagesList(eSortBy.Count))
             {
-                listBoxPageName.Items.Add(page);
+                listBoxPageName.Invoke(new Action(() => listBoxPageName.Items.Add(page)));
+                //listBoxPageName.Items.Add(page);
             }
         }
 
