@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Threading;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
 
@@ -9,7 +8,7 @@ namespace FacebookEngine
     {
         private const string k_SessionFileName = "fbsession.bin";
         private static readonly object sr_LockObject = new object();
-        private static Session s_Instance = null;
+        private static Session s_Instance;
         private User m_CurrentlyLoggedInUser;
         private UserData m_UserData;
 
