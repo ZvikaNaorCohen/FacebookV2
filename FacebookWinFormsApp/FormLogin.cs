@@ -33,7 +33,7 @@ namespace BasicFacebookFeatures
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
-            m_CurrentSession = new Session();
+            m_CurrentSession = Session.Instance;
             checkSavedLogin();
         }
 
@@ -105,7 +105,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                FormMain formMain = new FormMain(m_CurrentSession);
+                FormMain formMain = new FormMain();
                 formMain.Text = k_AppName;
                 Hide();
                 formMain.ShowDialog();

@@ -16,9 +16,9 @@ namespace BasicFacebookFeatures
         private Session m_LoginSession;
         private UserData m_UserData;
 
-        internal FormMain(Session i_LoginSession)
+        internal FormMain()
         {
-            m_LoginSession = i_LoginSession;
+            m_LoginSession = Session.Instance;
             m_UserData = m_LoginSession.UserData;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;

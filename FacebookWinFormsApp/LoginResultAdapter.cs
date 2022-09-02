@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
-using FacebookWrapper;
+﻿using FacebookWrapper;
 
 namespace BasicFacebookFeatures
 {
-    public class LoginResultAdapter
+    internal class LoginResultAdapter
     {
         private LoginResult m_LoginResult;
 
@@ -16,7 +10,7 @@ namespace BasicFacebookFeatures
 
         private string[] RequestedPermissions { get; set; }
 
-        public LoginResult LoginResult
+        internal LoginResult LoginResult
         {
             get
             {
@@ -24,7 +18,7 @@ namespace BasicFacebookFeatures
             }
         }
 
-        public string AccessToken
+        internal string AccessToken
         {
             get
             {
@@ -32,13 +26,13 @@ namespace BasicFacebookFeatures
             }
         }
 
-        public LoginResultAdapter(string i_AppId, string[] i_RequestedPermissions)
+        internal LoginResultAdapter(string i_AppId, string[] i_RequestedPermissions)
         {
             AppId = i_AppId;
             RequestedPermissions = i_RequestedPermissions;
         }
 
-        public void FacebookLogin()
+        internal void FacebookLogin()
         {
             m_LoginResult = FacebookService.Login(AppId, RequestedPermissions);
         }

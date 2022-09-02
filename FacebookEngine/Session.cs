@@ -5,11 +5,32 @@ using FacebookWrapper.ObjectModel;
 
 namespace FacebookEngine
 {
-    public class Session
+    public sealed class Session
     {
         private const string k_SessionFileName = "fbsession.bin";
+        private static readonly object sr_LockObject = new object();
+        private static Session s_Instance = null;
         private User m_CurrentlyLoggedInUser;
         private UserData m_UserData;
+
+        public static Session Instance
+        {
+            get
+            {
+                if (s_Instance == null)
+                {
+                    lock (sr_LockObject)
+                    {
+                        if (s_Instance == null)
+                        {
+                            s_Instance = new Session();
+                        }
+                    }
+                }
+
+                return s_Instance;
+            }
+        }
 
         public string AccessToken { get; private set; }
 
@@ -29,7 +50,7 @@ namespace FacebookEngine
             }
         }
 
-        public Session()
+        private Session()
         {
             m_CurrentlyLoggedInUser = null;
             m_UserData = null;
