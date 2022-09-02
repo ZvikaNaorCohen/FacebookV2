@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using FacebookEngine;
 
@@ -18,17 +19,11 @@ namespace BasicFacebookFeatures
 
         internal FormMain()
         {
-            m_LoginSession = Session.Instance;
-            m_UserData = m_LoginSession.UserData;
+            InitializeComponent();
+            HandleCreated += new EventHandler(HandleCreated_FetchInfo);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            InitializeComponent();
-            this.HandleCreated += new EventHandler(HandleCreated_FetchInfo);
             Icon = Properties.Resources.Facebook;
-            if(Session.IsSessionSaved())
-            {
-                checkBoxKeepLoggedIn.Checked = true;
-            }
         }
 
         internal bool RememberMe
@@ -41,6 +36,13 @@ namespace BasicFacebookFeatures
 
         private void fetchUserInfo()
         {
+            m_LoginSession = Session.Instance;
+            m_UserData = m_LoginSession.UserData;
+            if (Session.IsSessionSaved())
+            {
+                checkBoxKeepLoggedIn.Checked = true;
+            }
+
             pictureBoxProfile.Image = m_UserData.ProfilePicture;
             labelFullName.Text = m_LoginSession.UserName;
             labelFullName.BackColor = Color.Empty;

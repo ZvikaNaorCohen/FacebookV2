@@ -29,11 +29,11 @@ namespace BasicFacebookFeatures
         internal FormLogin()
         {
             InitializeComponent();
+            m_CurrentSession = Session.Instance;
+            FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
             Icon = Properties.Resources.Lock;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
-            m_CurrentSession = Session.Instance;
             checkSavedLogin();
         }
 
@@ -89,11 +89,11 @@ namespace BasicFacebookFeatures
             if(!m_CurrentSession.IsLoggedIn())
             {
                 LoginResultAdapter loginResultAdapter = new LoginResultAdapter(k_AppId, r_RequestedPermissions);
+
                 new Thread(() => loginResultAdapter.FacebookLogin()).Start();
 
                 // LoginResult loginResult = FacebookService.Login(k_AppId, r_RequestedPermissions);
-
-                if(!string.IsNullOrEmpty(loginResultAdapter.AccessToken))
+                if (!string.IsNullOrEmpty(loginResultAdapter.AccessToken))
                 {
                     m_CurrentSession.Initialize(loginResultAdapter.LoginResult);
                     checkLoginStatus();
