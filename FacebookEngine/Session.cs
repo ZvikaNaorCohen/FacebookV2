@@ -80,7 +80,6 @@ namespace FacebookEngine
             m_CurrentlyLoggedInUser = i_UserLogin.LoggedInUser;
             AccessToken = i_UserLogin.AccessToken;
             fetchUserData();
-            //new Thread(() => fetchUserData()).Start();
         }
 
         public void Terminate(bool i_RememberUser)
