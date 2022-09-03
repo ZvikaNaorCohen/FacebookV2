@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 using FacebookWrapper.ObjectModel;
 
@@ -10,15 +11,20 @@ namespace BasicFacebookFeatures
 
         internal PictureBoxFacebook(Photo i_FacebookPhoto, int i_PhotoSize)
         {
-            Photo = i_FacebookPhoto.ImageNormal;
-            Thumbnail = i_FacebookPhoto.ImageThumb;
-            Image = Thumbnail;
+            Image = Properties.Resources.placeholderpicture;
+            new Thread(() => loadImage(i_FacebookPhoto)).Start();
             Margin = new Padding(k_PaddingSize);
             Size = new Size(i_PhotoSize, i_PhotoSize);
         }
 
-        internal Image Photo { get; }
+        internal Image Photo { get; private set; }
 
-        internal Image Thumbnail { get; }
+        internal Image Thumbnail { get; private set; }
+
+        private void loadImage(Photo i_FacebookPhoto)
+        {
+            Thumbnail = Image = i_FacebookPhoto.ImageThumb;
+            Photo = i_FacebookPhoto.ImageNormal;
+        }
     }
 }

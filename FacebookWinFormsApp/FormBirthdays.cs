@@ -13,7 +13,7 @@ namespace BasicFacebookFeatures
         {
             r_LoginSession = i_LoginSession;
             InitializeComponent();
-            this.HandleCreated += new EventHandler(OnHandleCreated);
+            HandleCreated += OnHandleCreated;
         }
 
         public void OnHandleCreated(object sender, EventArgs e)
