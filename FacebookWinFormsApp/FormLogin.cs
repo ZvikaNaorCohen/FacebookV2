@@ -14,6 +14,7 @@ namespace BasicFacebookFeatures
         private const string k_LoginText = "Login";
         private const string k_RememberLoginText = "Continue as";
         private const string k_LoginErrorMessage = "Login failed. Please try again.";
+        private const string k_ConnectText = "Connecting to Facebook...";
         private readonly string[] r_RequestedPermissions =
             {
                 "email", "public_profile", "user_photos", "user_friends", "user_posts", "user_likes",
@@ -29,12 +30,12 @@ namespace BasicFacebookFeatures
         internal FormLogin()
         {
             InitializeComponent();
+            m_CurrentSession = Session.Instance;
+            FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
+            new Thread(() => checkSavedLogin()).Start();
             Icon = Properties.Resources.Lock;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
-            m_CurrentSession = new Session();
-            checkSavedLogin();
         }
 
         private void InitializeComponent()
@@ -89,11 +90,11 @@ namespace BasicFacebookFeatures
             if(!m_CurrentSession.IsLoggedIn())
             {
                 LoginResultAdapter loginResultAdapter = new LoginResultAdapter(k_AppId, r_RequestedPermissions);
+
                 new Thread(() => loginResultAdapter.FacebookLogin()).Start();
 
                 // LoginResult loginResult = FacebookService.Login(k_AppId, r_RequestedPermissions);
-
-                if(!string.IsNullOrEmpty(loginResultAdapter.AccessToken))
+                if (!string.IsNullOrEmpty(loginResultAdapter.AccessToken))
                 {
                     m_CurrentSession.Initialize(loginResultAdapter.LoginResult);
                     checkLoginStatus();
@@ -105,7 +106,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                FormMain formMain = new FormMain(m_CurrentSession);
+                FormMain formMain = new FormMain();
                 formMain.Text = k_AppName;
                 Hide();
                 formMain.ShowDialog();
@@ -118,9 +119,11 @@ namespace BasicFacebookFeatures
         {
             if (Session.IsSessionSaved())
             {
+                buttonLogin.Enabled = false;
+                buttonLogin.Text = k_ConnectText;
                 m_CurrentSession.LoadFromFile();
                 checkBoxSaveLogin.Checked = true;
-                checkLoginStatus();
+                buttonLogin.Invoke(new Action(() => checkLoginStatus()));
             }
         }
 
@@ -131,6 +134,7 @@ namespace BasicFacebookFeatures
                 buttonLogin.Text = $@"{k_RememberLoginText} {m_CurrentSession.UserName}";
                 buttonLogout.Enabled = true;
                 checkBoxSaveLogin.Enabled = true;
+                buttonLogin.Enabled = true;
             }
         }
 

@@ -16,19 +16,13 @@ namespace BasicFacebookFeatures
         private Session m_LoginSession;
         private UserData m_UserData;
 
-        internal FormMain(Session i_LoginSession)
+        internal FormMain()
         {
-            m_LoginSession = i_LoginSession;
-            m_UserData = m_LoginSession.UserData;
+            InitializeComponent();
+            HandleCreated += HandleCreated_FetchInfo;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
-            InitializeComponent();
-            this.HandleCreated += new EventHandler(HandleCreated_FetchInfo);
             Icon = Properties.Resources.Facebook;
-            if(Session.IsSessionSaved())
-            {
-                checkBoxKeepLoggedIn.Checked = true;
-            }
         }
 
         internal bool RememberMe
@@ -41,13 +35,19 @@ namespace BasicFacebookFeatures
 
         private void fetchUserInfo()
         {
-            pictureBoxProfile.Image = m_UserData.ProfilePicture;
-            labelFullName.Text = m_LoginSession.UserName;
+            m_LoginSession = Session.Instance;
+            m_UserData = m_LoginSession.UserData;
+            if (Session.IsSessionSaved())
+            {
+                checkBoxKeepLoggedIn.Checked = true;
+            }
+
             labelFullName.BackColor = Color.Empty;
             makeProfilePictureCircle();
             updateFriendsDummyList();
             updateNewsFeed();
-            updateUserInfo();
+            userDataBindingSource.DataSource = m_UserData;
+            userInformationBindingSource.DataSource = m_UserData.UserInformation;
         }
 
         private void makeProfilePictureCircle()
@@ -127,15 +127,6 @@ namespace BasicFacebookFeatures
             {
                 MessageBox.Show("No Posts to retrieve :(");
             }
-        }
-
-        private void updateUserInfo()
-        {
-            labelBirthday.Text = m_UserData.UserInformation.Birthday;
-            labelHometown.Text = m_UserData.UserInformation.Hometown;
-            labelRelationship.Text = m_UserData.UserInformation.RelationshipStatus;
-            labelEmail.Text = m_UserData.UserInformation.Email;
-            labelHobbies.Text = m_UserData.UserInformation.InterestedIn;
         }
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
