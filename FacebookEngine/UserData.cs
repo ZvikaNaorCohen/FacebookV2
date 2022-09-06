@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using FacebookWrapper.ObjectModel;
 
 namespace FacebookEngine
@@ -48,6 +50,40 @@ namespace FacebookEngine
             {
                 return r_UserProfilePicture;
             }
+        }
+
+        public List<string> GetPosts(int i_PostCount)
+        {
+            IOrderedEnumerable<KeyValuePair<PostsDummy, DateTime>> sortedPostsDictionary;
+            List<string> postList = new List<string>();
+            Dictionary<PostsDummy, DateTime> postsDictionary = new Dictionary<PostsDummy, DateTime>();
+
+            foreach(FriendsDummy friend in UserDummyFriendsList)
+            {
+                if (!friend.Muted)
+                {
+                    for(int i = 0; i < friend.AllUserDummyPosts.Count && i < i_PostCount; ++i)
+                    {
+                        postsDictionary.Add(friend.AllUserDummyPosts[i], friend.AllUserDummyPosts[i].DatePosted);
+                    }
+                }
+            }
+
+            sortedPostsDictionary = from entry in postsDictionary orderby entry.Value descending select entry;
+
+            foreach (KeyValuePair<PostsDummy, DateTime> entry in sortedPostsDictionary)
+            {
+                StringBuilder stringToAdd = new StringBuilder();
+
+                stringToAdd.Append(entry.Key.Author.Name);
+                stringToAdd.Append(": ");
+                stringToAdd.Append(entry.Key.Message);
+                stringToAdd.Append(". Date: ");
+                stringToAdd.Append(entry.Value);
+                postList.Add(stringToAdd.ToString());
+            }
+
+            return postList;
         }
 
         public List<Group> GetSortedGroupsList(eSortBy i_SortBy)

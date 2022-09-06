@@ -46,7 +46,6 @@ namespace BasicFacebookFeatures
                 checkBoxKeepLoggedIn.Checked = true;
             }
 
-            labelFullName.BackColor = Color.Empty;
             makeProfilePictureCircle();
             updateFriendsDummyList();
             updateNewsFeed();
@@ -101,35 +100,12 @@ namespace BasicFacebookFeatures
         private void updateNewsFeed()
         {
             listBoxNewsFeed.Items.Clear();
-            Dictionary<PostsDummy, DateTime> postsDictionary = new Dictionary<PostsDummy, DateTime>();
-            foreach(FriendsDummy friend in m_UserData.UserDummyFriendsList)
+            foreach(string post in m_UserData.GetPosts(k_MaxPostCount))
             {
-                if(!friend.Muted)
-                {
-                    for(int i = 0; i < friend.AllUserDummyPosts.Count && i < k_MaxPostCount; i++)
-                    {
-                        postsDictionary.Add(friend.AllUserDummyPosts[i], friend.AllUserDummyPosts[i].DatePosted);
-                    }
-                }
+                listBoxNewsFeed.Items.Add(post);
             }
 
-            IOrderedEnumerable<KeyValuePair<PostsDummy, DateTime>> sortedPostsDictionary = from entry in postsDictionary orderby entry.Value descending select entry;
-
-            foreach (KeyValuePair<PostsDummy, DateTime> entry in sortedPostsDictionary)
-            {
-                // Old code:
-                StringBuilder stringToAdd = new StringBuilder();
-
-                // New code with DP [Write DP Name]:
-                stringToAdd.Append(entry.Key.Author.Name);
-                stringToAdd.Append(": ");
-                stringToAdd.Append(entry.Key.Message);
-                stringToAdd.Append(". Date: ");
-                stringToAdd.Append(entry.Value);
-                listBoxNewsFeed.Items.Add(stringToAdd);
-            }
-
-            if(listBoxNewsFeed.Items.Count == 0)
+            if (listBoxNewsFeed.Items.Count == 0)
             {
                 MessageBox.Show(k_NoPostsText);
             }
