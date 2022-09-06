@@ -7,21 +7,20 @@ namespace BasicFacebookFeatures
 {
     public partial class FormGroups : Form
     {
-        private readonly Session r_LoginSession;
+        private readonly UserData r_UserData;
 
-        public FormGroups(Session i_LoginSession)
+        public FormGroups()
         {
-            r_LoginSession = i_LoginSession;
+            r_UserData = Session.Instance.UserData;
             InitializeComponent();
-            this.HandleCreated += new EventHandler(OnHandleCreated);
+            HandleCreated += OnHandleCreated;
         }
 
         private void OnHandleCreated(object sender, EventArgs e)
         {
-            UserData userData = r_LoginSession.UserData;
             resetAllListBoxes();
             listBoxName.Invoke(new Action(() => listBoxName.DisplayMember = "Name"));
-            foreach (Group group in userData.GetSortedGroupsList(eSortBy.Name))
+            foreach (Group group in r_UserData.GetSortedGroupsList(eSortBy.Name))
             {
                 listBoxName.Invoke(new Action(() => listBoxName.Items.Add(group)));
                 if (!string.IsNullOrEmpty(group.Description))
@@ -44,11 +43,14 @@ namespace BasicFacebookFeatures
         private void listBoxName_Clicked(object sender, EventArgs e)
         {
             ListBox groupChosen = sender as ListBox;
-            UserData userData = r_LoginSession.UserData;
 
-            foreach (Group group in userData.GetSortedGroupsList(eSortBy.Name))
+            foreach (Group group in r_UserData.GetSortedGroupsList(eSortBy.Name))
             {
-                if(groupChosen.SelectedItem.ToString() == group.Name)
+                if(groupChosen == null)
+                {
+                    pictureBoxGroup.Image = Properties.Resources.placeholderpicture;
+                }
+                else if(groupChosen.SelectedItem.ToString() == group.Name)
                 {
                     pictureBoxGroup.Image = group.ImageLarge;
                 }

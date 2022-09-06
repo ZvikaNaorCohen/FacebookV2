@@ -14,9 +14,9 @@ namespace BasicFacebookFeatures
         private readonly UserData r_UserData;
         private TableLayoutPanel m_TableLayoutPanelAlbum;
 
-        internal FormAlbums(UserData i_UserData)
+        internal FormAlbums()
         {
-            r_UserData = i_UserData;
+            r_UserData = Session.Instance.UserData;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Icon = Properties.Resources.Album;
@@ -37,6 +37,7 @@ namespace BasicFacebookFeatures
             foreach (Album album in r_UserData.GetSortedAlbumsList(eSortBy.Name))
             {
                 ButtonAlbum albumButton = new ButtonAlbum(album, k_PictureSize);
+
                 albumButton.Dock = DockStyle.Fill;
                 albumButton.Text = album.Name;
                 albumButton.Click += buttonAlbum_Clicked;
@@ -62,6 +63,7 @@ namespace BasicFacebookFeatures
             if(sender is PictureBoxFacebook facebookPicture)
             {
                 FormImage imageDisplay = new FormImage(facebookPicture.Photo);
+
                 imageDisplay.ShowDialog();
             }
         }

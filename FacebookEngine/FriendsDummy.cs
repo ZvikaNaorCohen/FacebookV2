@@ -34,6 +34,19 @@ namespace FacebookEngine
             LastPost = AllUserDummyPosts[AllUserDummyPosts.Count - 1].Message;
             LastPostDate = AllUserDummyPosts[AllUserDummyPosts.Count - 1].DatePosted;
             Muted = false;
+            calculateDaysUntilBirthday();
+        }
+
+        private void calculateDaysUntilBirthday()
+        {
+            DateTime nextBirthday = Birthdate.AddYears(DateTime.Today.Year - Birthdate.Year);
+
+            if(nextBirthday < DateTime.Today)
+            {
+                nextBirthday = nextBirthday.AddYears(1);
+            }
+
+            DaysToBirthday = (nextBirthday - DateTime.Today).Days;
         }
     }
 }

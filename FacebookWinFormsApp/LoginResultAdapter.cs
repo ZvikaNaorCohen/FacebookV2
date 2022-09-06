@@ -1,4 +1,5 @@
-﻿using FacebookWrapper;
+﻿using System;
+using FacebookWrapper;
 
 namespace BasicFacebookFeatures
 {
@@ -6,9 +7,9 @@ namespace BasicFacebookFeatures
     {
         private LoginResult m_LoginResult;
 
-        private string AppId { get; set; }
+        private string AppId { get; }
 
-        private string[] RequestedPermissions { get; set; }
+        private string[] RequestedPermissions { get; }
 
         internal LoginResult LoginResult
         {

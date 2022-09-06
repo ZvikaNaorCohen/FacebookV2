@@ -124,7 +124,7 @@ namespace BasicFacebookFeatures
             // 
             // labelFullName
             // 
-            this.labelFullName.BackColor = System.Drawing.Color.Transparent;
+            this.labelFullName.BackColor = System.Drawing.Color.Empty;
             this.labelFullName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "Name", true));
             this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelFullName.ForeColor = System.Drawing.Color.Black;
