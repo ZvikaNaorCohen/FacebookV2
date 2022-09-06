@@ -107,7 +107,7 @@ namespace BasicFacebookFeatures
             if(!string.IsNullOrEmpty(loginResult.AccessToken))
             {
                 m_CurrentSession.Initialize(loginResult);
-                checkLoginStatus();
+                buttonLogin.Invoke(new Action(checkLoginStatus));
             }
             else
             {
