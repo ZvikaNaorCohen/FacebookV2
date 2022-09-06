@@ -36,6 +36,7 @@ namespace BasicFacebookFeatures
                 stringToAdd.Append(daysToBirthday.ToString());
                 stringToAdd.Append(" Days to birthday. ");
                 listBoxName.Invoke(new Action(() => listBoxName.Items.Add(stringToAdd)));
+
                 // listBoxName.Items.Add(stringToAdd);
             }
         }

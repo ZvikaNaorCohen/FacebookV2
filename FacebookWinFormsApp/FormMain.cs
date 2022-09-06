@@ -10,6 +10,9 @@ namespace BasicFacebookFeatures
 {
     internal partial class FormMain : Form
     {
+        private const string k_NoFriendsError = "No Friends Error";
+        private const string k_NoFriendsText = "No friends were found.";
+        private const string k_NoPostsText = "No Posts to retrieve :(";
         private const int k_FriendsWidth = 165;
         private const int k_FriendsHeight = 175;
         private const int k_MaxPostCount = 4;
@@ -53,6 +56,7 @@ namespace BasicFacebookFeatures
         private void makeProfilePictureCircle()
         {
             System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+
             gp.AddEllipse(0, 0, pictureBoxProfile.Width, pictureBoxProfile.Height);
             Region rg = new Region(gp);
             pictureBoxProfile.Region = rg;
@@ -61,19 +65,21 @@ namespace BasicFacebookFeatures
         private void updateFriendsDummyList()
         {
             int friendCounter = 0;
+
             tableLayoutPanelFriends.Size = new Size(k_FriendsWidth, k_FriendsHeight);
             tableLayoutPanelFriends.AutoScroll = true;
             foreach (FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
                 ButtonFriend friendItem = new ButtonFriend(friend);
+
                 friendItem.Text = friend.Name;
                 friendItem.Click += FriendItem_Click;
-                tableLayoutPanelFriends.Controls.Add(friendItem, 0, friendCounter++);
+                tableLayoutPanelFriends.Controls.Add(friendItem, 0, ++friendCounter);
             }
 
             if (m_UserData.UserDummyFriendsList.Count == 0)
             {
-                MessageBox.Show("No friends were found. ", "No Friends Error");
+                MessageBox.Show(k_NoFriendsText, k_NoFriendsError);
             }
         }
 
@@ -114,7 +120,6 @@ namespace BasicFacebookFeatures
                 StringBuilder stringToAdd = new StringBuilder();
 
                 // New code with DP [Write DP Name]:
-
                 stringToAdd.Append(entry.Key.Author.Name);
                 stringToAdd.Append(": ");
                 stringToAdd.Append(entry.Key.Message);
@@ -125,25 +130,28 @@ namespace BasicFacebookFeatures
 
             if(listBoxNewsFeed.Items.Count == 0)
             {
-                MessageBox.Show("No Posts to retrieve :(");
+                MessageBox.Show(k_NoPostsText);
             }
         }
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
         {
             FormGroups groupsForm = new FormGroups(m_LoginSession);
+
             groupsForm.ShowDialog();
         }
 
         private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
         {
             FormBirthdays closestBirthdaysForm = new FormBirthdays(m_LoginSession);
+
             closestBirthdaysForm.ShowDialog();
         }
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
         {
             FormLikedPages likedPagesForm = new FormLikedPages(m_LoginSession);
+
             likedPagesForm.ShowDialog();
         }
 
