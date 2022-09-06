@@ -112,8 +112,7 @@ namespace BasicFacebookFeatures
             else
             {
                 MessageBox.Show(k_LoginErrorMessage, k_LoginError);
-                buttonLogin.Enabled = true;
-                buttonLogin.Text = k_LoginText;
+                buttonLogin.Invoke(new Action(resetLoginButton));
             }
         }
 
@@ -124,8 +123,14 @@ namespace BasicFacebookFeatures
             formMain.Text = k_AppName;
             Hide();
             formMain.ShowDialog();
-            checkBoxSaveLogin.Checked = formMain.RememberMe;
+            checkBoxSaveLogin.Invoke(new Action(() => checkBoxSaveLogin.Checked = formMain.RememberMe));
             Show();
+        }
+
+        private void resetLoginButton()
+        {
+            buttonLogin.Enabled = true;
+            buttonLogin.Text = k_LoginText;
         }
 
         private void checkSavedLogin()
@@ -135,7 +140,7 @@ namespace BasicFacebookFeatures
                 buttonLogin.Enabled = false;
                 buttonLogin.Text = k_ConnectText;
                 m_CurrentSession.LoadFromFile();
-                checkBoxSaveLogin.Checked = true;
+                checkBoxSaveLogin.Invoke(new Action(() => checkBoxSaveLogin.Checked = true));
                 buttonLogin.Invoke(new Action(checkLoginStatus));
             }
         }
