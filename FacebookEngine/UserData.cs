@@ -55,7 +55,7 @@ namespace FacebookEngine
         public List<string> GetPosts(int i_PostCount)
         {
             IOrderedEnumerable<KeyValuePair<PostsDummy, DateTime>> sortedPostsDictionary;
-            List<string> postList = new List<string>();
+            List<string> postsList = new List<string>();
             Dictionary<PostsDummy, DateTime> postsDictionary = new Dictionary<PostsDummy, DateTime>();
 
             foreach(FriendsDummy friend in UserDummyFriendsList)
@@ -80,10 +80,35 @@ namespace FacebookEngine
                 stringToAdd.Append(entry.Key.Message);
                 stringToAdd.Append(". Date: ");
                 stringToAdd.Append(entry.Value);
-                postList.Add(stringToAdd.ToString());
+                postsList.Add(stringToAdd.ToString());
             }
 
-            return postList;
+            return postsList;
+        }
+
+        public List<string> GetSortedBirthdaysList(eSortBy i_SortBy)
+        {
+            List<string> birthdaysList = new List<string>();
+
+            sortFriendList(i_SortBy);
+            foreach (FriendsDummy friend in UserDummyFriendsList)
+            {
+                StringBuilder birthdayString = new StringBuilder();
+
+                birthdayString.Append(friend.Name);
+                birthdayString.Append("    ||    ");
+                birthdayString.Append(friend.Birthdate.Day.ToString());
+                birthdayString.Append(".");
+                birthdayString.Append(friend.Birthdate.Month.ToString());
+                birthdayString.Append(".");
+                birthdayString.Append(friend.Birthdate.Year.ToString());
+                birthdayString.Append("    ||    ");
+                birthdayString.Append(friend.DaysToBirthday.ToString());
+                birthdayString.Append(" Days to birthday. ");
+                birthdaysList.Add(birthdayString.ToString());
+            }
+
+            return birthdaysList;
         }
 
         public List<Group> GetSortedGroupsList(eSortBy i_SortBy)
@@ -148,6 +173,28 @@ namespace FacebookEngine
             for (uint i = 0u; i < i_FriendCount; ++i)
             {
                 r_UserDummyFriendsList.Add(new FriendsDummy(RandomGenerator.GetRandomFromType("Name"), RandomGenerator.GenerateRandomDateTime(), User.eGender.male));
+            }
+        }
+
+        private void sortFriendList(eSortBy i_SortBy)
+        {
+            switch (i_SortBy)
+            {
+                case eSortBy.Age:
+                    r_UserDummyFriendsList.Sort(
+                        (i_FriendOne, i_FriendTwo) => DateTime.Compare(i_FriendOne.Birthdate, i_FriendTwo.Birthdate));
+                    break;
+                case eSortBy.Date:
+                    r_UserDummyFriendsList.Sort(
+                        (i_FriendOne, i_FriendTwo) => i_FriendOne.DaysToBirthday.CompareTo(i_FriendTwo.DaysToBirthday));
+                    break;
+                default:
+                    r_UserDummyFriendsList.Sort(
+                        (i_FriendOne, i_FriendTwo) => string.Compare(
+                            i_FriendOne.Name,
+                            i_FriendTwo.Name,
+                            StringComparison.Ordinal));
+                    break;
             }
         }
     }

@@ -6,5 +6,7 @@
         LastUpdated,
         Count,
         Name,
+        Age,
+        Date,
     }
 }

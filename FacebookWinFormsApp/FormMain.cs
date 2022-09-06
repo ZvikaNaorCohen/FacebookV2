@@ -120,7 +120,7 @@ namespace BasicFacebookFeatures
 
         private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
         {
-            FormBirthdays closestBirthdaysForm = new FormBirthdays(m_LoginSession);
+            FormBirthdays closestBirthdaysForm = new FormBirthdays();
 
             closestBirthdaysForm.ShowDialog();
         }
@@ -134,7 +134,7 @@ namespace BasicFacebookFeatures
 
         private void buttonGetAlbums_Clicked(object sender, EventArgs e)
         {
-            FormAlbums albumsForm = new FormAlbums(m_UserData);
+            FormAlbums albumsForm = new FormAlbums();
 
             albumsForm.Text = k_AlbumsTitle;
             albumsForm.AutoSize = true;

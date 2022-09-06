@@ -14,9 +14,9 @@ namespace BasicFacebookFeatures
         private readonly UserData r_UserData;
         private TableLayoutPanel m_TableLayoutPanelAlbum;
 
-        internal FormAlbums(UserData i_UserData)
+        internal FormAlbums()
         {
-            r_UserData = i_UserData;
+            r_UserData = Session.Instance.UserData;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
             Icon = Properties.Resources.Album;
