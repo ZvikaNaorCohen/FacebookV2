@@ -127,7 +127,7 @@ namespace BasicFacebookFeatures
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
         {
-            FormLikedPages likedPagesForm = new FormLikedPages(m_LoginSession);
+            FormLikedPages likedPagesForm = new FormLikedPages();
 
             likedPagesForm.ShowDialog();
         }
