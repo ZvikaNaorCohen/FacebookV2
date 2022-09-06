@@ -62,6 +62,7 @@ namespace BasicFacebookFeatures
             if(sender is PictureBoxFacebook facebookPicture)
             {
                 FormImage imageDisplay = new FormImage(facebookPicture.Photo);
+
                 imageDisplay.ShowDialog();
             }
         }

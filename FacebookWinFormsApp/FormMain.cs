@@ -13,6 +13,7 @@ namespace BasicFacebookFeatures
         private const string k_NoFriendsError = "No Friends Error";
         private const string k_NoFriendsText = "No friends were found.";
         private const string k_NoPostsText = "No Posts to retrieve :(";
+        private const string k_AlbumsTitle = "Albums";
         private const int k_FriendsWidth = 165;
         private const int k_FriendsHeight = 175;
         private const int k_MaxPostCount = 4;
@@ -159,7 +160,7 @@ namespace BasicFacebookFeatures
         {
             FormAlbums albumsForm = new FormAlbums(m_UserData);
 
-            albumsForm.Text = "Albums";
+            albumsForm.Text = k_AlbumsTitle;
             albumsForm.AutoSize = true;
             albumsForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             albumsForm.ShowDialog();
