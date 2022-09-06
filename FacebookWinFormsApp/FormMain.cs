@@ -113,7 +113,7 @@ namespace BasicFacebookFeatures
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
         {
-            FormGroups groupsForm = new FormGroups(m_LoginSession);
+            FormGroups groupsForm = new FormGroups();
 
             groupsForm.ShowDialog();
         }
