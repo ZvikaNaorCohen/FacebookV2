@@ -31,6 +31,7 @@ namespace BasicFacebookFeatures
         {
             this.components = new System.ComponentModel.Container();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.userDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.coverPhotoPictureBox = new System.Windows.Forms.PictureBox();
             this.listBoxNewsFeed = new System.Windows.Forms.ListBox();
             this.buttonGetGroups = new System.Windows.Forms.Button();
@@ -48,11 +49,10 @@ namespace BasicFacebookFeatures
             this.labelFriends = new System.Windows.Forms.Label();
             this.labelNews = new System.Windows.Forms.Label();
             this.tableLayoutPanelFriends = new System.Windows.Forms.TableLayoutPanel();
-            this.userDataBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userDataBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBoxProfile
@@ -65,6 +65,10 @@ namespace BasicFacebookFeatures
             this.pictureBoxProfile.Size = new System.Drawing.Size(129, 94);
             this.pictureBoxProfile.TabIndex = 0;
             this.pictureBoxProfile.TabStop = false;
+            // 
+            // userDataBindingSource
+            // 
+            this.userDataBindingSource.DataSource = typeof(FacebookEngine.UserData);
             // 
             // coverPhotoPictureBox
             // 
@@ -95,9 +99,10 @@ namespace BasicFacebookFeatures
             this.buttonGetGroups.Name = "buttonGetGroups";
             this.buttonGetGroups.Size = new System.Drawing.Size(142, 64);
             this.buttonGetGroups.TabIndex = 6;
+            this.buttonGetGroups.Tag = "Groups";
             this.buttonGetGroups.Text = "Show Groups";
             this.buttonGetGroups.UseVisualStyleBackColor = true;
-            this.buttonGetGroups.Click += new System.EventHandler(this.buttonGetGroups_Clicked);
+            this.buttonGetGroups.Click += new System.EventHandler(this.buttonFacebookForm_Clicked);
             // 
             // buttonGetAlbums
             // 
@@ -107,9 +112,10 @@ namespace BasicFacebookFeatures
             this.buttonGetAlbums.Name = "buttonGetAlbums";
             this.buttonGetAlbums.Size = new System.Drawing.Size(142, 64);
             this.buttonGetAlbums.TabIndex = 7;
+            this.buttonGetAlbums.Tag = "Albums";
             this.buttonGetAlbums.Text = "Show Albums";
             this.buttonGetAlbums.UseVisualStyleBackColor = true;
-            this.buttonGetAlbums.Click += new System.EventHandler(this.buttonGetAlbums_Clicked);
+            this.buttonGetAlbums.Click += new System.EventHandler(this.buttonFacebookForm_Clicked);
             // 
             // buttonLikedPages
             // 
@@ -118,13 +124,13 @@ namespace BasicFacebookFeatures
             this.buttonLikedPages.Name = "buttonLikedPages";
             this.buttonLikedPages.Size = new System.Drawing.Size(142, 64);
             this.buttonLikedPages.TabIndex = 8;
+            this.buttonLikedPages.Tag = "Pages";
             this.buttonLikedPages.Text = "Show Liked Pages";
             this.buttonLikedPages.UseVisualStyleBackColor = true;
-            this.buttonLikedPages.Click += new System.EventHandler(this.buttonGetPages_Clicked);
+            this.buttonLikedPages.Click += new System.EventHandler(this.buttonFacebookForm_Clicked);
             // 
             // labelFullName
             // 
-            this.labelFullName.BackColor = System.Drawing.Color.Empty;
             this.labelFullName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.userInformationBindingSource, "Name", true));
             this.labelFullName.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.labelFullName.ForeColor = System.Drawing.Color.Black;
@@ -157,9 +163,10 @@ namespace BasicFacebookFeatures
             this.buttonShowBirthdays.Name = "buttonShowBirthdays";
             this.buttonShowBirthdays.Size = new System.Drawing.Size(142, 64);
             this.buttonShowBirthdays.TabIndex = 12;
+            this.buttonShowBirthdays.Tag = "Birthdays";
             this.buttonShowBirthdays.Text = "Show Closest Birthdays";
             this.buttonShowBirthdays.UseVisualStyleBackColor = true;
-            this.buttonShowBirthdays.Click += new System.EventHandler(this.buttonClosestBirthdays_Clicked);
+            this.buttonShowBirthdays.Click += new System.EventHandler(this.buttonFacebookForm_Clicked);
             // 
             // labelEmail
             // 
@@ -256,10 +263,6 @@ namespace BasicFacebookFeatures
             this.tableLayoutPanelFriends.Size = new System.Drawing.Size(50, 50);
             this.tableLayoutPanelFriends.TabIndex = 20;
             // 
-            // userDataBindingSource
-            // 
-            this.userDataBindingSource.DataSource = typeof(FacebookEngine.UserData);
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -286,11 +289,12 @@ namespace BasicFacebookFeatures
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Tag = "Main";
             this.Text = "FormMain";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userInformationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userDataBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

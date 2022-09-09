@@ -107,32 +107,11 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void buttonGetGroups_Clicked(object sender, EventArgs e)
+        private void buttonFacebookForm_Clicked(object sender, EventArgs e)
         {
-            Form groupsForm = FacebookFormFactory.CreateNewFacebookForm("Groups");
+            Form facebookForm = FacebookFormFactory.CreateNewFacebookForm((sender as Button)?.Tag as string);
 
-            groupsForm.ShowDialog();
-        }
-
-        private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
-        {
-            Form closestBirthdaysForm = FacebookFormFactory.CreateNewFacebookForm("Birthdays");
-
-            closestBirthdaysForm.ShowDialog();
-        }
-
-        private void buttonGetPages_Clicked(object sender, EventArgs e)
-        {
-            Form likedPagesForm = FacebookFormFactory.CreateNewFacebookForm("Pages");
-
-            likedPagesForm.ShowDialog();
-        }
-
-        private void buttonGetAlbums_Clicked(object sender, EventArgs e)
-        {
-            Form albumsForm = FacebookFormFactory.CreateNewFacebookForm("Albums");
-
-            albumsForm.ShowDialog();
+            facebookForm.ShowDialog();
         }
 
         private void checkBoxKeepLoggedIn_CheckedChanged(object sender, EventArgs e)
