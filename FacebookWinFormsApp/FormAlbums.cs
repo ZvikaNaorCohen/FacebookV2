@@ -8,6 +8,7 @@ namespace BasicFacebookFeatures
 {
     internal class FormAlbums : Form
     {
+        private const string k_AlbumsTitle = "Albums";
         private const int k_PictureSize = 100;
         private const int k_MinTableSize = 5;
         private const int k_AlbumTableTop = 0;
@@ -25,6 +26,9 @@ namespace BasicFacebookFeatures
 
         private void initializeComponent()
         {
+            Text = k_AlbumsTitle;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             m_TableLayoutPanelAlbum = new TableLayoutPanel();
             m_TableLayoutPanelAlbum.Top = k_AlbumTableTop;
             Controls.Add(m_TableLayoutPanelAlbum);

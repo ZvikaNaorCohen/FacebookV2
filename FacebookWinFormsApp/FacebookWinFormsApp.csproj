@@ -96,6 +96,7 @@
     <Compile Include="ButtonFriend.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="FacebookFormFactory.cs" />
     <Compile Include="FormAlbums.cs">
       <SubType>Form</SubType>
     </Compile>

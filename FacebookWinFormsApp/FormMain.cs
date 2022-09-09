@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using FacebookEngine;
 
@@ -13,7 +10,6 @@ namespace BasicFacebookFeatures
         private const string k_NoFriendsError = "No Friends Error";
         private const string k_NoFriendsText = "No friends were found.";
         private const string k_NoPostsText = "No Posts to retrieve :(";
-        private const string k_AlbumsTitle = "Albums";
         private const int k_FriendsWidth = 165;
         private const int k_FriendsHeight = 175;
         private const int k_MaxPostCount = 4;
@@ -113,32 +109,29 @@ namespace BasicFacebookFeatures
 
         private void buttonGetGroups_Clicked(object sender, EventArgs e)
         {
-            FormGroups groupsForm = new FormGroups();
+            Form groupsForm = FacebookFormFactory.CreateNewFacebookForm("Groups");
 
             groupsForm.ShowDialog();
         }
 
         private void buttonClosestBirthdays_Clicked(object sender, EventArgs e)
         {
-            FormBirthdays closestBirthdaysForm = new FormBirthdays();
+            Form closestBirthdaysForm = FacebookFormFactory.CreateNewFacebookForm("Birthdays");
 
             closestBirthdaysForm.ShowDialog();
         }
 
         private void buttonGetPages_Clicked(object sender, EventArgs e)
         {
-            FormLikedPages likedPagesForm = new FormLikedPages();
+            Form likedPagesForm = FacebookFormFactory.CreateNewFacebookForm("Pages");
 
             likedPagesForm.ShowDialog();
         }
 
         private void buttonGetAlbums_Clicked(object sender, EventArgs e)
         {
-            FormAlbums albumsForm = new FormAlbums();
+            Form albumsForm = FacebookFormFactory.CreateNewFacebookForm("Albums");
 
-            albumsForm.Text = k_AlbumsTitle;
-            albumsForm.AutoSize = true;
-            albumsForm.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             albumsForm.ShowDialog();
         }
 
