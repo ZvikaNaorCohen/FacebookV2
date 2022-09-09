@@ -5,11 +5,11 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormGroups : Form
+    internal partial class FormGroups : Form
     {
         private readonly UserData r_UserData;
 
-        public FormGroups()
+        internal FormGroups()
         {
             r_UserData = Session.Instance.UserData;
             InitializeComponent();
