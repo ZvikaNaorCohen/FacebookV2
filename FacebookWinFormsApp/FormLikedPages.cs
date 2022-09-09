@@ -5,18 +5,18 @@ using FacebookWrapper.ObjectModel;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormLikedPages : Form
+    internal partial class FormLikedPages : Form
     {
         private readonly UserData r_UserData;
 
-        public FormLikedPages()
+        internal FormLikedPages()
         {
             r_UserData = Session.Instance.UserData;
             InitializeComponent();
             HandleCreated += OnHandleCreated;
         }
 
-        public void OnHandleCreated(object sender, EventArgs e)
+        internal void OnHandleCreated(object sender, EventArgs e)
         {
             listBoxPageName.Invoke(new Action(() => listBoxPageName.DisplayMember = "Name"));
             foreach (Page page in r_UserData.GetSortedPagesList(eSortBy.Count))

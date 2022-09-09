@@ -10,7 +10,6 @@ namespace BasicFacebookFeatures
     {
         private const int k_FacebookCollectionLimit = 100;
         private const string k_AppId = "1225204811548586";
-        private const string k_AppName = "Facebook App";
         private const string k_LoginText = "Login";
         private const string k_RememberLoginText = "Continue as";
         private const string k_LoginError = "Login failed";
@@ -31,12 +30,12 @@ namespace BasicFacebookFeatures
         internal FormLogin()
         {
             InitializeComponent();
-            m_CurrentSession = Session.Instance;
-            FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
-            new Thread(checkSavedLogin).Start();
             Icon = Properties.Resources.Lock;
             FormBorderStyle = FormBorderStyle.FixedDialog;
             MaximizeBox = false;
+            FacebookService.s_CollectionLimit = k_FacebookCollectionLimit;
+            m_CurrentSession = Session.Instance;
+            checkSavedLogin();
         }
 
         private void InitializeComponent()
@@ -103,7 +102,7 @@ namespace BasicFacebookFeatures
             }
             else
             {
-                savedLogin();
+                continueToFacebook();
             }
         }
 
@@ -123,14 +122,13 @@ namespace BasicFacebookFeatures
             }
         }
 
-        private void savedLogin()
+        private void continueToFacebook()
         {
             Form formMain = FacebookFormFactory.CreateNewFacebookForm("Main");
 
-            formMain.Text = k_AppName;
             Hide();
             formMain.ShowDialog();
-            checkBoxSaveLogin.Invoke(new Action(() => checkBoxSaveLogin.Checked = ((FormMain)formMain).RememberMe));
+            checkBoxSaveLogin.Checked = ((FormMain)formMain).RememberMe;
             Show();
         }
 
@@ -146,10 +144,15 @@ namespace BasicFacebookFeatures
             {
                 buttonLogin.Enabled = false;
                 buttonLogin.Text = k_ConnectText;
-                m_CurrentSession.LoadFromFile();
-                checkBoxSaveLogin.Invoke(new Action(() => checkBoxSaveLogin.Checked = true));
-                buttonLogin.Invoke(new Action(checkLoginStatus));
+                new Thread(savedLoginConnect).Start();
             }
+        }
+
+        private void savedLoginConnect()
+        {
+            m_CurrentSession.LoadFromFile();
+            checkBoxSaveLogin.Invoke(new Action(() => checkBoxSaveLogin.Checked = true));
+            buttonLogin.Invoke(new Action(checkLoginStatus));
         }
 
         private void checkLoginStatus()
@@ -170,11 +173,11 @@ namespace BasicFacebookFeatures
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            FacebookService.LogoutWithUI();
             buttonLogin.Text = k_LoginText;
             checkBoxSaveLogin.Checked = false;
             buttonLogout.Enabled = false;
             checkBoxSaveLogin.Enabled = false;
+            FacebookService.LogoutWithUI();
             m_CurrentSession.Terminate(false);
         }
 

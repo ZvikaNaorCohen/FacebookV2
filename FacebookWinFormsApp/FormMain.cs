@@ -51,11 +51,12 @@ namespace BasicFacebookFeatures
 
         private void makeProfilePictureCircle()
         {
-            System.Drawing.Drawing2D.GraphicsPath gp = new System.Drawing.Drawing2D.GraphicsPath();
+            Region region;
+            System.Drawing.Drawing2D.GraphicsPath graphicsPath = new System.Drawing.Drawing2D.GraphicsPath();
 
-            gp.AddEllipse(0, 0, pictureBoxProfile.Width, pictureBoxProfile.Height);
-            Region rg = new Region(gp);
-            pictureBoxProfile.Region = rg;
+            graphicsPath.AddEllipse(0, 0, pictureBoxProfile.Width, pictureBoxProfile.Height);
+            region = new Region(graphicsPath);
+            pictureBoxProfile.Region = region;
         }
 
         private void updateFriendsDummyList()
@@ -70,7 +71,7 @@ namespace BasicFacebookFeatures
 
                 friendItem.Text = friend.Name;
                 friendItem.Click += FriendItem_Click;
-                tableLayoutPanelFriends.Controls.Add(friendItem, 0, ++friendCounter);
+                tableLayoutPanelFriends.Controls.Add(friendItem, 0, friendCounter++);
             }
 
             if (m_UserData.UserDummyFriendsList.Count == 0)

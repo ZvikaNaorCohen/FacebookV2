@@ -130,7 +130,6 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginResultAdapter.cs" />
     <Compile Include="PictureBoxFacebook.cs">
       <SubType>Component</SubType>
     </Compile>

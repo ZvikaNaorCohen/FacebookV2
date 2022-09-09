@@ -290,7 +290,7 @@ namespace BasicFacebookFeatures
             this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Tag = "Main";
-            this.Text = "FormMain";
+            this.Text = "Facebook App";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userDataBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.coverPhotoPictureBox)).EndInit();

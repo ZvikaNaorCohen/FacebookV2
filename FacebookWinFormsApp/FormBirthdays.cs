@@ -5,18 +5,18 @@ using FacebookEngine;
 
 namespace BasicFacebookFeatures
 {
-    public partial class FormBirthdays : Form
+    internal partial class FormBirthdays : Form
     {
         private readonly UserData r_UserData;
 
-        public FormBirthdays()
+        internal FormBirthdays()
         {
             r_UserData = Session.Instance.UserData;
             InitializeComponent();
             HandleCreated += OnHandleCreated;
         }
 
-        public void OnHandleCreated(object sender, EventArgs e)
+        internal void OnHandleCreated(object sender, EventArgs e)
         {
             updateBirthdaysList(eSortBy.Name);
         }
