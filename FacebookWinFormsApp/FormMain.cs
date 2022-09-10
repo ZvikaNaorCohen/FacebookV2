@@ -53,7 +53,6 @@ namespace BasicFacebookFeatures
         {
             Region region;
             System.Drawing.Drawing2D.GraphicsPath graphicsPath = new System.Drawing.Drawing2D.GraphicsPath();
-
             graphicsPath.AddEllipse(0, 0, pictureBoxProfile.Width, pictureBoxProfile.Height);
             region = new Region(graphicsPath);
             pictureBoxProfile.Region = region;
@@ -62,13 +61,11 @@ namespace BasicFacebookFeatures
         private void updateFriendsDummyList()
         {
             int friendCounter = 0;
-
             tableLayoutPanelFriends.Size = new Size(k_FriendsWidth, k_FriendsHeight);
             tableLayoutPanelFriends.AutoScroll = true;
             foreach (FriendsDummy friend in m_UserData.UserDummyFriendsList)
             {
                 ButtonFriend friendItem = new ButtonFriend(friend);
-
                 friendItem.Text = friend.Name;
                 friendItem.Click += FriendItem_Click;
                 tableLayoutPanelFriends.Controls.Add(friendItem, 0, friendCounter++);
@@ -111,7 +108,6 @@ namespace BasicFacebookFeatures
         private void buttonFacebookForm_Clicked(object sender, EventArgs e)
         {
             Form facebookForm = FacebookFormFactory.CreateNewFacebookForm((sender as Button)?.Tag as string);
-
             facebookForm.ShowDialog();
         }
 

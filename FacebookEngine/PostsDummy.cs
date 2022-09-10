@@ -18,18 +18,11 @@ namespace FacebookEngine
             Author = i_Author;
         }
 
-        public PostsDummy(string i_Message, DateTime i_DatePosted)
-        {
-            Message = i_Message;
-            DatePosted = i_DatePosted;
-        }
-
         public static List<PostsDummy> GenerateDummyPosts(FriendsDummy i_Author)
         {
             List<PostsDummy> postsDummy = new List<PostsDummy>();
             Random random = new Random(DateTime.Now.Second);
             int numberOfElements = random.Next(1, 10);
-
             for(int i = 0; i < numberOfElements; ++i)
             {
                 postsDummy.Add(new PostsDummy(i_Author));

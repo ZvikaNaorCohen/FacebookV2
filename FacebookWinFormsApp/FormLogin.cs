@@ -23,9 +23,9 @@ namespace BasicFacebookFeatures
             };
 
         private Session m_CurrentSession;
-        private Button buttonLogin;
-        private Button buttonLogout;
-        private CheckBox checkBoxSaveLogin;
+        private Button m_ButtonLogin;
+        private Button m_ButtonLogout;
+        private CheckBox m_CheckBoxSaveLogin;
 
         internal FormLogin()
         {
@@ -40,50 +40,50 @@ namespace BasicFacebookFeatures
 
         private void InitializeComponent()
         {
-            this.buttonLogin = new System.Windows.Forms.Button();
-            this.buttonLogout = new System.Windows.Forms.Button();
-            this.checkBoxSaveLogin = new System.Windows.Forms.CheckBox();
+            this.m_ButtonLogin = new System.Windows.Forms.Button();
+            this.m_ButtonLogout = new System.Windows.Forms.Button();
+            this.m_CheckBoxSaveLogin = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // buttonLogin
             // 
-            this.buttonLogin.Location = new System.Drawing.Point(107, 60);
-            this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(269, 65);
-            this.buttonLogin.TabIndex = 0;
-            this.buttonLogin.Text = "Login";
-            this.buttonLogin.UseVisualStyleBackColor = true;
-            this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
+            this.m_ButtonLogin.Location = new System.Drawing.Point(107, 60);
+            this.m_ButtonLogin.Name = "buttonLogin";
+            this.m_ButtonLogin.Size = new System.Drawing.Size(269, 65);
+            this.m_ButtonLogin.TabIndex = 0;
+            this.m_ButtonLogin.Text = "Login";
+            this.m_ButtonLogin.UseVisualStyleBackColor = true;
+            this.m_ButtonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Enabled = false;
-            this.buttonLogout.Location = new System.Drawing.Point(107, 145);
-            this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(269, 65);
-            this.buttonLogout.TabIndex = 1;
-            this.buttonLogout.Text = "Logout";
-            this.buttonLogout.UseVisualStyleBackColor = true;
-            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            this.m_ButtonLogout.Enabled = false;
+            this.m_ButtonLogout.Location = new System.Drawing.Point(107, 145);
+            this.m_ButtonLogout.Name = "buttonLogout";
+            this.m_ButtonLogout.Size = new System.Drawing.Size(269, 65);
+            this.m_ButtonLogout.TabIndex = 1;
+            this.m_ButtonLogout.Text = "Logout";
+            this.m_ButtonLogout.UseVisualStyleBackColor = true;
+            this.m_ButtonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
             // checkBoxSaveLogin
             // 
-            this.checkBoxSaveLogin.AutoSize = true;
-            this.checkBoxSaveLogin.Enabled = false;
-            this.checkBoxSaveLogin.Location = new System.Drawing.Point(176, 250);
-            this.checkBoxSaveLogin.Name = "checkBoxSaveLogin";
-            this.checkBoxSaveLogin.Size = new System.Drawing.Size(119, 20);
-            this.checkBoxSaveLogin.TabIndex = 2;
-            this.checkBoxSaveLogin.Text = "Remember Me";
-            this.checkBoxSaveLogin.UseVisualStyleBackColor = true;
-            this.checkBoxSaveLogin.CheckedChanged += new System.EventHandler(this.checkBoxSaveLogin_CheckedChanged);
+            this.m_CheckBoxSaveLogin.AutoSize = true;
+            this.m_CheckBoxSaveLogin.Enabled = false;
+            this.m_CheckBoxSaveLogin.Location = new System.Drawing.Point(176, 250);
+            this.m_CheckBoxSaveLogin.Name = "checkBoxSaveLogin";
+            this.m_CheckBoxSaveLogin.Size = new System.Drawing.Size(119, 20);
+            this.m_CheckBoxSaveLogin.TabIndex = 2;
+            this.m_CheckBoxSaveLogin.Text = "Remember Me";
+            this.m_CheckBoxSaveLogin.UseVisualStyleBackColor = true;
+            this.m_CheckBoxSaveLogin.CheckedChanged += new System.EventHandler(this.checkBoxSaveLogin_CheckedChanged);
             // 
             // FormLogin
             // 
             this.ClientSize = new System.Drawing.Size(482, 327);
-            this.Controls.Add(this.checkBoxSaveLogin);
-            this.Controls.Add(this.buttonLogout);
-            this.Controls.Add(this.buttonLogin);
+            this.Controls.Add(this.m_CheckBoxSaveLogin);
+            this.Controls.Add(this.m_ButtonLogout);
+            this.Controls.Add(this.m_ButtonLogin);
             this.Name = "FormLogin";
             this.Tag = "Login";
             this.Text = "Login to facebook";
@@ -96,8 +96,8 @@ namespace BasicFacebookFeatures
         {
             if(!m_CurrentSession.IsLoggedIn())
             {
-                buttonLogin.Enabled = false;
-                buttonLogin.Text = k_ConnectText;
+                m_ButtonLogin.Enabled = false;
+                m_ButtonLogin.Text = k_ConnectText;
                 new Thread(normalLogin).Start();
             }
             else
@@ -113,37 +113,36 @@ namespace BasicFacebookFeatures
             if(!string.IsNullOrEmpty(loginResult.AccessToken))
             {
                 m_CurrentSession.Initialize(loginResult);
-                buttonLogin.Invoke(new Action(checkLoginStatus));
+                m_ButtonLogin.Invoke(new Action(checkLoginStatus));
             }
             else
             {
                 MessageBox.Show(k_LoginErrorMessage, k_LoginError);
-                buttonLogin.Invoke(new Action(resetLoginButton));
+                m_ButtonLogin.Invoke(new Action(resetLoginButton));
             }
         }
 
         private void continueToFacebook()
         {
             Form formMain = FacebookFormFactory.CreateNewFacebookForm("Main");
-
             Hide();
             formMain.ShowDialog();
-            checkBoxSaveLogin.Checked = ((FormMain)formMain).RememberMe;
+            m_CheckBoxSaveLogin.Checked = ((FormMain)formMain).RememberMe;
             Show();
         }
 
         private void resetLoginButton()
         {
-            buttonLogin.Enabled = true;
-            buttonLogin.Text = k_LoginText;
+            m_ButtonLogin.Enabled = true;
+            m_ButtonLogin.Text = k_LoginText;
         }
 
         private void checkSavedLogin()
         {
             if (Session.IsSessionSaved())
             {
-                buttonLogin.Enabled = false;
-                buttonLogin.Text = k_ConnectText;
+                m_ButtonLogin.Enabled = false;
+                m_ButtonLogin.Text = k_ConnectText;
                 new Thread(savedLoginConnect).Start();
             }
         }
@@ -151,18 +150,18 @@ namespace BasicFacebookFeatures
         private void savedLoginConnect()
         {
             m_CurrentSession.LoadFromFile();
-            checkBoxSaveLogin.Invoke(new Action(() => checkBoxSaveLogin.Checked = true));
-            buttonLogin.Invoke(new Action(checkLoginStatus));
+            m_CheckBoxSaveLogin.Invoke(new Action(() => m_CheckBoxSaveLogin.Checked = true));
+            m_ButtonLogin.Invoke(new Action(checkLoginStatus));
         }
 
         private void checkLoginStatus()
         {
             if (m_CurrentSession.IsLoggedIn())
             {
-                buttonLogin.Text = $@"{k_RememberLoginText} {m_CurrentSession.UserName}";
-                buttonLogout.Enabled = true;
-                checkBoxSaveLogin.Enabled = true;
-                buttonLogin.Enabled = true;
+                m_ButtonLogin.Text = $@"{k_RememberLoginText} {m_CurrentSession.UserName}";
+                m_ButtonLogout.Enabled = true;
+                m_CheckBoxSaveLogin.Enabled = true;
+                m_ButtonLogin.Enabled = true;
             }
         }
 
@@ -173,17 +172,17 @@ namespace BasicFacebookFeatures
 
         private void buttonLogout_Click(object sender, EventArgs e)
         {
-            buttonLogin.Text = k_LoginText;
-            checkBoxSaveLogin.Checked = false;
-            buttonLogout.Enabled = false;
-            checkBoxSaveLogin.Enabled = false;
+            m_ButtonLogin.Text = k_LoginText;
+            m_CheckBoxSaveLogin.Checked = false;
+            m_ButtonLogout.Enabled = false;
+            m_CheckBoxSaveLogin.Enabled = false;
             FacebookService.LogoutWithUI();
             m_CurrentSession.Terminate(false);
         }
 
         private void checkBoxSaveLogin_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBoxSaveLogin.Checked)
+            if(m_CheckBoxSaveLogin.Checked)
             {
                 m_CurrentSession.SaveToFile();
             }

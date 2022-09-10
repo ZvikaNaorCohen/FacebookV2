@@ -40,7 +40,6 @@ namespace FacebookEngine
         private void calculateDaysUntilBirthday()
         {
             DateTime nextBirthday = Birthdate.AddYears(DateTime.Today.Year - Birthdate.Year);
-
             if(nextBirthday < DateTime.Today)
             {
                 nextBirthday = nextBirthday.AddYears(1);

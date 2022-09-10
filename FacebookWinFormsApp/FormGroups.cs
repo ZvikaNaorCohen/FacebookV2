@@ -43,7 +43,6 @@ namespace BasicFacebookFeatures
         private void listBoxName_Clicked(object sender, EventArgs e)
         {
             ListBox groupChosen = sender as ListBox;
-
             foreach (Group group in r_UserData.GetSortedGroupsList(eSortBy.Name))
             {
                 if(groupChosen == null)
